@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4Stu</title>
+
+    <!-- Link Reset CSS - Khum cần reset CSS lại nữa -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+
+    <!-- Link Font Poppins Tiếng Anh-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link Font Poppins Tiếng Việt-->
+    <link rel="stylesheet" href="./assets/font/stylesheet.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/style.css" /> -->
+
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+
+    <!-- Link CSS của riêng phần Home -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/service.css" />
+
+    <!-- Link Font Awesome -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+  </head>
+  <body>
+    <div id="root">
+      <!-- HEADER -->
+      <header class="header fixed-header">
+        <div class="content">
+          <nav class="navbar">
+            <!-- LOGO -->
+            <img src="./assets/img/4Stu-Logo.svg" alt="4Stu" />
+            <span><a href="#">4Stu</a></span>
+            <!-- NAVIGATION -->
+            <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="">About</a></li>
+              <li class="chosen"><a href="service.html">Services</a></li>
+              <li><a href="">Contact</a></li>
+              <li>
+                <a href="">More <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="sub-nav">
+                  <li><a href="#"> More 1 </a></li>
+                  <li><a href="#"> More 2 </a></li>
+                  <li><a href="#"> More 3 </a></li>
+                </ul>
+              </li>
+            </ul>
+            <!-- ACTION -->
+            <div class="actions">
+              <a href="login.html" class="btn action-btn">Login</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="content">
+          <div class="hero-content">
+            <div class="info">
+              <p class="sub-title">Welcome to 4Stu Website!</p>
+              <h1 class="title">Clean, tidy and economical</h1>
+              <p class="desc">
+                Here we have all the cleaning, sanitation, water delivery services you need.
+              </p>
+              <a href="service.html" class="btn hero-cta cta"
+                >Start Booking NOW <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+
+            <img
+              src="./assets/img/people-start-booking-a-service-in-website-2.svg"
+              alt="Clean, tidy and economical"
+              class="hero-img"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="content">
+        <div class="container">
+          <div class="sidebar">
+            <div class="sidehead">
+              <div class="sidehead-header">
+                <!-- <i class="fa-solid fa-circle"></i>
+                <i class="fa-solid fa-circle" style="color: #333"></i>
+                <i class="fa-solid fa-circle"></i> -->
+                <img class="sidehead-logo" src="./assets/img/Logo.svg" alt="" />
+                <h2>Stu</h2>
+              </div>
+              <hr style="margin: 15px 0; border: 1px solid #eee" />
+            </div>
+            <div class="sidebody" style="height: 69vh">
+              <div class="searchBar">
+                <input placeholder="Search..." id="searchBar" name="searchBar" type="text" />
+                <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+              </div>
+            </div>
+            <div class="sidefoot">
+              <hr style="margin: 15px 0; border: 1px solid #eee" />
+              <!-- <div class="social-icons">
+                <i class="fa-brands fa-square-facebook"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-square-github"></i>
+              </div> -->
+            </div>
+          </div>
+          <div class="data">
+            <div class="data-top">
+              <p>+0840792766979</p>
+              <p>toanvhse171981@fpt.edu.vn</p>
+            </div>
+            <div class="data-header">
+              <p>BOOK SERVICE ONLINE</p>
+            </div>
+            <div class="data-body">
+              <div id="service-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <!-- <footer class="">
+        <div class="content">
+          <div class="footer-head">
+            <h2 class="title">Try <span>4Stu</span> Today!</h2>
+            <p class="sub-title">Get started for free. Add your whole team as your needs grow.</p>
+            <a href="" class="btn cta">Try 4Stu Free <i class="fa-solid fa-arrow-right"></i></a>
+            <p class="os-title">Want to download 4Stu? Click below</p>
+            <div class="os-icon">
+              <a href="#"><img src="./assets/img/apple-black-logo 2.svg" alt="" /></a>
+              <a href="#"><img src="./assets/img/windows-logo 1.svg" alt="" /></a>
+              <a href="#"><img src="./assets/img/android-logo 1.svg" alt="" /></a>
+            </div>
+          </div>
+          <div class="footer-info">
+            <div class="col-of-footer"></div>
+
+            <div class="col-of-footer"></div>
+
+            <div class="col-of-footer"></div>
+          </div>
+        </div>
+      </footer> -->
+    </div>
+
+    <script src="./assets/js/service.js"></script>
+  </body>
+</html>

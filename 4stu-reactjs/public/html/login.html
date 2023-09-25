@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4Stu Login</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+
+    <!-- Poppins Font CSS English-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Poppins Font CSS Vietnamese-->
+    <link rel="stylesheet" href="./assets/font/stylesheet.css" />
+
+    <!-- Line Icon CSS -->
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- BACKGROUND ANIMATION -->
+    <div class="bg-animation">
+      <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- FORM CONTAINER -->
+    <div class="login-main-container" id="container">
+      <!-- LOGIN FORM -->
+      <div class="form-container login-container">
+        <form action="#">
+          <h1>Login</h1>
+          <label for="">Email/Phone</label>
+          <input type="text" />
+          <label for="">Password</label>
+          <input type="password" />
+          <div class="login-options">
+            <div class="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" class="remember-me-btn" />
+              <label for="checkbox" id="remember-label">Remember me</label>
+            </div>
+            <div class="pass-link">
+              <a href="#!">Forgot password?</a>
+            </div>
+          </div>
+          <button>Login</button>
+          <hr />
+          <span>Or Use Another Account</span>
+          <div class="login-with-google">
+            <button type="button" class="login-with-google-btn">Google</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="form-container register-container">
+        <form action="#">
+          <h1>Register</h1>
+          <label for="">Email/Phone</label>
+          <input type="text" />
+          <label for="">Password</label>
+          <input type="password" />
+          <label for="">Confirm Password</label>
+          <input type="password" />
+          <button>Register</button>
+          <hr />
+          <span>Or Use Another Account</span>
+          <div class="login-with-google">
+            <button type="button" class="login-with-google-btn" id="login-with-google-Button">
+              Google
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- OVERLAY -->
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1 class="login-title">
+              Halo <br />
+              My Friend
+            </h1>
+            <p class="login-ques">Already Have An Account?</p>
+            <button class="ghost" id="login">Login</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1 class="login-title">
+              Start Booking <br />
+              Service Now
+            </h1>
+            <p class="login-ques">Don't Have An Account Yet?</p>
+            <button class="ghost" id="register">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/login.js"></script>
+  </body>
+</html>
