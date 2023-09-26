@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
 
-import Loading from './pages/loading-page/loading';
+import Loading from './pages/loading';
 // ADMIN
 import AdminDashboard from './admin/admin-dashboard/admin-dashboard';
 import UserManagement from './admin/user-management/user-management';

@@ -87,8 +87,14 @@ function Service() {
           </div>
           <div className="data">
             <div className="data-top">
-              <p>{user.username}</p>
-              <p>{user.email}</p>
+              {user && user.isAuthenticated ? (
+                <>
+                  <p>{user.username}</p>
+                  <p>{user.email}</p>
+                </>
+              ) : (
+                <p>Welcome, Guest!</p>
+              )}
             </div>
             <div className="data-header">
               <p>BOOK SERVICE ONLINE</p>

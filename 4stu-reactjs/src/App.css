@@ -177,6 +177,41 @@ a {
   margin-right: auto;
 }
 
+/*==================== LOADING ====================*/
+.loading-container {
+  background-color: var(--primary-color-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.loading-container h1 {
+  color: #fff;
+  margin-top: 30px;
+}
+
+.loading-spinner {
+  border: 10px solid var(--primary-color-2);
+  border-top: 10px solid #fff;
+  border-right: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*==================== HEADER ====================*/
 .fixed-header {
   background: var(--primary-color-2);
