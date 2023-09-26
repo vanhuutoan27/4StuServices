@@ -151,8 +151,8 @@ namespace _4stu_cs.Controllers
                 _config["Jwt:Issuer"],
                 _config["Jwt:Audience"],
                 claims,
-                // có thời gian chết, 15 phút
-                expires: DateTime.Now.AddMinutes(15),
+                // có thời gian chết, 5 phút
+                expires: DateTime.Now.AddMinutes(5),
                 signingCredentials: credentials
             );
 
