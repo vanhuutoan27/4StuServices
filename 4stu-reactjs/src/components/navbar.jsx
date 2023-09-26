@@ -43,7 +43,7 @@ function NavBar() {
             </li>
             <li>
               <a href="#!">
-                More <FontAwesomeIcon icon={faCaretDown} className="custom-icon" />
+                More <FontAwesomeIcon icon={faCaretDown} className="custom-icon-white" />
               </a>
               <ul className="sub-nav">
                 <li>

@@ -15,10 +15,10 @@ import ServiceManagement from './admin/service-management/service-management';
 
 // CUSTOMER
 import Login from './pages/login-page/login';
-import Home from './pages/home-page/home';
-import Service from './pages/service-page/service';
+import Home from './pages/home';
+import Service from './pages/service';
 import PackageService from './pages/package-service-page/package-service';
-// import Contact from './pages/contact-page/contact';
+import Contact from './pages/contact-page/contact';
 
 export const Session = createContext(null);
 
@@ -87,7 +87,7 @@ function App() {
           <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
           <Route path="/service" element={isLoading ? <Loading /> : <Service />} />
           <Route path="/package-service" element={isLoading ? <Loading /> : <PackageService />} />
-          {/* <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} /> */}
+          <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} />
         </Routes>
 
         {/* <Routes>
@@ -106,7 +106,7 @@ function App() {
           <Route path="/service" element={<Service />} />
         </Routes> */}
 
-        {JSON.stringify(user)}
+        {/* {JSON.stringify(user)} */}
       </div>
     </Session.Provider>
   );
