@@ -19,10 +19,10 @@ namespace _4stu_cs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ServiceManagement>>> GetServiceManagements()
         {
-          if (_context.ServiceManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.ServiceManagements == null)
+            {
+                return NotFound();
+            }
             return await _context.ServiceManagements.ToListAsync();
         }
 
@@ -30,10 +30,10 @@ namespace _4stu_cs.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceManagement>> GetServiceManagement(int id)
         {
-          if (_context.ServiceManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.ServiceManagements == null)
+            {
+                return NotFound();
+            }
             var serviceManagement = await _context.ServiceManagements.FindAsync(id);
 
             if (serviceManagement == null)
@@ -80,10 +80,10 @@ namespace _4stu_cs.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceManagement>> PostServiceManagement(ServiceManagement serviceManagement)
         {
-          if (_context.ServiceManagements == null)
-          {
-              return Problem("Entity set '_4stuDbContext.ServiceManagements'  is null.");
-          }
+            if (_context.ServiceManagements == null)
+            {
+                return Problem("Entity set '_4stuDbContext.ServiceManagements'  is null.");
+            }
             _context.ServiceManagements.Add(serviceManagement);
             await _context.SaveChangesAsync();
 

@@ -1,44 +1,48 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { Session } from '../App';
 
 function NavBar() {
-  //Lấy ra user trong session
+  // Lấy ra user trong session
   const session = useContext(Session);
   const user = session.user;
 
-  // Cuộn lên trên đầu trang
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   // Lấy địa chỉ trang (Path)
   const location = useLocation();
+
+  // Xử lý logout
+  const handleLogout = (e) => {
+    e.preventDefault();
+    // Xóa session và thực hiện các thao tác khác (xóa access token, vv.)
+    session.setUser(null);
+    localStorage.removeItem('accessToken');
+    // Chuyển hướng người dùng đến trang đăng nhập
+    window.location.href = '/';
+    // window.location.reload();
+  };
 
   return (
     <header className="header fixed-header">
       <div className="content">
         <nav className="navbar">
           <img src="./img/4Stu-Logo.svg" alt="4Stu" />
+
           <span>
-            <Link to="">4Stu</Link>
+            <a href="/">4Stu</a>
           </span>
           <ul>
-            <li onClick={scrollToTop} className={location.pathname === '/' ? 'chosen' : ''}>
+            <li className={location.pathname === '/' ? 'chosen' : ''}>
               <a href="/">Home</a>
             </li>
-            <li onClick={scrollToTop} className={location.pathname === '/service' ? 'chosen' : ''}>
+            <li className={location.pathname === '/service' ? 'chosen' : ''}>
               <a href="/service">Service</a>
             </li>
-            <li
-              onClick={scrollToTop}
-              className={location.pathname === '/package-service' ? 'chosen' : ''}
-            >
-              <a href="/package-service">Package Service</a>
+            <li className={location.pathname === '/package-service' ? 'chosen' : ''}>
+              <a href="/package-service">Package</a>
             </li>
-            <li onClick={scrollToTop} className={location.pathname === '/contact' ? 'chosen' : ''}>
+            <li className={location.pathname === '/contact' ? 'chosen' : ''}>
               <a href="/contact">Contact</a>
             </li>
             <li>
@@ -47,13 +51,13 @@ function NavBar() {
               </a>
               <ul className="sub-nav">
                 <li>
-                  <Link to="">About</Link>
+                  <a href="">About</a>
                 </li>
                 <li>
-                  <Link to="">News</Link>
+                  <a href="">News</a>
                 </li>
                 <li>
-                  <Link to="">FAQs</Link>
+                  <a href="">FAQs</a>
                 </li>
               </ul>
             </li>
@@ -70,13 +74,15 @@ function NavBar() {
                     </div>
                     <ul className="sub-nav-user">
                       <li>
-                        <a href="#"> Profile </a>
+                        <a href="#">Profile</a>
                       </li>
                       <li>
-                        <a href="#"> Order </a>
+                        <a href="#">Order</a>
                       </li>
                       <li>
-                        <a href="login"> Logout </a>
+                        <a href="#!" onClick={handleLogout}>
+                          Logout
+                        </a>
                       </li>
                     </ul>
                   </li>

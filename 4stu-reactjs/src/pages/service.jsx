@@ -16,20 +16,21 @@ function Service() {
   useEffect(() => {
     axios
       .get('https://localhost:7088/api/ServiceManagements')
-      .then((response) => setAllServices(response.data))
-      .catch((error) => console.log(error));
+      .then((response) => {
+        setAllServices(response.data);
+        setFilteredServices(response.data); // Khởi tạo filteredServices ban đầu với tất cả dịch vụ.
+      })
+      .catch((error) => console.error(error));
   }, []);
 
-  useEffect(() => {
+  const handleSearchChange = (e) => {
+    const newText = e.target.value.toLowerCase();
+    setSearchText(newText);
     // Lọc và cập nhật danh sách dịch vụ dựa trên từ khóa tìm kiếm
     const filtered = allServices.filter((service) =>
-      service.serviceName.toLowerCase().includes(searchText.toLowerCase())
+      service.serviceName.toLowerCase().includes(newText)
     );
     setFilteredServices(filtered);
-  }, [searchText, allServices]);
-
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
   };
 
   const renderService = () => {
@@ -87,9 +88,9 @@ function Service() {
           </div>
           <div className="data">
             <div className="data-top">
-              {user && user.isAuthenticated ? (
+              {user ? (
                 <>
-                  <p>{user.username}</p>
+                  <p>{user.phone}</p>
                   <p>{user.email}</p>
                 </>
               ) : (

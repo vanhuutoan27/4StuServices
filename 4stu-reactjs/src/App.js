@@ -42,7 +42,7 @@ function App() {
 
     // Make the GET request using the custom Axios instance
     axiosInstance
-      .get('https://localhost:7088/api/AccountManagements/Launch')
+      .get('https://localhost:7088/api/CustomerManagements/Launch')
       .then((response) => {
         // Handle the response data here
         setUser(response.data);

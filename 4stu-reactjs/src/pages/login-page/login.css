@@ -136,10 +136,7 @@ input {
 }
 
 .form-container h1 {
-  background: #ffbe7d;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary-color-1);
   padding: 8px 0;
 }
 
@@ -168,7 +165,7 @@ hr {
 
 .login-container > form > button,
 .register-container > form > button {
-  background: var(--linear-gradient-color-1);
+  background: var(--primary-color-1);
   color: var(--primary-color-2);
 }
 

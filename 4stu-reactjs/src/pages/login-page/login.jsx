@@ -5,7 +5,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Skeleton from 'react-loading-skeleton';
 
 import './login.css';
 
@@ -40,15 +39,16 @@ function Login() {
       setIsLoading(true);
 
       axios
-        .post('https://localhost:7088/api/AccountManagements/Login', {
+        .post('https://localhost:7088/api/CustomerManagements/Login', {
           email: values.email,
           password: values.password,
         })
         .then((response) => {
           // Đăng nhập thành công, cập nhật trạng thái user và điều hướng đến '/home'
-          session.setUser(response.data.account);
+          console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
           navigate('/');
+          window.location.reload();
         })
         .catch((error) => {
           // Đăng nhập thất bại, cập nhật trạng thái lỗi

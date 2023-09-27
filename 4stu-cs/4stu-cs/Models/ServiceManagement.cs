@@ -20,4 +20,6 @@ public partial class ServiceManagement
     public int? OrderId { get; set; }
 
     public string Tag { get; set; } = null!;
+
+    public virtual ICollection<PackageServiceManagement> PackageServiceManagements { get; set; } = new List<PackageServiceManagement>();
 }
