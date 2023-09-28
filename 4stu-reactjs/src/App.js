@@ -17,7 +17,7 @@ import ServiceManagement from './admin/service-management/service-management';
 import Login from './pages/login-page/login';
 import Home from './pages/home';
 import Service from './pages/service';
-import PackageService from './pages/package-service-page/package-service';
+import PackageService from './pages/package-service';
 import Contact from './pages/contact-page/contact';
 
 export const Session = createContext(null);

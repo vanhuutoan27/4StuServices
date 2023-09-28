@@ -1,40 +1,27 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Session } from '../App';
 import axios from 'axios';
 
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
 
-function Service() {
+function PackageService() {
   const session = useContext(Session);
   const user = session.user;
 
-  const [allServices, setAllServices] = useState([]);
-  const [searchText, setSearchText] = useState('');
-  const [filteredServices, setFilteredServices] = useState([]);
+  const [allPackageServices, setAllPackageServices] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://localhost:7088/api/ServiceManagements')
+      .get('https://localhost:7088/api/PackageServiceManagements')
       .then((response) => {
-        setAllServices(response.data);
-        setFilteredServices(response.data); // Khởi tạo filteredServices ban đầu với tất cả dịch vụ.
+        setAllPackageServices(response.data);
       })
       .catch((error) => console.error(error));
   }, []);
 
-  const handleSearchChange = (e) => {
-    const newText = e.target.value.toLowerCase();
-    setSearchText(newText);
-    // Lọc và cập nhật danh sách dịch vụ dựa trên từ khóa tìm kiếm
-    const filtered = allServices.filter((service) =>
-      service.serviceName.toLowerCase().includes(newText)
-    );
-    setFilteredServices(filtered);
-  };
-
   const renderService = () => {
-    if (filteredServices.length === 0) {
+    if (allPackageServices.length === 0) {
       return (
         <h2 style={{ color: 'red' }}>
           The service you need is not here! We will try to update more in the future!
@@ -42,14 +29,14 @@ function Service() {
       );
     }
 
-    return filteredServices.map((service, index) => (
+    return allPackageServices.map((packageService, index) => (
       <div key={index} className="box">
         <div className="img-box">
-          <img className="images" src="./img/Logo.svg" alt={service.serviceName} />
+          <img className="images" src={packageService.imageUrl} alt={packageService.serviceName} />
         </div>
         <div className="bottom">
-          <p>{service.serviceName}</p>
-          <h2>{service.price} VND</h2>
+          <p>{packageService.packageServiceName}</p>
+          <h2>{packageService.price} VND</h2>
           <button className="view-details">View Details</button>
         </div>
       </div>
@@ -62,7 +49,7 @@ function Service() {
         <NavBar />
 
         <div className="service-container">
-          <div className="sidebar">
+          {/* <div className="sidebar">
             <div className="sidehead">
               <div className="sidehead-header">
                 <img className="sidehead-logo" src="./img/Logo.svg" alt="" />
@@ -70,22 +57,7 @@ function Service() {
               </div>
               <hr />
             </div>
-            <div className="sidebody">
-              <div className="searchBar">
-                <input
-                  placeholder="Search..."
-                  id="searchBar"
-                  name="searchBar"
-                  type="text"
-                  value={searchText}
-                  onChange={handleSearchChange}
-                />
-              </div>
-            </div>
-            <div className="sidefoot">
-              <hr />
-            </div>
-          </div>
+          </div> */}
           <div className="data">
             <div className="data-top">
               {user ? (
@@ -98,7 +70,6 @@ function Service() {
               )}
             </div>
             <div className="data-header">
-              <img src="./img/serivce-banner.png" alt="" />
               <p>BOOK SERVICE ONLINE</p>
             </div>
             <div className="data-body">
@@ -113,4 +84,4 @@ function Service() {
   );
 }
 
-export default Service;
+export default PackageService;

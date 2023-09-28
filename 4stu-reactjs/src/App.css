@@ -1134,14 +1134,20 @@ header .hero-img {
   border-radius: 8px;
   background-color: var(--primary-color-2);
   margin: 3vh 0px;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.data-header img {
+  /* width: 200; */
+  height: 200px;
+  padding-left: 60px;
+}
+
 .data-header p {
-  font-size: 40px;
+  font-size: 5.5rem;
   font-weight: bold;
   color: var(--primary-color-1);
 }
@@ -1217,13 +1223,14 @@ header .hero-img {
   margin-bottom: 20px;
 
   &:hover {
-    opacity: 0.8;
-    transform: scale(0.98);
+    opacity: 0.9;
+    transform: scale(0.95);
+    font-weight: 600;
   }
 
   &:active {
     text-decoration: none;
-    transform: scale(0.95);
+    transform: scale(0.9);
     background: var(--primary-color-1);
   }
 }

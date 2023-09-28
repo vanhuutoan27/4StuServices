@@ -34,7 +34,7 @@ function ServiceManagement() {
         </td>
 
         <td>
-          <span className="service-desc">{service.serviceDesc}</span>
+          <span className="service-name">{service.tag}</span>
         </td>
 
         <td>
@@ -46,14 +46,17 @@ function ServiceManagement() {
         </td>
 
         <td>
-          <span className="tags">
-            {typeof service.tag === 'string' ? (
-              <span className={`tag tag--${service.tag.toLowerCase().replace(/\s+/g, '-')}`}>
-                {service.tag}
-              </span>
-            ) : (
-              <span className="tag">No tags available</span>
-            )}
+          <span className="actions">
+            <a href="#" className="action action--view">
+              View
+            </a>
+            <a href="#" className="action action--edit">
+              Edit
+            </a>
+            <a href="#" className="action action--delete">
+              Delete
+            </a>
+            {/* <span className="action">No actions available</span> */}
           </span>
         </td>
       </tr>
@@ -76,17 +79,17 @@ function ServiceManagement() {
               All Services
               <span className="table-row-count">({allServices.length} Services)</span>
               <div>
-                <a href="#">Add</a>
+                <a href="#">Add A Service</a>
               </div>
             </caption>
             <thead>
               <tr>
-                <th>Service ID</th>
-                <th>Service Name</th>
-                <th>Description</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
                 <th>Price (VND)</th>
-                <th>Time (mins)</th>
-                <th>Tag</th>
+                <th>Time (Mins)</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>{renderService()}</tbody>
