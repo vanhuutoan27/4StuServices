@@ -26,25 +26,39 @@
   padding: 24px;
   border: 2px solid var(--gray-background-color);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  text-align: left;
   overflow-x: auto;
+  width: 100%;
 }
 
 .table-widget table {
   /* min-width: fit-content; */
   width: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+
+  /* border-radius: 16px;
+  background-color: var(--table-background-color);
+  padding: 24px;
+  border: 2px solid var(--gray-background-color);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  text-align: left;
+  overflow-x: auto; */
 }
 
 .table-widget caption {
+  display: flex;
+  justify-content: space-between;
   font-size: 2rem;
   font-weight: 700;
-  text-align: left;
-  margin: 8px 0px 12px 24px;
+  /* text-align: left; */
+  margin: 8px 24px 12px 24px;
 }
 
-.table-widget caption span + div {
-  float: right;
+.table-widget caption h2 {
+  line-height: 45px;
+}
+
+.button-modal {
+  /* float: right; */
   background-color: var(--primary-color-1);
   border-radius: 12px;
   min-width: 98px;
@@ -57,6 +71,7 @@
   -webkit-user-select: none;
   user-select: none;
   border: none;
+  margin-left: auto;
 
   &:hover {
     opacity: 0.8;
@@ -66,14 +81,15 @@
   &:active {
     text-decoration: none;
     transform: scale(0.95);
+    background-color: var(--primary-color-1);
   }
 }
 
-.table-widget caption span + div a {
+/* .table-widget caption span + div a {
   &:active {
     color: var(--primary-color-2);
   }
-}
+} */
 
 .table-widget th {
   padding: 20px 12px;
@@ -87,7 +103,7 @@
 }
 
 .table-widget th:nth-child(2) {
-  width: 280px;
+  width: 220px;
 }
 
 .table-widget th:nth-child(3) {
@@ -95,7 +111,7 @@
 }
 
 .table-widget th:nth-child(5) {
-  width: 20x;
+  /* width: 20x; */
 }
 
 .table-widget thead {
@@ -150,33 +166,28 @@
   color: #464646;
 }
 
-.actions {
+.statuss {
   display: flex;
   gap: 8px;
 }
 
-.action {
+.status {
   padding: 8px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1.2rem;
 }
 
-.action::first-letter {
+.status::first-letter {
   text-transform: uppercase;
 }
 
-.action--view {
-  background-color: #0000ff60;
+.status--active {
+  background-color: #51ff0060;
   color: #00000090;
 }
 
-.action--edit {
-  background-color: #ffff0060;
-  color: #00000090;
-}
-
-.action--delete {
+.status--inactive {
   background-color: #ff000060;
   color: #00000090;
 }
@@ -221,4 +232,32 @@ button:active {
 .service-time {
   font-size: 1.4rem;
   text-transform: capitalize;
+}
+
+.admin-btn-action {
+  background-color: var(--primary-color-1);
+  border-radius: 12px;
+  min-width: 48px;
+  padding: 8px 16px;
+  margin: 0 4px;
+  color: var(--primary-color-2);
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/*  */
+.modal-dialog {
+  margin-top: 150px;
+}
+
+.form-label {
+  font-size: 1.4rem;
+}
+
+.form-control {
+  font-size: 1.6rem;
 }

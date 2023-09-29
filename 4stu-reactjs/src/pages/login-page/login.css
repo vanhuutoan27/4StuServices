@@ -97,7 +97,7 @@ label {
 }
 
 /* Form Login/ Register*/
-form {
+.form-container > form {
   background-color: #fff;
   display: flex;
   padding: 0 50px;
@@ -278,16 +278,26 @@ hr {
 }
 
 /* BUTTON ========================================================================================*/
-form > .btn {
+.form-container form > .btn {
   margin-top: 20px;
   margin-bottom: 10px;
   letter-spacing: 1px;
+
+  &:active {
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
+  }
 }
 
-form > .btn {
+.form-container form > .btn {
   border: 0px solid;
   font-weight: 700;
   color: var(--primary-color-2);
+
+  &:active {
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
+  }
 }
 
 .ghost {

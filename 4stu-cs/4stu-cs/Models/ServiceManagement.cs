@@ -21,5 +21,9 @@ public partial class ServiceManagement
 
     public string Tag { get; set; } = null!;
 
+    public string? Image { get; set; }
+
+    public string Status { get; set; } = null!;
+
     public virtual ICollection<PackageServiceManagement> PackageServiceManagements { get; set; } = new List<PackageServiceManagement>();
 }

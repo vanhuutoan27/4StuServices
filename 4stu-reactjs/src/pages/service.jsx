@@ -99,7 +99,7 @@ function Service() {
             </div>
             <div className="data-header">
               <img src="./img/serivce-banner.png" alt="" />
-              <p>BOOK SERVICE ONLINE</p>
+              {/* <p>BOOK SERVICE ONLINE</p> */}
             </div>
             <div className="data-body">
               <div id="service-list">{renderService()}</div>

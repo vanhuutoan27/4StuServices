@@ -19,10 +19,10 @@ namespace _4stu_cs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PackageServiceManagement>>> GetPackageServiceManagements()
         {
-          if (_context.PackageServiceManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.PackageServiceManagements == null)
+            {
+                return NotFound();
+            }
             return await _context.PackageServiceManagements.ToListAsync();
         }
 
@@ -30,10 +30,10 @@ namespace _4stu_cs.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PackageServiceManagement>> GetPackageServiceManagement(int id)
         {
-          if (_context.PackageServiceManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.PackageServiceManagements == null)
+            {
+                return NotFound();
+            }
             var packageServiceManagement = await _context.PackageServiceManagements.FindAsync(id);
 
             if (packageServiceManagement == null)
@@ -80,10 +80,10 @@ namespace _4stu_cs.Controllers
         [HttpPost]
         public async Task<ActionResult<PackageServiceManagement>> PostPackageServiceManagement(PackageServiceManagement packageServiceManagement)
         {
-          if (_context.PackageServiceManagements == null)
-          {
-              return Problem("Entity set '_4stuDbContext.PackageServiceManagements'  is null.");
-          }
+            if (_context.PackageServiceManagements == null)
+            {
+                return Problem("Entity set '_4stuDbContext.PackageServiceManagements'  is null.");
+            }
             _context.PackageServiceManagements.Add(packageServiceManagement);
             await _context.SaveChangesAsync();
 

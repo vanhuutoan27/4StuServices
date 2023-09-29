@@ -19,5 +19,7 @@ public partial class PackageServiceManagement
 
     public int ServiceId { get; set; }
 
+    public string? Image { get; set; }
+
     public virtual ServiceManagement Service { get; set; } = null!;
 }

@@ -30,29 +30,29 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <SlideShow />
-      {/* <div className="hero">
-          <div className="content">
-            <div className="hero-content">
-              <div className="info">
-                <p className="sub-title">Welcome to 4Stu Website!</p>
-                <h1 className="title">Clean, tidy and economical</h1>
-                <p className="desc">
-                  Here we have all the cleaning, sanitation, water delivery services you need.
-                </p>
-                <a href="service" className="btn hero-cta cta">
-                  Start Booking NOW <FontAwesomeIcon icon={faArrowRight} className="custom-icon" />
-                </a>
-              </div>
-
-              <img
-                src="./img/people-start-booking-a-service-in-website-2.svg"
-                alt="Clean, tidy and economical"
-                className="hero-img"
-              />
+      {/* <SlideShow /> */}
+      <div className="hero">
+        <div className="content">
+          <div className="hero-content">
+            <div className="info">
+              <p className="sub-title">Welcome to 4Stu Website!</p>
+              <h1 className="title">Clean, tidy and economical</h1>
+              <p className="desc">
+                Here we have all the cleaning, sanitation, water delivery services you need.
+              </p>
+              <a href="service" className="btn hero-cta cta">
+                Start Booking NOW <FontAwesomeIcon icon={faArrowRight} className="custom-icon" />
+              </a>
             </div>
+
+            <img
+              src="./img/people-start-booking-a-service-in-website-2.svg"
+              alt="Clean, tidy and economical"
+              className="hero-img"
+            />
           </div>
-        </div> */}
+        </div>
+      </div>
 
       <div className="popular">
         <div className="popular-header">
@@ -144,7 +144,7 @@ function Home() {
                 under one roof. Experience the convenience and peace of mind with our versatile
                 services, tailored to meet your specific requirements.
               </p>
-              <a href="#" className="btn cta">
+              <a href="contact" className="btn cta">
                 Support <FontAwesomeIcon icon={faEnvelope} size="lg" className="custom-icon" />
               </a>
             </div>

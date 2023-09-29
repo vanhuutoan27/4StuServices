@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AdminNavbar from '../AdminNavbar/admin-navbar';
 import axios from 'axios';
+import CreateServiceButton from './CreateService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import './service-management.css';
+import { Link } from 'react-router-dom';
 
 function ServiceManagement() {
   const [allServices, setAllServices] = useState([]);
@@ -46,18 +50,17 @@ function ServiceManagement() {
         </td>
 
         <td>
-          <span className="actions">
-            <a href="#" className="action action--view">
-              View
-            </a>
-            <a href="#" className="action action--edit">
-              Edit
-            </a>
-            <a href="#" className="action action--delete">
-              Delete
-            </a>
-            {/* <span className="action">No actions available</span> */}
+          <span className="statuss">
+            <span className={`status status--${service.status}`}>{service.status}</span>
           </span>
+        </td>
+        <td>
+          <a href="#" className="admin-btn-action">
+            <FontAwesomeIcon icon={faEye} />
+          </a>
+          <a href="#" className="admin-btn-action">
+            <FontAwesomeIcon icon={faPen} />
+          </a>
         </td>
       </tr>
     ));
@@ -74,14 +77,12 @@ function ServiceManagement() {
       </div>
       <div className="table-content">
         <div className="table-widget">
+          <caption>
+            <h2>All Services</h2>
+            <span className="table-row-count">({allServices.length} Services)</span>
+            <CreateServiceButton />
+          </caption>
           <table>
-            <caption>
-              All Services
-              <span className="table-row-count">({allServices.length} Services)</span>
-              <div>
-                <a href="#">Add A Service</a>
-              </div>
-            </caption>
             <thead>
               <tr>
                 <th>ID</th>
@@ -89,7 +90,8 @@ function ServiceManagement() {
                 <th>Type</th>
                 <th>Price (VND)</th>
                 <th>Time (Mins)</th>
-                <th>Actions</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{renderService()}</tbody>

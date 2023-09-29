@@ -7,6 +7,7 @@ CREATE TABLE ServiceManagement (
   FeedbackID INT,
   OrderID INT,
   Tag VARCHAR(50) NOT NULL,
+  Status VARCHAR(20) NOT NULL,
   PRIMARY KEY (ServiceID)
 );
 

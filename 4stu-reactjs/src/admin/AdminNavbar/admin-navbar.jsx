@@ -75,7 +75,8 @@ function AdminNavbar() {
           </div>
         </a>
 
-        <div className="admin-management">MANAGEMENT</div>
+        {/* <div className="admin-management">MANAGEMENT</div> */}
+        <hr />
 
         <a href="admin-user-management">
           <div

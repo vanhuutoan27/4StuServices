@@ -8,8 +8,14 @@ import axios from 'axios';
 import Loading from './pages/loading';
 // ADMIN
 import AdminDashboard from './admin/admin-dashboard/admin-dashboard';
+
 import UserManagement from './admin/user-management/user-management';
+
 import ServiceManagement from './admin/service-management/service-management';
+import CreateService from './admin/service-management/CreateService';
+import ViewService from './admin/service-management/ViewService';
+import UpdateService from './admin/service-management/UpdateService';
+import DeleteService from './admin/service-management/DeleteService';
 
 // STAFF
 
@@ -83,6 +89,13 @@ function App() {
             element={isLoading ? <Loading /> : <ServiceManagement />}
           />
 
+          {/* CRUD FOR SERVICE */}
+          <Route path="/create-service" element={isLoading ? <Loading /> : <CreateService />} />
+          <Route path="/view-service/:id" element={isLoading ? <Loading /> : <ViewService />} />
+          <Route path="/update-service/:id" element={isLoading ? <Loading /> : <UpdateService />} />
+          <Route path="/delete-service" element={isLoading ? <Loading /> : <DeleteService />} />
+
+          {/* CUSTOMER */}
           <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
           <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
           <Route path="/service" element={isLoading ? <Loading /> : <Service />} />

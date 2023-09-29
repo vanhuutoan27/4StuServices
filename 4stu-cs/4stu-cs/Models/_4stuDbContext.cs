@@ -15,8 +15,6 @@ public partial class _4stuDbContext : DbContext
     {
     }
 
-    public virtual DbSet<AccountManagement> AccountManagements { get; set; }
-
     public virtual DbSet<CustomerManagement> CustomerManagements { get; set; }
 
     public virtual DbSet<PackageServiceManagement> PackageServiceManagements { get; set; }
@@ -29,42 +27,6 @@ public partial class _4stuDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AccountManagement>(entity =>
-        {
-            entity.HasKey(e => e.Email);
-
-            entity.ToTable("AccountManagement");
-
-            entity.Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("email");
-            entity.Property(e => e.Avatar)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("avatar");
-            entity.Property(e => e.Dob)
-                .HasColumnType("date")
-                .HasColumnName("dob");
-            entity.Property(e => e.FirstName)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("firstName");
-            entity.Property(e => e.LastName)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("lastName");
-            entity.Property(e => e.Password)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("password");
-            entity.Property(e => e.Sex).HasColumnName("sex");
-            entity.Property(e => e.Username)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("username");
-        });
-
         modelBuilder.Entity<CustomerManagement>(entity =>
         {
             entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B855F1E9E7");
@@ -113,6 +75,9 @@ public partial class _4stuDbContext : DbContext
             entity.ToTable("PackageServiceManagement");
 
             entity.Property(e => e.PackageServiceId).HasColumnName("PackageServiceID");
+            entity.Property(e => e.Image)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.PackageServiceDesc).HasColumnType("text");
             entity.Property(e => e.PackageServiceName)
                 .HasMaxLength(50)
@@ -137,12 +102,19 @@ public partial class _4stuDbContext : DbContext
 
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
+            entity.Property(e => e.Image)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ServiceDesc).HasColumnType("text");
             entity.Property(e => e.ServiceName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
             entity.Property(e => e.Tag)
                 .HasMaxLength(50)
                 .IsUnicode(false);
