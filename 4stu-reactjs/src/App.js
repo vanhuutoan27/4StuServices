@@ -5,26 +5,27 @@ import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
 
-import Loading from './pages/loading';
+import Loading from './components/Loading';
+
 // ADMIN
-import AdminDashboard from './admin/admin-dashboard/admin-dashboard';
+import AdminDashboard from './pages/admin/AdminDashboard/AdminDashboard';
+import AdminServiceMangement from './pages/admin/AdminServiceMangement/AdminServiceMangement';
 
-import UserManagement from './admin/user-management/user-management';
-
-import ServiceManagement from './admin/service-management/service-management';
-import CreateService from './admin/service-management/CreateService';
-import ViewService from './admin/service-management/ViewService';
-import UpdateService from './admin/service-management/UpdateService';
-import DeleteService from './admin/service-management/DeleteService';
+// import UserManagement from './admin/user-management/user-management';
+// import CreateService from './admin/service-management/CreateService';
+// import ViewService from './admin/service-management/ViewService';
+// import UpdateService from './admin/service-management/UpdateService';
+// import DeleteService from './admin/service-management/DeleteService';
 
 // STAFF
 
 // CUSTOMER
-import Login from './pages/login-page/login';
-import Home from './pages/home';
-import Service from './pages/service';
-import PackageService from './pages/package-service';
-import Contact from './pages/contact-page/contact';
+import Login from './pages/customer/Login/Login';
+import Home from './pages/customer/Home/Home';
+import Service from './pages/customer/Service/Service';
+import Service2 from './pages/customer/Service/Service2';
+import PackageService from './pages/customer/PackageService/PackageService';
+import Contact from './pages/customer/Contact/Contact';
 
 export const Session = createContext(null);
 
@@ -78,7 +79,7 @@ function App() {
           <Route path="/admin-feedback" element={isLoading ? <Loading /> : <AdminDashboard />} />
           <Route
             path="/admin-user-management"
-            element={isLoading ? <Loading /> : <UserManagement />}
+            element={isLoading ? <Loading /> : <AdminDashboard />}
           />
           <Route
             path="/admin-package-service-management"
@@ -86,19 +87,20 @@ function App() {
           />
           <Route
             path="/admin-service-management"
-            element={isLoading ? <Loading /> : <ServiceManagement />}
+            element={isLoading ? <Loading /> : <AdminServiceMangement />}
           />
 
           {/* CRUD FOR SERVICE */}
-          <Route path="/create-service" element={isLoading ? <Loading /> : <CreateService />} />
+          {/* <Route path="/create-service" element={isLoading ? <Loading /> : <CreateService />} />
           <Route path="/view-service/:id" element={isLoading ? <Loading /> : <ViewService />} />
           <Route path="/update-service/:id" element={isLoading ? <Loading /> : <UpdateService />} />
-          <Route path="/delete-service" element={isLoading ? <Loading /> : <DeleteService />} />
+          <Route path="/delete-service" element={isLoading ? <Loading /> : <DeleteService />} /> */}
 
           {/* CUSTOMER */}
           <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
           <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
           <Route path="/service" element={isLoading ? <Loading /> : <Service />} />
+          <Route path="/service2" element={isLoading ? <Loading /> : <Service2 />} />
           <Route path="/package-service" element={isLoading ? <Loading /> : <PackageService />} />
           <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} />
         </Routes>

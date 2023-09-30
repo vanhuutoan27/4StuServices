@@ -20,7 +20,7 @@ function Footer() {
           </div>
           <div className="content">
             <div className="footer__addr">
-              <img src="./img/4Stu-Logo.svg" alt="" />
+              <img src="../assets/images/4Stu-Logo.svg" alt="" />
               <h2>Contact</h2>
               <a className="btn" href="mailto:huutoanvan1@gmail.com">
                 Email Us

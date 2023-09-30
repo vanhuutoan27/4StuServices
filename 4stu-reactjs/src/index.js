@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+
+// import M from 'materialize-css';
+// import 'materialize-css/dist/css/materialize.min.css';
+
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

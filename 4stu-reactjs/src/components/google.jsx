@@ -18,5 +18,3 @@ export function GoogleSignIn() {
     </div>
   );
 }
-
-// export default GoogleSignIn;

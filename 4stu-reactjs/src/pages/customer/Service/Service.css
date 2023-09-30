@@ -1,0 +1,628 @@
+.ServicePage > header {
+  padding-top: 0;
+  top: -10px;
+}
+
+.service-header {
+  width: 100%;
+  height: 100vh;
+}
+
+.service-header .main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  top: 90px;
+}
+
+.service-header .main .men_text h1 {
+  font-size: 6rem;
+  position: relative;
+  top: -70px;
+  /* left: 0px; */
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.service-header .main .men_text span {
+  position: relative;
+  top: -45px;
+  left: -15px;
+  margin-left: 10px;
+  color: var(--primary-color-1);
+  line-height: 22px;
+  font-size: 7rem;
+  font-weight: 700;
+}
+
+.service-header .main .main_image img {
+  width: 500px;
+  position: relative;
+  left: 70px;
+}
+
+.service-header p {
+  width: 600px;
+  text-align: justify;
+  position: relative;
+  /* left: 123px; */
+  top: -70px;
+  /* bottom: 20px; */
+  line-height: 24px;
+}
+
+.service-header > .btn {
+  position: relative;
+  left: 323px;
+  top: -30px;
+  /* bottom: 0px; */
+}
+
+/*About*/
+.about {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0;
+}
+
+.about .about_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about .about_main .image img {
+  /* width: 400px; */
+  height: 450px;
+  position: relative;
+  top: 0px;
+}
+
+.about .about_main .about_text h2 span {
+  color: var(--primary-color-1);
+  margin-right: 15px;
+}
+
+.about .about_main .about_text h2 {
+  font-size: 4.2rem;
+  font-weight: 600;
+  position: relative;
+  bottom: 30px;
+}
+
+.about .about_main .about_text li {
+  width: 650px;
+  text-align: justify;
+  margin-right: 30px;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.about .about_main .about_text li span {
+  color: var(--primary-color-1);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.about > .btn {
+  position: relative;
+  left: 755px;
+  bottom: -10px;
+}
+
+/*Menu*/
+.filled-star {
+  color: var(--primary-color-1); /* or any color you want for filled stars */
+}
+
+.outline-star {
+  color: var(--primary-color-4); /* or any color you want for outline stars */
+}
+
+.menu {
+  width: 100%;
+  padding: 70px 0;
+}
+
+.menu h1 {
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.menu h1 span {
+  color: var(--primary-color-1);
+  margin-left: 15px;
+}
+
+.menu .menu_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu .menu_box .menu_card {
+  width: 275px;
+  height: 500px;
+  border-radius: 16px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu .menu_box .menu_card .menu_image {
+  width: 300px;
+  height: 245px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.menu .menu_box .menu_card .menu_image img {
+  width: 100%;
+  width: 275px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+.menu .menu_box .menu_card .menu_image:hover {
+  transform: scale(1.1);
+}
+
+.menu .menu_box .menu_card .small_card {
+  width: 45px;
+  height: 45px;
+  float: right;
+  position: relative;
+  top: -230px;
+  right: -8px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.menu .menu_box .menu_card:hover .small_card {
+  position: relative;
+  top: -230px;
+  right: 0px;
+  opacity: 1;
+}
+
+.menu .menu_box .menu_card .small_card i:hover {
+  color: var(--primary-color-1);
+}
+
+.menu .menu_box .menu_card .menu_info h2 {
+  height: 70px;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--primary-color-2);
+  position: relative;
+  left: 20px;
+  margin-top: 20px;
+}
+
+.menu .menu_box .menu_card .menu_info h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.menu .menu_box .menu_card .menu_info .menu_icon {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.menu .menu_box .menu_card .menu_info .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 98px;
+  padding: 12px 42px;
+  margin: 0 30px;
+}
+
+/*Gallary*/
+.gallary {
+  width: 85%;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.gallary h1 {
+  font-size: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.gallary h1 span {
+  margin-left: 15px;
+  color: var(--primary-color-1);
+}
+
+.gallary .gallary_image_box {
+  width: 95%;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gallary .gallary_image_box .gallary_image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.gallary .gallary_image_box .gallary_image img {
+  width: 100%;
+  height: 230px;
+  transition: 0.3s;
+  border-radius: 16px;
+}
+
+.gallary .gallary_image_box .gallary_image:hover img {
+  opacity: 0.4;
+}
+
+.gallary .gallary_image_box .gallary_image h3 {
+  position: absolute;
+  font-size: 3.2rem;
+  margin-bottom: 100px;
+  color: var(--primary-color-1);
+  z-index: 5;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.gallary .gallary_image_box .gallary_image:hover h3 {
+  opacity: 1;
+}
+
+.gallary .gallary_image_box .gallary_image p {
+  position: absolute;
+  width: 400px;
+  margin-top: 30px;
+  text-align: center;
+  color: #fff;
+  line-height: 22px;
+  opacity: 0;
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.gallary .gallary_image_box .gallary_image:hover p {
+  padding: 0 10px;
+  opacity: 1;
+}
+
+.gallary .gallary_image_box .gallary_image > .btn {
+  position: absolute;
+  margin-top: 150px;
+  padding: 12px 44px;
+  opacity: 0;
+  transform: translateY(45px);
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.gallary .gallary_image_box .gallary_image:hover .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*Review*/
+.review {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0;
+}
+
+.review h1 {
+  font-size: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.review h1 span {
+  margin-left: 15px;
+  color: var(--primary-color-1);
+}
+
+.review h1 span::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color-1);
+  position: relative;
+  bottom: 15px;
+  display: block;
+}
+
+.review .review_box {
+  width: 95%;
+  margin: 70px auto;
+  display: flex;
+}
+
+.review .review_box .review_card {
+  width: 350px;
+  height: 535px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 8px 20px;
+  margin: 0 8px;
+}
+
+.review .review_box .review_card .review_profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_profile {
+  transform: translateY(-60px);
+}
+
+.review .review_box .review_card .review_profile img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 5px solid #cccccc;
+}
+
+.review .review_box .review_card .review_text {
+  text-align: center;
+}
+
+.review .review_box .review_card .review_text .name {
+  color: #000;
+  transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text .name {
+  transform: translateY(-50px);
+}
+
+.review .review_box .review_card .review_text .review_icon {
+  color: var(--primary-color-1);
+  transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text .review_icon {
+  transform: translateY(-30px);
+}
+
+.review .review_box .review_card .review_text .review_social i {
+  margin: 5px 1px;
+  font-size: 15px;
+  opacity: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text .review_social i {
+  opacity: 1;
+  transform: translateY(-8px);
+}
+
+.review .review_box .review_card .review_text p {
+  text-align: center;
+  line-height: 22px;
+  transition: 0.3s;
+}
+
+.review .review_box .review_card:hover .review_text p {
+  margin-top: 5px;
+}
+
+/*Order*/
+
+.order {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0;
+  background-image: url(../../../../public/assets/service-image/bg2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.order h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 55px;
+}
+
+.order h1 span {
+  color: var(--primary-color-1);
+  margin-right: 15px;
+}
+
+.order h1 span::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color-1);
+  display: block;
+  position: relative;
+  bottom: 15px;
+}
+
+.order .order_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.order .order_main .order_image img {
+  width: 600px;
+}
+
+.order .order_main form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0 10px;
+}
+
+.order .order_main form .input p {
+  line-height: 25px;
+}
+
+.order .order_main form .input {
+  margin: 5px;
+}
+
+.order .order_main form .input input {
+  width: 300px;
+  height: 35px;
+  padding: 0 10px;
+  border: 2px solid #cccccc;
+  background: #eeeeee;
+  outline: none;
+  border-radius: 3px;
+}
+
+.order .order_main form .input input:focus {
+  border: 2px solid var(--primary-color-1);
+}
+
+.order .order_main form .order_btn {
+  padding: 10px 0;
+  background: var(--primary-color-1);
+  color: white;
+  width: 40%;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+/*Team*/
+
+.team {
+  width: 100%;
+  height: 90vh;
+  background-image: url(../../../../public/assets/service-image/bg1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.team h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  margin-bottom: 30px;
+}
+
+.team h1 span {
+  color: var(--primary-color-1);
+  margin-left: 15px;
+}
+
+.team h1 span::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color-1);
+  display: block;
+  position: relative;
+  bottom: 15px;
+}
+
+.team .team_box {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 13%;
+}
+
+.team .team_box .profile {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: 0.4s;
+}
+
+.team .team_box .profile:hover {
+  border-radius: 20px;
+  height: 320px;
+}
+
+.team .team_box .profile img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  transition: 0.4s;
+}
+
+.team .team_box .profile:hover img {
+  border-radius: 20px;
+  margin-top: -230px;
+}
+
+.team .team_box .profile .info {
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  transition: 0.4s;
+}
+
+.team .team_box .profile:hover .info {
+  top: 60%;
+}
+
+.team .team_box .profile .info .name {
+  color: var(--primary-color-1);
+  margin-bottom: 15px;
+}
+
+.team .team_box .profile .info .bio {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto 10px auto;
+}
+
+.team .team_box .profile .info .team_icon i {
+  margin: 10px 5px 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.team .team_box .profile .info .team_icon i:hover {
+  color: var(--primary-color-1);
+}
