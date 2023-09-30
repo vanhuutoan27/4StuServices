@@ -183,6 +183,57 @@ namespace _4stu_cs.Controllers
 
         }
 
+        public class RegisterBody
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+
+            public string Phone { get; set; }
+            public string Password { get; set; }
+            public string ConfirmPassword { get; set; }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("Register")]
+        public async Task<ActionResult<CustomerManagement>> Register(RegisterBody body)
+        {
+            if (_context.CustomerManagements == null)
+            {
+                return Problem("Entity set '_4stuDbContext.CustomerManagements'  is null.");
+            }
+
+            // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu hay không
+            var existingUser = await _context.CustomerManagements.FirstOrDefaultAsync(row => row.Email == body.Email);
+
+            if (existingUser != null)
+            {
+                return Conflict("Email đã được sử dụng bởi người dùng khác.");
+            }
+
+            // Kiểm tra xác nhận mật khẩu
+            if (body.Password != body.ConfirmPassword)
+            {
+                return BadRequest("Mật khẩu và xác nhận mật khẩu không khớp.");
+            }
+
+            // Tạo một đối tượng CustomerManagement từ dữ liệu đăng ký
+            var newCustomer = new CustomerManagement
+            {
+                FirstName = body.FirstName,
+                LastName = body.LastName,
+                Email = body.Email,
+                Password = body.Password,
+                Phone = body.Phone,
+            };
+
+            _context.CustomerManagements.Add(newCustomer);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCustomerManagement", new { id = newCustomer.CustomerId }, newCustomer);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<CustomerManagement>> PostCustomerManagement(CustomerManagement customerManagement)
         {

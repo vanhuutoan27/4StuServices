@@ -18,6 +18,10 @@ function Login() {
   // Thông báo lỗi đăng nhập
   const [loginError, setLoginError] = useState(null);
 
+  // Thông báo lỗi đăng ký
+  const [registerError, setRegisterError] = useState(null);
+  const [isRegistered, setIsRegistered] = useState(false);
+
   const formik = useFormik({
     //! Giá trị khởi tạo của form
     initialValues: {
@@ -58,6 +62,64 @@ function Login() {
         .finally(() => {
           // Thực hiện hành động sau cả hai trường hợp thành công và thất bại
           setIsLoading(false); // Dừng hiệu ứng loading
+        });
+    },
+  });
+
+  const formikRegister = useFormik({
+    //! Giá trị khởi tạo của form đăng ký
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    },
+
+    //! Xác định các phần Validation cho form đăng ký
+    validationSchema: Yup.object({
+      firstName: Yup.string().required('First Name is required'),
+      lastName: Yup.string().required('Last Name is required'),
+      email: Yup.string().email('Invalid email address').required('Email is required'),
+      phone: Yup.string().required('Phone is required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
+    }),
+
+    //! Cái hàm sẽ xử lý nhấn Submit cho form đăng ký
+    onSubmit: (values) => {
+      // Hiển thị hiệu ứng loading trước khi thực hiện đăng ký
+      setIsLoading(true);
+
+      axios
+        .post('https://localhost:7088/api/CustomerManagements/Register', {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phone: values.phone,
+          password: values.password,
+          confirmPassword: values.confirmPassword,
+        })
+        .then((response) => {
+          // Đăng ký thành công, cập nhật trạng thái và thông báo
+          setIsRegistered(true);
+          setRegisterError(null);
+          alert('Registration successful! Welcome to 4Stu!');
+        })
+        .catch((error) => {
+          // Đăng ký thất bại, cập nhật trạng thái lỗi
+          setIsRegistered(false);
+          alert('Registration failed. Please try again.');
+          console.log(error);
+        })
+        .finally(() => {
+          // Dừng hiệu ứng loading sau khi hoàn thành đăng ký
+          setIsLoading(false);
         });
     },
   });
@@ -106,7 +168,7 @@ function Login() {
             <input
               id="email"
               type="text"
-              defaultValue={formik.values.email}
+              value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -118,7 +180,7 @@ function Login() {
             <input
               id="password"
               type="password"
-              defaultValue={formik.values.password}
+              value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -148,25 +210,62 @@ function Login() {
         </div>
 
         <div className="form-container register-container">
-          <form action="#">
+          <form action="#" onSubmit={formikRegister.handleSubmit}>
             <h1>Register</h1>
             <div className="fullname">
               <div className="firstname">
-                <label for="">First Name</label>
-                <input type="text" />
+                <label htmlFor="firstName">First Name</label>
+                <input id="firstName" type="text" {...formikRegister.getFieldProps('firstName')} />
+                {formikRegister.touched.firstName && formikRegister.errors.firstName ? (
+                  <div className="error-msg">{formikRegister.errors.firstName}</div>
+                ) : null}
               </div>
               <div className="lastname">
-                <label for="">Last Name</label>
-                <input type="text" />
+                <label htmlFor="lastName">Last Name</label>
+                <input id="lastName" type="text" {...formikRegister.getFieldProps('lastName')} />
+                {formikRegister.touched.lastName && formikRegister.errors.lastName ? (
+                  <div className="error-msg">{formikRegister.errors.lastName}</div>
+                ) : null}
               </div>
             </div>
-            <label for="">Email</label>
-            <input type="text" />
-            <label for="">Password</label>
-            <input type="password" />
-            <label for="">Confirm Password</label>
-            <input type="password" />
-            <button className="btn">Register</button>
+            <label htmlFor="registerEmail">Email</label>
+            <input id="registerEmail" type="email" {...formikRegister.getFieldProps('email')} />
+            {formikRegister.touched.email && formikRegister.errors.email ? (
+              <div className="error-msg">{formikRegister.errors.email}</div>
+            ) : null}
+            <label htmlFor="registerPhone">Phone</label>
+            <input id="registerPhone" type="text" {...formikRegister.getFieldProps('phone')} />
+            {formikRegister.touched.phone && formikRegister.errors.phone ? (
+              <div className="error-msg">{formikRegister.errors.phone}</div>
+            ) : null}
+            <div className="fullname">
+              <div className="firstname">
+                <label htmlFor="registerPassword">Password</label>
+                <input
+                  id="registerPassword"
+                  type="password"
+                  {...formikRegister.getFieldProps('password')}
+                />
+                {formikRegister.touched.password && formikRegister.errors.password ? (
+                  <div className="error-msg">{formikRegister.errors.password}</div>
+                ) : null}
+              </div>
+              <div className="lastname">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  {...formikRegister.getFieldProps('confirmPassword')}
+                />
+                {formikRegister.touched.confirmPassword && formikRegister.errors.confirmPassword ? (
+                  <div className="error-msg">{formikRegister.errors.confirmPassword}</div>
+                ) : null}
+              </div>
+            </div>
+            {registerError && <div className="error-msg-2">{registerError}</div>}
+            <button className="btn" type="submit">
+              {isLoading ? 'Registering...' : 'Register'}
+            </button>
           </form>
         </div>
 

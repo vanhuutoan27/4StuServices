@@ -9,7 +9,7 @@ public partial class CustomerManagement
 
     public string Email { get; set; } = null!;
 
-    public string Username { get; set; } = null!;
+    public string? Username { get; set; }
 
     public string Password { get; set; } = null!;
 
@@ -17,7 +17,7 @@ public partial class CustomerManagement
 
     public string LastName { get; set; } = null!;
 
-    public string? Phone { get; set; }
+    public string Phone { get; set; } = null!;
 
     public string? Avatar { get; set; }
 
