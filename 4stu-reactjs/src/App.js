@@ -9,7 +9,7 @@ import Loading from './components/Loading';
 
 // ADMIN
 import AdminDashboard from './pages/admin/AdminDashboard/AdminDashboard';
-import AdminServiceMangement from './pages/admin/AdminServiceMangement/AdminServiceMangement';
+import AdminServiceManagement from './pages/admin/AdminServiceManagement/AdminServiceManagement';
 
 // import UserManagement from './admin/user-management/user-management';
 // import CreateService from './admin/service-management/CreateService';
@@ -23,7 +23,6 @@ import AdminServiceMangement from './pages/admin/AdminServiceMangement/AdminServ
 import Login from './pages/customer/Login/Login';
 import Home from './pages/customer/Home/Home';
 import Service from './pages/customer/Service/Service';
-import Service2 from './pages/customer/Service/Service2';
 import PackageService from './pages/customer/PackageService/PackageService';
 import Contact from './pages/customer/Contact/Contact';
 
@@ -87,7 +86,7 @@ function App() {
           />
           <Route
             path="/admin-service-management"
-            element={isLoading ? <Loading /> : <AdminServiceMangement />}
+            element={isLoading ? <Loading /> : <AdminServiceManagement />}
           />
 
           {/* CRUD FOR SERVICE */}
@@ -100,7 +99,6 @@ function App() {
           <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
           <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
           <Route path="/service" element={isLoading ? <Loading /> : <Service />} />
-          <Route path="/service2" element={isLoading ? <Loading /> : <Service2 />} />
           <Route path="/package-service" element={isLoading ? <Loading /> : <PackageService />} />
           <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} />
         </Routes>

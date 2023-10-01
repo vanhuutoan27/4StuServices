@@ -21,5 +21,7 @@ public partial class PackageServiceManagement
 
     public string? Image { get; set; }
 
+    public string? Status { get; set; }
+
     public virtual ServiceManagement Service { get; set; } = null!;
 }

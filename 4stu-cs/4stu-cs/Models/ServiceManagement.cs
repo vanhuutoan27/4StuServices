@@ -11,9 +11,9 @@ public partial class ServiceManagement
 
     public string ServiceDesc { get; set; } = null!;
 
-    public int Time { get; set; }
+    public string Time { get; set; } = null!;
 
-    public decimal Price { get; set; }
+    public int Price { get; set; } = null!;
 
     public int? FeedbackId { get; set; }
 
@@ -23,7 +23,7 @@ public partial class ServiceManagement
 
     public string? Image { get; set; }
 
-    public string Status { get; set; } = null!;
+    public string? Status { get; set; }
 
     public virtual ICollection<PackageServiceManagement> PackageServiceManagements { get; set; } = new List<PackageServiceManagement>();
 }

@@ -5,7 +5,7 @@ import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import AdminNavigation from '../../../components/admin/AdminNavigation/AdminNavigation';
 import AdminCreateServiceButton from './AdminCreateService';
-import './AdminServiceMangement.css';
+import './AdminServiceManagement.css';
 import { Link } from 'react-router-dom';
 
 function ServiceManagement() {
@@ -19,6 +19,13 @@ function ServiceManagement() {
       .then((response) => setAllServices(response.data))
       .catch((error) => console.log(error));
   }, []);
+
+  const formatPriceWithDot = (price) => {
+    if (!isNaN(price)) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return price;
+  };
 
   const renderService = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -42,7 +49,7 @@ function ServiceManagement() {
         </td>
 
         <td>
-          <span className="service-price">{service.price}</span>
+          <span className="service-price">{formatPriceWithDot(service.price)}</span>
         </td>
 
         <td>

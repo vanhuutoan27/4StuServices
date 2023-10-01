@@ -107,7 +107,7 @@
 }
 
 .table-widget th:nth-child(3) {
-  width: 200px;
+  width: 220px;
 }
 
 .table-widget th:nth-child(5) {
@@ -249,28 +249,26 @@ button:active {
   user-select: none;
 }
 
-.admin-btn-action.view {
-  background-color: var(--primary-color-3);
+.admin-btn-action.edit {
+  background-color: #6499e9;
 }
 
-.admin-btn-action.edit {
-  background-color: #ff6969;
+.admin-btn-action.view {
+  background-color: #fce09b;
 }
 
 /*  */
 .modal-dialog {
   margin-top: 30px;
-  margin-left: 400px;
 }
 
 .modal-content {
-  /* width: 700px; */
-  width: 150%;
   border-radius: 16px;
 }
 
 .modal-header .modal-title.h4 {
-  padding: 20px 50px;
+  padding: 0 50px;
+  padding-top: 10px;
   font-size: 3rem;
   font-weight: 700;
 }
@@ -281,6 +279,7 @@ button:active {
 
 .modal-body {
   padding: 0 50px;
+  margin: 10px 0;
 }
 
 .form-label {
@@ -291,6 +290,13 @@ button:active {
 .form-control {
   font-size: 1.6rem;
   border-radius: 8px;
+}
+
+.form-control:not(input[type='file']) {
+  background-color: #eeeeee;
+  border-radius: 10px;
+  border: none;
+  padding: 12px 16px;
 }
 
 .modal-footer .button-modal {

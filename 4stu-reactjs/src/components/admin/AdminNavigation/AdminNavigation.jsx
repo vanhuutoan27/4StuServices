@@ -5,9 +5,27 @@ import axios from 'axios';
 import './AdminNavigation.css';
 
 function AdminNavbar() {
+  const [customerCount, setCustomerCount] = useState(0);
+  const [packageServiceCount, setPackageServiceCount] = useState(0);
   const [serviceCount, setServiceCount] = useState(0);
 
   useEffect(() => {
+    axios
+      .get('https://localhost:7088/api/CustomerManagements')
+      .then((response) => {
+        const customers = response.data;
+        setCustomerCount(customers.length);
+      })
+      .catch((error) => console.log(error));
+
+    axios
+      .get('https://localhost:7088/api/PackageServiceManagements')
+      .then((response) => {
+        const packageServices = response.data;
+        setPackageServiceCount(packageServices.length);
+      })
+      .catch((error) => console.log(error));
+
     axios
       .get('https://localhost:7088/api/ServiceManagements')
       .then((response) => {
@@ -92,7 +110,7 @@ function AdminNavbar() {
               <div className="frame-content">User</div>
             </div>
             <div className="frame-data">
-              <div className="frame-data-content">100</div>
+              <div className="frame-data-content">{customerCount}</div>
             </div>
           </div>
         </a>
@@ -106,7 +124,7 @@ function AdminNavbar() {
             <div className="div">
               <div className="frame-content">Package Service</div>
             </div>
-            <div className="frame-data">22</div>
+            <div className="frame-data">{packageServiceCount}</div>
           </div>
         </a>
 

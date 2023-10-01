@@ -435,7 +435,7 @@ a {
   color: var(--primary-color-2);
   border-radius: 99px;
 
-  background: var(--linear-gradient-color-1);
+  background: var(--primary-color-1);
   cursor: pointer;
   transition: 0.3s ease-in-out;
   -webkit-user-select: none;

@@ -114,5 +114,6 @@ namespace _4stu_cs.Controllers
         {
             return (_context.ServiceManagements?.Any(e => e.ServiceId == id)).GetValueOrDefault();
         }
+
     }
 }

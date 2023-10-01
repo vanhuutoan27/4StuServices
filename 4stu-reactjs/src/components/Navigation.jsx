@@ -69,7 +69,10 @@ function Navigation() {
                 <ul className="user-profile">
                   <li className="user-list">
                     <div>
-                      <span>{user.username}</span>
+                      <span>
+                        {user.firstName}
+                        {user.lastName}
+                      </span>
                       <img src="../assets/images/avatar/avatar-default.jpg" alt="" />
                     </div>
                     <ul className="sub-nav-user">

@@ -87,6 +87,9 @@ public partial class _4stuDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Service).WithMany(p => p.PackageServiceManagements)
                 .HasForeignKey(d => d.ServiceId)
@@ -103,10 +106,12 @@ public partial class _4stuDbContext : DbContext
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
             entity.Property(e => e.Image)
-                .HasMaxLength(50)
+                .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Price)
+                .HasMaxLength(20)
+                .IsUnicode(false);
             entity.Property(e => e.ServiceDesc).HasColumnType("text");
             entity.Property(e => e.ServiceName)
                 .HasMaxLength(50)
@@ -117,6 +122,9 @@ public partial class _4stuDbContext : DbContext
                 .HasDefaultValueSql("('Active')");
             entity.Property(e => e.Tag)
                 .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Time)
+                .HasMaxLength(10)
                 .IsUnicode(false);
         });
 
