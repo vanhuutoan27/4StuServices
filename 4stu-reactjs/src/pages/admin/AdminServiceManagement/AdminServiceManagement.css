@@ -8,6 +8,10 @@
   --gray-mid: #f1f2f6;
 }
 
+button {
+  border: none;
+}
+
 .user-management-content {
   display: flex;
 }
@@ -202,6 +206,8 @@
   gap: 16px;
   padding: 0;
   float: right;
+  margin-top: 10px;
+  margin-right: 30px;
 }
 
 .pagination button {
@@ -251,10 +257,28 @@ button:active {
 
 .admin-btn-action.edit {
   background-color: #6499e9;
+
+  &:active {
+    background-color: #6499e9;
+  }
 }
 
 .admin-btn-action.view {
   background-color: #fce09b;
+
+  &:active {
+    background-color: #fce09b;
+  }
+}
+
+.admin-btn-action.btn {
+  &:hover {
+    opacity: 0.8 !important;
+    transform: scale(0.95) !important;
+  }
+  &:active {
+    transform: scale(0.9) !important;
+  }
 }
 
 /*  */
@@ -301,4 +325,66 @@ button:active {
 
 .modal-footer .button-modal {
   margin-left: 20px;
+  margin-right: 40px;
+}
+
+.service-image-container {
+  display: flex;
+}
+
+.service-image-container > img {
+  width: 40%;
+}
+
+.service-image,
+.service-image-virtual {
+  border-radius: 16px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.service-image {
+  width: 100%;
+  background-color: #eee;
+}
+
+.service-image-virtual {
+  height: 40vh;
+  background-color: red;
+}
+
+.image-upload-label {
+  width: 40%;
+  cursor: pointer;
+}
+
+.image-upload-label img {
+  margin-top: 5px;
+}
+
+.mb-3.form-id {
+  position: absolute;
+  top: 0px;
+  left: 360px;
+  width: 48%;
+}
+
+.mb-3.form-name {
+  position: absolute;
+  top: 80px;
+  left: 360px;
+  width: 48%;
+}
+
+.mb-3.form-desc {
+  position: absolute;
+  top: 160px;
+  left: 360px;
+  width: 48%;
+}
+
+.custom-select option {
+  background-color: #eee;
+  color: var(--primary-color-4);
 }

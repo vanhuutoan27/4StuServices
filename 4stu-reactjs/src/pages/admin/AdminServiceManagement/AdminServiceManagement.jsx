@@ -4,12 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import AdminNavigation from '../../../components/admin/AdminNavigation/AdminNavigation';
-import AdminCreateServiceButton from './AdminCreateService';
-import './AdminServiceManagement.css';
-import { Link } from 'react-router-dom';
+import CreateService from './CreateService';
+import ViewService from './ViewService';
+import UpdateService from './UpdateService';
 
-function ServiceManagement() {
+import './AdminServiceManagement.css';
+
+function AdminServiceManagement() {
   const [allServices, setAllServices] = useState([]);
+  const [selectedService, setSelectedService] = useState(null);
+  const [updatingService, setUpdatingService] = useState(null);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,55 +31,21 @@ function ServiceManagement() {
     return price;
   };
 
-  const renderService = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const displayedServices = allServices.slice(startIndex, endIndex);
+  const handleViewServiceClick = (service) => {
+    setSelectedService(service);
+  };
 
-    return displayedServices.map((service, index) => (
-      <tr key={index}>
-        <td>
-          <span className={`serviceID`}>
-            S{service.serviceId < 10 ? '00' + service.serviceId : '0' + service.serviceId}
-          </span>
-        </td>
-
-        <td>
-          <span className="service-name">{service.serviceName}</span>
-        </td>
-
-        <td>
-          <span className="service-name">{service.tag}</span>
-        </td>
-
-        <td>
-          <span className="service-price">{formatPriceWithDot(service.price)}</span>
-        </td>
-
-        <td>
-          <span className="service-time">{service.time}</span>
-        </td>
-
-        <td>
-          <span className="statuss">
-            <span className={`status status--${service.status}`}>{service.status}</span>
-          </span>
-        </td>
-        <td>
-          <a href="#" className="admin-btn-action view">
-            <FontAwesomeIcon icon={faEye} />
-          </a>
-          <a href="#" className="admin-btn-action edit">
-            <FontAwesomeIcon icon={faPen} />
-          </a>
-        </td>
-      </tr>
-    ));
+  const handleUpdateServiceClick = (service) => {
+    setUpdatingService(service);
   };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedServices = allServices.slice(startIndex, endIndex);
 
   return (
     <div className="user-management-content">
@@ -87,21 +57,67 @@ function ServiceManagement() {
           <caption>
             <h2>All Services</h2>
             <span className="table-row-count">({allServices.length} Services)</span>
-            <AdminCreateServiceButton />
+            <CreateService />
           </caption>
           <table>
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Type</th>
+                <th>Tag</th>
                 <th>Price (VND)</th>
                 <th>Time (Mins)</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>{renderService()}</tbody>
+            <tbody>
+              {displayedServices.map((service, index) => (
+                <tr key={index}>
+                  <td>
+                    <span className={`serviceID`}>
+                      S{service.serviceId < 10 ? '00' + service.serviceId : '0' + service.serviceId}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span className="service-name">{service.serviceName}</span>
+                  </td>
+
+                  <td>
+                    <span className="service-name">{service.tag}</span>
+                  </td>
+
+                  <td>
+                    <span className="service-price">{formatPriceWithDot(service.price)}</span>
+                  </td>
+
+                  <td>
+                    <span className="service-time">{service.time}</span>
+                  </td>
+
+                  <td>
+                    <span className="statuss">
+                      <span className={`status status--${service.status}`}>{service.status}</span>
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      className="admin-btn-action view btn"
+                      onClick={() => handleViewServiceClick(service)}
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </button>
+                    <button
+                      className="admin-btn-action edit btn"
+                      onClick={() => handleUpdateServiceClick(service)}
+                    >
+                      <FontAwesomeIcon icon={faPen} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
             <tfoot>
               <tr>
                 <td colSpan="10">
@@ -126,8 +142,16 @@ function ServiceManagement() {
           </table>
         </div>
       </div>
+
+      {selectedService && (
+        <ViewService selectedService={selectedService} onClose={() => setSelectedService(null)} />
+      )}
+
+      {updatingService && (
+        <UpdateService selectedService={updatingService} onClose={() => setUpdatingService(null)} />
+      )}
     </div>
   );
 }
 
-export default ServiceManagement;
+export default AdminServiceManagement;

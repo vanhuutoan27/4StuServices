@@ -199,15 +199,15 @@ a {
   &:hover {
     opacity: 0.8;
     transform: scale(0.98);
-    background-color: var(--primary-color-1) !important;
-    color: var(--primary-color-2) !important;
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
   }
 
   &:active {
     text-decoration: none;
     transform: scale(0.95);
-    background-color: var(--primary-color-1) !important;
-    color: var(--primary-color-2) !important;
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
   }
 }
 

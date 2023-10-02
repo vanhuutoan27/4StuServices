@@ -11,12 +11,6 @@ import Loading from './components/Loading';
 import AdminDashboard from './pages/admin/AdminDashboard/AdminDashboard';
 import AdminServiceManagement from './pages/admin/AdminServiceManagement/AdminServiceManagement';
 
-// import UserManagement from './admin/user-management/user-management';
-// import CreateService from './admin/service-management/CreateService';
-// import ViewService from './admin/service-management/ViewService';
-// import UpdateService from './admin/service-management/UpdateService';
-// import DeleteService from './admin/service-management/DeleteService';
-
 // STAFF
 
 // CUSTOMER
@@ -88,12 +82,6 @@ function App() {
             path="/admin-service-management"
             element={isLoading ? <Loading /> : <AdminServiceManagement />}
           />
-
-          {/* CRUD FOR SERVICE */}
-          {/* <Route path="/create-service" element={isLoading ? <Loading /> : <CreateService />} />
-          <Route path="/view-service/:id" element={isLoading ? <Loading /> : <ViewService />} />
-          <Route path="/update-service/:id" element={isLoading ? <Loading /> : <UpdateService />} />
-          <Route path="/delete-service" element={isLoading ? <Loading /> : <DeleteService />} /> */}
 
           {/* CUSTOMER */}
           <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
