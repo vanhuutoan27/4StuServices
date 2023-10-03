@@ -21,6 +21,8 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<ServiceManagement> ServiceManagements { get; set; }
 
+    public virtual DbSet<ServiceManagementTemp> ServiceManagementTemps { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=4StuDB;TrustServerCertificate=True");
@@ -99,9 +101,41 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<ServiceManagement>(entity =>
         {
-            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA58FF819E");
+            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA7BDE3D91");
 
             entity.ToTable("ServiceManagement");
+
+            entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
+            entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
+            entity.Property(e => e.Image)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.Price)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.ServiceDesc).HasColumnType("text");
+            entity.Property(e => e.ServiceName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
+            entity.Property(e => e.Tag)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Time)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<ServiceManagementTemp>(entity =>
+        {
+            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA58FF819E");
+
+            entity.ToTable("ServiceManagementTemp");
 
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
@@ -118,8 +152,7 @@ public partial class _4stuDbContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasDefaultValueSql("('Active')");
+                .IsUnicode(false);
             entity.Property(e => e.Tag)
                 .HasMaxLength(50)
                 .IsUnicode(false);

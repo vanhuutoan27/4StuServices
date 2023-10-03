@@ -2,12 +2,13 @@ CREATE TABLE ServiceManagement (
   ServiceID INT NOT NULL IDENTITY(1,1),
   ServiceName VARCHAR(50) NOT NULL,
   ServiceDesc TEXT NOT NULL,
-  Time INT NOT NULL,
-  Price DECIMAL(10,2) NOT NULL,
+  Time VARCHAR(10) NOT NULL,
+  Price VARCHAR(20) NOT NULL,
   FeedbackID INT,
   OrderID INT,
   Tag VARCHAR(50) NOT NULL,
-  Status VARCHAR(20) NOT NULL,
+  Status VARCHAR(20) DEFAULT 'Active' NULL,
+  Image VARCHAR(255) NULL DEFAULT 'https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w'
   PRIMARY KEY (ServiceID)
 );
 

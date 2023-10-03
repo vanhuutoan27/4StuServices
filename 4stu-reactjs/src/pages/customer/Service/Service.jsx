@@ -40,7 +40,7 @@ function Service() {
     return services.map((service, index) => (
       <div className="menu_card" key={index}>
         <div className="menu_image">
-          <img src="../assets/images/4Stu-Logo.svg" alt={service.serviceName} />
+          <img src={service.image} alt={service.serviceName} />
         </div>
 
         <div className="menu_info">

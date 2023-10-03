@@ -23,5 +23,5 @@ public partial class PackageServiceManagement
 
     public string? Status { get; set; }
 
-    public virtual ServiceManagement Service { get; set; } = null!;
+    public virtual ServiceManagementTemp Service { get; set; } = null!;
 }
