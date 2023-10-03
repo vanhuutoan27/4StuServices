@@ -11,7 +11,7 @@ function Contact() {
     <div id="root">
       <Navigation />
       <div>
-        <section className='contact-container'>
+        <section className="contact-container">
           <div className="container">
             <div className="contactusInfo">
               <div>

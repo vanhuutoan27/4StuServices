@@ -604,3 +604,13 @@ C:\Users\Admin\Desktop\SWP391\4stu-project\4stu-cs\4stu-cs\obj\Debug\net6.0\refi
 C:\Users\Admin\Desktop\SWP391\4stu-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.pdb
 C:\Users\Admin\Desktop\SWP391\4stu-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.genruntimeconfig.cache
 C:\Users\Admin\Desktop\SWP391\4stu-project\4stu-cs\4stu-cs\obj\Debug\net6.0\ref\4stu-cs.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.AssemblyInfo.cs
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\refint\4stu-cs.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.pdb

@@ -7,9 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-// import M from 'materialize-css';
-// import 'materialize-css/dist/css/materialize.min.css';
-
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj": {
+    "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
         "projectName": "4stu-cs",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-project\\4stu-cs\\4stu-cs\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\4stu-cs\\4stu-cs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
