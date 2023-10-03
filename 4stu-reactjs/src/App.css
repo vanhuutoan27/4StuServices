@@ -567,7 +567,7 @@ header .hero-img {
 .footer-head {
   text-align: center;
   padding-top: 60px;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 .footer-head .title {
@@ -588,6 +588,9 @@ header .hero-img {
   height: 100vh;
   color: #fff;
   background-color: var(--primary-color-2);
+  background-image: url('../public/assets//undraw/undraw_professor_re_mj1s.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .footer > * {
@@ -644,6 +647,9 @@ header .hero-img {
 .footer__nav {
   display: flex;
   flex-flow: row wrap;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 30px 20px 20px 20px;
 }
 
 .footer__nav > * {
@@ -666,10 +672,13 @@ header .hero-img {
 }
 
 .legal {
-  margin-top: 30px;
+  padding: 30px 20px 20px 20px;
+
   display: flex;
   flex-wrap: wrap;
   color: var(--primary-color-3);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
 }
 
 @media screen and (min-width: 24.375em) {
