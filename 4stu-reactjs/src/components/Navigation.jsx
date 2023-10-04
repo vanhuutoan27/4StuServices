@@ -36,11 +36,11 @@ function Navigation() {
             <li className={location.pathname === '/' ? 'chosen' : ''}>
               <a href="/">Home</a>
             </li>
+            <li className={location.pathname === '/about' ? 'chosen' : ''}>
+              <a href="/about">About</a>
+            </li>
             <li className={location.pathname === '/service' ? 'chosen' : ''}>
               <a href="/service">Service</a>
-            </li>
-            <li className={location.pathname === '/package-service' ? 'chosen' : ''}>
-              <a href="/package-service">Package</a>
             </li>
             <li className={location.pathname === '/contact' ? 'chosen' : ''}>
               <a href="/contact">Contact</a>
@@ -73,9 +73,12 @@ function Navigation() {
                         {user.firstName}
                         {user.lastName}
                       </span>
-                      <img src="../assets/images/avatar/avatar-default.jpg" alt="" />
+                      <img src="../assets/images/avatar/avatar-nobita.svg" alt="" />
                     </div>
                     <ul className="sub-nav-user">
+                      <li>
+                        <a href="/admin-dashboard">Admin</a>
+                      </li>
                       <li>
                         <a href="#">Profile</a>
                       </li>

@@ -10,7 +10,7 @@ function Contact() {
   return (
     <div id="root">
       <Navigation />
-      <div>
+      <div className="ContactPage">
         <section className="contact-container">
           <div className="container">
             <div className="contactusInfo">
@@ -21,38 +21,36 @@ function Contact() {
                     <span>
                       <FontAwesomeIcon icon={faLocationDot} class="custom-icon-contact" />
                     </span>
-                    <span>
-                      E2a-7 Lot, D1 Street, D1 Ward, Long Thanh My, Thu Duc City, Ho Chi Minh City
-                    </span>
+                    <span>4Stu Tower, Thu Duc, Ho Chi Minh City</span>
                   </li>
                   <li>
                     <span>
                       <FontAwesomeIcon icon={faEnvelope} class="custom-icon-contact" />
                     </span>
-                    <span>vanhuutoan27@gmail.com</span>
+                    <span>4stu.contact@gmail.com</span>
                   </li>
                   <li>
                     <span>
                       <FontAwesomeIcon icon={faPhone} class="custom-icon-contact" />
                     </span>
-                    <span>+84965706048</span>
+                    <span>+840123456789</span>
                   </li>
                 </ul>
               </div>
               <ul className="sci">
                 <li>
                   <a href="https://github.com/vanhuutoan27/4stu-swp-project">
-                    <img src="./img/github.svg" alt="" class="custom-icon" />
+                    <img src="./assets/images/icon/github.svg" alt="" class="custom-icon" />
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <img src="./img/facebook-f.svg" alt="" class="custom-icon" />
+                    <img src="../assets/images/icon/facebook-f.svg" alt="" class="custom-icon" />
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <img src="./img/linkedin-in.svg" alt="" class="custom-icon" />
+                    <img src="./assets/images/icon/linkedin-in.svg" alt="" class="custom-icon" />
                   </a>
                 </li>
               </ul>
@@ -71,7 +69,7 @@ function Contact() {
                 </div>
                 <div className="inputBox w50">
                   <input type="email" required />
-                  <span>Email Address</span>
+                  <span>Email</span>
                 </div>
                 <div className="inputBox w50">
                   <input type="text" required />
@@ -79,7 +77,7 @@ function Contact() {
                 </div>
                 <div className="inputBox w100">
                   <textarea required></textarea>
-                  <span>Write You Message Here...</span>
+                  <span>Write Your Message Here...</span>
                 </div>
                 <div className="inputBox w100">
                   <button class="btn" type="submit">

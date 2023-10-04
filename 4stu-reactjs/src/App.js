@@ -16,9 +16,10 @@ import AdminServiceManagement from './pages/admin/AdminServiceManagement/AdminSe
 // CUSTOMER
 import Login from './pages/customer/Login/Login';
 import Home from './pages/customer/Home/Home';
+import About from './pages/customer/About/About';
 import Service from './pages/customer/Service/Service';
-import PackageService from './pages/customer/PackageService/PackageService';
 import Contact from './pages/customer/Contact/Contact';
+import Detail from './pages/customer/Detail/Detail';
 
 export const Session = createContext(null);
 
@@ -87,8 +88,9 @@ function App() {
           <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
           <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
           <Route path="/service" element={isLoading ? <Loading /> : <Service />} />
-          <Route path="/package-service" element={isLoading ? <Loading /> : <PackageService />} />
+          <Route path="/about" element={isLoading ? <Loading /> : <About />} />
           <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} />
+          <Route path="/detail" element={isLoading ? <Loading /> : <Detail />} />
         </Routes>
 
         {/* <Routes>

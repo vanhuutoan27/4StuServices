@@ -82,8 +82,8 @@ function Service() {
   return (
     <div className="ServicePage">
       <Navigation />
-      <div className="content">
-        <div id="#" class="service-header">
+      <div class="service-header">
+        <div className="content">
           <div class="main">
             <div class="men_text">
               <h1>Choose Your </h1>
@@ -91,8 +91,8 @@ function Service() {
             </div>
 
             <div class="main_image">
-              {/* ../assets/service-image/start-booking - Copy.pn */}
-              <img src="../assets/service-image/main_img.png" />
+              {/* ../assets/images/avatar/avatar-nobita.svgking - Copy.pn */}
+              <img src="../assets/manypixels/hero-employee-b.svg" />
             </div>
           </div>
 
@@ -109,11 +109,11 @@ function Service() {
         </div>
       </div>
 
-      <div className="content">
-        <div class="about">
+      <div class="about">
+        <div className="content">
           <div class="about_main">
             <div class="image">
-              <img src="../assets/service-image/Food-Plate.png" />
+              <img src="../assets/manypixels/hiking-20.svg" />
             </div>
 
             <div class="about_text">
@@ -123,9 +123,9 @@ function Service() {
               <ol>
                 <li>
                   <span>Exceptional Convenience</span> <br />
-                  4Stu is designed to help you save time and effort. We ensure that daily services
-                  like cleaning, sanitation, and water delivery are provided conveniently, allowing
-                  you to focus on your studies and enjoy student life.
+                  4Stu helps students save time and effort by providing convenient daily services
+                  like cleaning, sanitation, and water delivery, allowing them to focus on their
+                  studies and enjoy student life.
                 </li>
                 <li>
                   <span>High-Quality Service Packages</span> <br />
@@ -164,12 +164,14 @@ function Service() {
         </div>
       </div>
 
-      <div class="gallary">
-        <h1>
-          Our<span>Package Services</span>
-        </h1>
+      <div className="service-package-content">
+        <div class="gallary">
+          <h1>
+            Our<span>Package Services</span>
+          </h1>
 
-        <div class="gallary_image_box">{renderPackageService(allPackageServices)}</div>
+          <div class="gallary_image_box">{renderPackageService(allPackageServices)}</div>
+        </div>
       </div>
 
       <div class="review" id="Review">
@@ -180,7 +182,7 @@ function Service() {
         <div class="review_box">
           <div class="review_card">
             <div class="review_profile">
-              <img src="../assets/images/process-1.svg" alt="" />
+              <img src="../assets/manypixels/new-message-e.png" alt="" />
             </div>
 
             <div class="review_text">
@@ -195,7 +197,7 @@ function Service() {
 
           <div class="review_card">
             <div class="review_profile">
-              <img src="../assets/images/process-2.svg" />
+              <img src="../assets/manypixels/completed-task-d.svg" />
             </div>
 
             <div class="review_text">
@@ -211,7 +213,7 @@ function Service() {
 
           <div class="review_card">
             <div class="review_profile">
-              <img src="../assets/images/process-3.svg" />
+              <img src="../assets/manypixels/achievement-3.svg" />
             </div>
 
             <div class="review_text">
@@ -227,7 +229,7 @@ function Service() {
 
           <div class="review_card">
             <div class="review_profile">
-              <img src="../assets/images/process-4.svg" />
+              <img src="../assets/manypixels/quality-check-b.svg" />
             </div>
 
             <div class="review_text">
@@ -243,54 +245,6 @@ function Service() {
         </div>
       </div>
 
-      <div class="order" id="Order">
-        <h1>
-          <span>Order</span>Now
-        </h1>
-
-        <div class="order_main">
-          <div class="order_image">
-            <img src="../assets/service-image/order_image.png" />
-          </div>
-
-          <form action="#">
-            <div class="input">
-              <p>Name</p>
-              <input type="text" placeholder="you name" />
-            </div>
-
-            <div class="input">
-              <p>Email</p>
-              <input type="email" placeholder="you email" />
-            </div>
-
-            <div class="input">
-              <p>Number</p>
-              <input placeholder="you number" />
-            </div>
-
-            <div class="input">
-              <p>How Much</p>
-              <input type="number" placeholder="how many order" />
-            </div>
-
-            <div class="input">
-              <p>You Order</p>
-              <input placeholder="food name" />
-            </div>
-
-            <div class="input">
-              <p>Address</p>
-              <input placeholder="you Address" />
-            </div>
-
-            <a href="#" class="order_btn">
-              Order Now
-            </a>
-          </form>
-        </div>
-      </div>
-
       <div class="team">
         <h1>
           Our<span>Staff</span>
@@ -298,10 +252,10 @@ function Service() {
 
         <div class="team_box">
           <div class="profile">
-            <img src="../assets/service-image/chef1.png" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" />
 
             <div class="info">
-              <h2 class="name">Chef</h2>
+              <h2 class="name">Staff</h2>
               <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
               <div class="team_icon">
@@ -313,10 +267,10 @@ function Service() {
           </div>
 
           <div class="profile">
-            <img src="../assets/service-image/chef2.png" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" />
 
             <div class="info">
-              <h2 class="name">Chef</h2>
+              <h2 class="name">Staff</h2>
               <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
               <div class="team_icon">
@@ -328,10 +282,10 @@ function Service() {
           </div>
 
           <div class="profile">
-            <img src="../assets/service-image/chef3.jpg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" />
 
             <div class="info">
-              <h2 class="name">Chef</h2>
+              <h2 class="name">Staff</h2>
               <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
               <div class="team_icon">
@@ -343,10 +297,10 @@ function Service() {
           </div>
 
           <div class="profile">
-            <img src="../assets/service-image/chef4.jpg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" />
 
             <div class="info">
-              <h2 class="name">Chef</h2>
+              <h2 class="name">Staff</h2>
               <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
               <div class="team_icon">

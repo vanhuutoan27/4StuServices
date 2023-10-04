@@ -10,6 +10,7 @@ import {
 
 import './Home.css';
 import Navigation from '../../../components/Navigation';
+import Hero from '../../../components/Hero';
 import Footer from '../../../components/Footer';
 
 function Home() {
@@ -29,8 +30,9 @@ function Home() {
   return (
     <div>
       <Navigation />
+      <Hero />
       {/* <SlideShow /> */}
-      <div className="hero">
+      {/* <div className="hero">
         <div className="content">
           <div className="hero-content">
             <div className="info">
@@ -51,7 +53,7 @@ function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="popular">
         <div className="popular-header">

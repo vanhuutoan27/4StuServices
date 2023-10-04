@@ -187,7 +187,6 @@ a {
   min-width: 98px;
   padding: 18px 50px;
   color: var(--primary-color-2);
-  /* text-align: center; */
   font-size: 1.6rem;
   font-weight: 600;
   cursor: pointer;
@@ -449,6 +448,7 @@ a {
 .user-profile img {
   border-radius: 99px;
   width: 42px;
+  background-color: var(--primary-color-5);
 }
 
 .user-profile .user-list > a {
