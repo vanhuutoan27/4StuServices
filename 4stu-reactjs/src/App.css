@@ -210,6 +210,22 @@ a {
   }
 }
 
+div:where(.swal2-container).swal2-center > .swal2-popup {
+  padding: 30px;
+  border-radius: 16px;
+}
+
+div:where(.swal2-container).swal2-center > .swal2-popup {
+  width: 25%;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+  padding: 12px 32px;
+  background-color: var(--primary-color-1) !important;
+  color: var(--primary-color-2) !important;
+  border-radius: 8px !important;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 13px;

@@ -8,6 +8,18 @@
   margin-top: 80px;
 }
 
+.DetailPage .service-price {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+.DetailPage hr {
+  width: 700px;
+  margin-left: 204px;
+  border-width: 3px;
+}
+
 .DetailPage .btn {
   &:active {
     background-color: var(--primary-color-1);
@@ -165,12 +177,6 @@
   margin-top: 70px;
 }
 
-.service-price {
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  width: 100%;
-}
-
 .service-price .service-for-price h2 {
   font-size: 32px;
   line-height: 38.4px;
@@ -196,12 +202,6 @@
   text-align: end;
   font-size: 16px;
   line-height: 24px;
-}
-
-hr {
-  width: 700px;
-  margin-left: 204px;
-  border-width: 3px;
 }
 
 .Non-rational1 {

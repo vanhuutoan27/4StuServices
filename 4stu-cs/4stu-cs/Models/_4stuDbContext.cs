@@ -17,6 +17,8 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<CustomerManagement> CustomerManagements { get; set; }
 
+    public virtual DbSet<CustomerManagementTemp> CustomerManagementTemps { get; set; }
+
     public virtual DbSet<PackageServiceManagement> PackageServiceManagements { get; set; }
 
     public virtual DbSet<ServiceManagement> ServiceManagements { get; set; }
@@ -31,9 +33,55 @@ public partial class _4stuDbContext : DbContext
     {
         modelBuilder.Entity<CustomerManagement>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B855F1E9E7");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B83D72DF3F");
 
             entity.ToTable("CustomerManagement");
+
+            entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+            entity.Property(e => e.Avatar)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("dateCreated");
+            entity.Property(e => e.Dob)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("dob");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("firstName");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("lastName");
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+            entity.Property(e => e.Sex).HasColumnName("sex");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
+        });
+
+        modelBuilder.Entity<CustomerManagementTemp>(entity =>
+        {
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B855F1E9E7");
+
+            entity.ToTable("CustomerManagementTemp");
 
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Avatar)

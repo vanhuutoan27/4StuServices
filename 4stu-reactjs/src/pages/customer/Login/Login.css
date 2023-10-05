@@ -26,11 +26,16 @@ h1 {
 }
 
 .pass-link a {
-  color: #333;
+  color: rgb(255, 100, 100);
   font-size: 14px;
   text-decoration: none;
+  margin-left: 220px;
   /* margin: 15px 0; */
   transition: 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 /* Title trên phần Overlay */
@@ -47,53 +52,15 @@ h1 {
   /* margin-top: 16px; */
 }
 
-/* Phần Remember Me và Forgot Password*/
-.login-options {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.login-options .checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-options input {
-  accent-color: #333;
-  width: 12px;
-}
-
-.login-options label {
-  font-size: 14px;
-  user-select: none;
-  padding-left: 5px;
-}
-
 /* Label cho Username, Email, Password */
 label {
   margin-right: auto;
   padding: 8px 0 8px 12px;
 }
 
-.remember-me-btn {
-  margin-bottom: 2px;
-  cursor: pointer;
-}
-
 .login-options .checkbox > label {
   margin-top: 2px;
   cursor: pointer;
-}
-
-.pass-link a {
-  color: rgb(255, 100, 100);
-
-  &:hover {
-    opacity: 0.7;
-  }
 }
 
 /* Form Login/ Register*/
@@ -497,14 +464,6 @@ hr {
   color: red;
   margin-top: 5px;
   margin-right: auto;
-  padding-left: 12px;
-  font-size: 1.4rem;
-}
-
-.error-msg-2 {
-  color: red;
-  margin-top: 5px;
-  margin-left: auto;
   padding-left: 12px;
   font-size: 1.4rem;
 }

@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 import './Login.css';
 
@@ -39,9 +40,6 @@ function Login() {
 
     //! Cái hàm sẽ xử lý nhấn Submit
     onSubmit: (values) => {
-      // Hiển thị hiệu ứng loading trước khi thực hiện đăng nhập
-      setIsLoading(true);
-
       axios
         .post('https://localhost:7088/api/CustomerManagements/Login', {
           email: values.email,
@@ -51,17 +49,29 @@ function Login() {
           // Đăng nhập thành công, cập nhật trạng thái user và điều hướng đến '/home'
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
-          navigate('/');
-          window.location.reload();
+
+          // Hiển thị thông báo SweetAlert2
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful!',
+            showConfirmButton: false,
+            timer: 150000,
+          }).then(() => {
+            navigate('/');
+            window.location.reload();
+          });
         })
         .catch((error) => {
           // Đăng nhập thất bại, cập nhật trạng thái lỗi
           setLoginError('Invalid email or password. Please try again.');
           console.log(error);
-        })
-        .finally(() => {
-          // Thực hiện hành động sau cả hai trường hợp thành công và thất bại
-          setIsLoading(false); // Dừng hiệu ứng loading
+
+          // Hiển thị thông báo Swal cho trường hợp thất bại
+          Swal.fire({
+            icon: 'error',
+            title: 'Login failed!',
+            text: 'Invalid email or password. Please try again.',
+          });
         });
     },
   });
@@ -93,9 +103,6 @@ function Login() {
 
     //! Cái hàm sẽ xử lý nhấn Submit cho form đăng ký
     onSubmit: (values) => {
-      // Hiển thị hiệu ứng loading trước khi thực hiện đăng ký
-      setIsLoading(true);
-
       axios
         .post('https://localhost:7088/api/CustomerManagements/Register', {
           firstName: values.firstName,
@@ -109,17 +116,24 @@ function Login() {
           // Đăng ký thành công, cập nhật trạng thái và thông báo
           setIsRegistered(true);
           setRegisterError(null);
-          alert('Registration successful! Welcome to 4Stu!');
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Registration Successful!',
+            text: 'Welcome to 4Stu!',
+          });
         })
         .catch((error) => {
           // Đăng ký thất bại, cập nhật trạng thái lỗi
           setIsRegistered(false);
-          alert('Registration failed. Please try again.');
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Registration Failed!',
+            text: 'Registration failed. Please try again.',
+          });
+
           console.log(error);
-        })
-        .finally(() => {
-          // Dừng hiệu ứng loading sau khi hoàn thành đăng ký
-          setIsLoading(false);
         });
     },
   });
@@ -188,18 +202,10 @@ function Login() {
               <div className="error-msg">{formik.errors.password}</div>
             ) : null}
 
-            <div className="login-options">
-              <div className="checkbox">
-                <input type="checkbox" name="checkbox" id="checkbox" className="remember-me-btn" />
-                <label htmlFor="checkbox" id="remember-label">
-                  Remember me
-                </label>
-              </div>
-              <div className="pass-link">
-                <a href="#!">Forgot password?</a>
-              </div>
+            <div className="pass-link">
+              <a href="#!">Forgot password?</a>
             </div>
-            {loginError && <div className="error-msg-2">{loginError}</div>}
+
             <button className="btn" type="submit">
               {isLoading ? 'Logging in...' : 'Login'}
             </button>
@@ -262,7 +268,7 @@ function Login() {
                 ) : null}
               </div>
             </div>
-            {registerError && <div className="error-msg-2">{registerError}</div>}
+
             <button className="btn" type="submit">
               {isLoading ? 'Registering...' : 'Register'}
             </button>
