@@ -103,36 +103,6 @@
   width: 15px;
 }
 
-/* .admin-nav .interface-essential {
-  height: 8px !important;
-  position: relative !important;
-  width: 8px !important;
-} */
-
-.admin-nav .user-role {
-  align-items: center;
-  background: var(--linear-gradient-color-0);
-  border-radius: 99px;
-  display: inline-flex;
-  flex: 0 0 auto;
-  gap: 10px;
-  justify-content: center;
-  padding: 4px 8px;
-  position: relative;
-}
-
-.admin-nav .admin-role-content {
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: -1px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
 .admin-nav .boundary {
   background-color: #ededed;
   height: 3px;

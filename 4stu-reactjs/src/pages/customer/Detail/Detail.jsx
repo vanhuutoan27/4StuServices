@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faWallet, faThumbsUp, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faClock,
+  faWallet,
+  faThumbsUp,
+  faSquareCheck,
+  faCheck,
+} from '@fortawesome/free-solid-svg-icons';
 
 import './Detail.css';
 
@@ -104,70 +110,6 @@ function Detail() {
               </div>
             </div>
           </div>
-          <div class="content">
-            <div class="column-service-detail">
-              <h2>Dịch vụ của bTaskee có gì khác biệt?</h2>
-              <div class="box-content-2">
-                <div class="box2">
-                  <div class="img-title">
-                    <img src="./assets/img/grocery-assistant-dat-nhanh-giao-nhanh.png" alt="" />
-                  </div>
-                  <div class="detail-tile2">
-                    <h3>Đặt nhanh - giao nhanh</h3>
-                    <p>
-                      Bạn chỉ cần 60 giây đặt dịch vụ trên ứng dụng. Ngay 1 giờ sau khi đặt dịch vụ,
-                      phụ tá đi chợ sẽ mua hàng và giao hàng tận nhà cho bạn.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="box-content-3">
-                <div class="box2">
-                  <div class="img-title">
-                    <img src="./assets/img/grocery-assistant-phu-ta-chuyen-nghiep.png" alt="" />
-                  </div>
-                  <div class="detail-tile2">
-                    <h3>Phụ tá chuyên nghiệp</h3>
-                    <p>
-                      Phụ tá đi chợ của bTaskee là các bà nội trợ lâu năm, họ không chỉ đến và lấy
-                      thực phẩm rồi giao đến cho bạn mà sẽ chính tay lựa từng món hàng, đảm bảo hàng
-                      hóa luôn được tươi ngon, chất lượng.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="box-content-2">
-                <div class="box2">
-                  <div class="img-title">
-                    <img src="./assets/img/grocery-assistant-lua-chon-da-dang.png" alt="" />
-                  </div>
-                  <div class="detail-tile2">
-                    <h3>Lựa chọn đa dạng</h3>
-                    <p>
-                      Cần món hàng nào, chỉ cần ghi tên, số lượng cùng những lưu ý và đặt dịch vụ.
-                      Bạn không cần tìm từng món hàng đã được liệt kê, không bị phụ thuộc vào danh
-                      sách hàng hóa có sẵn trên ứng dụng.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="box-content-3">
-                <div class="box2">
-                  <div class="img-title">
-                    <img src="./assets/img/grocery-assistant-linh-hoat-thay-doi.png" alt="" />
-                  </div>
-                  <div class="detail-tile2">
-                    <h3>Linh hoạt thay đổi</h3>
-                    <p>
-                      Khi có tình huống phát sinh: Nhu cầu mua hàng thay đổi, địa điểm đi chợ hết
-                      hàng,... bạn có thể trao đổi trực tiếp với phụ tá đi chợ thông qua tính năng
-                      gọi điện và nhắn tin miễn phí ngay trên ứng dụng bTaskee.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="Register-Now">
             <div class="tilte-register">
@@ -177,7 +119,6 @@ function Detail() {
                 nhận ngay ưu đãi dành cho bạn
               </p>
               <div class="button-voucher">
-                {/* <button>Nhận ưu đãi ngay</button> */}
                 <a href="" className="btn">
                   Nhận ưu đãi
                 </a>
@@ -186,33 +127,29 @@ function Detail() {
           </div>
           <div class="content">
             <div class="column-service-detail">
-              <h2>Phụ tá đi chợ của bTaskee là ai?</h2>
+              <h2>Đội ngũ nhân viên của 4Stu là ai?</h2>
               <div class="box-content-2">
                 <div class="box2">
                   <div class="img-title">
-                    <img src="./assets/img/grocery-assistant-phu-ta-la-ai.png" alt="" />
+                    <img src="" alt="" />
                   </div>
                   <div class="detail-tile3">
                     <div>
-                      <i class="fa-solid fa-check"></i> Bà nội trợ lâu năm
+                      <FontAwesomeIcon icon={faCheck} /> Employees with many years of experience.
                     </div>
                     <div>
-                      <i class="fa-solid fa-check"></i> Cộng tác viên giúp việc theo giờ của bTaskee
+                      <FontAwesomeIcon icon={faCheck} /> People who are not afraid of sun or rain to
+                      carry out their duties.
                     </div>
                     <div>
-                      <i class="fa-solid fa-check"></i> Nhiệt tình, không ngại nắng mưa
+                      <FontAwesomeIcon icon={faCheck} /> People who are careful and meticulous in
+                      their work.
                     </div>
                     <div>
-                      <i class="fa-solid fa-check"></i> Cẩn thận, tỉ mỉ từ khâu lựa chọn thực phẩm
-                      đến khâu giao hàng
+                      <FontAwesomeIcon icon={faCheck} /> Reliable and highly responsible for work.
                     </div>
                     <div>
-                      <i class="fa-solid fa-check"></i> Là người có kỹ năng, kinh nghiệm trong việc
-                      lựa chọn thực phẩm
-                    </div>
-                    <div>
-                      <i class="fa-solid fa-check"></i> Được đào tạo nghiệp vụ đi chợ, áp dụng tiêu
-                      chuẩn lựa chọn cho từng món hàng
+                      <FontAwesomeIcon icon={faCheck} /> Always friendly and close to customers.
                     </div>
                   </div>
                 </div>
@@ -226,16 +163,8 @@ function Detail() {
                   <h2>Giá dịch vụ</h2>
                 </div>
                 <div class="Non-rational">
-                  <h3 class="title-price">Phí đi chợ hộ</h3>
+                  <h3 class="title-price">Phí dịch vụ</h3>
                   <h3 class="price">50,000 VND</h3>
-                </div>
-                <hr />
-                <div class="Non-rational1">
-                  <h3 class="title-price1 col-md-6">
-                    Phí vận chuyển tối thiểu cho 1 đơn hàng <br />
-                    (trong bán kính 5km)
-                  </h3>
-                  <h3 class="price1 col-md-6">15,000 VND</h3>
                 </div>
                 <hr />
                 <div class="check-note">

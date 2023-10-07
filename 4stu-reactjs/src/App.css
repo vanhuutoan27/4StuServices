@@ -150,7 +150,7 @@ table {
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  scroll-padding-top: 12rem;
+  /* scroll-padding-top: 12rem; */
 }
 
 body {

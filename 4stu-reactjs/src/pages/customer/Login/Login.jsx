@@ -4,13 +4,11 @@ import { GoogleSignIn } from '../../../components/Google';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import './Login.css';
 
 function Login() {
-  const navigate = useNavigate();
   const session = useContext(Session);
 
   // Trạng thái loading
@@ -55,10 +53,9 @@ function Login() {
             icon: 'success',
             title: 'Login Successful!',
             showConfirmButton: false,
-            timer: 150000,
+            timer: 1500,
           }).then(() => {
-            navigate('/');
-            window.location.reload();
+            window.location.href = '/';
           });
         })
         .catch((error) => {

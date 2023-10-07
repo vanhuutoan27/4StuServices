@@ -33,7 +33,7 @@ function Service() {
   };
 
   const getRandomRating = () => {
-    return Math.random() < 0.5 ? 4 : 5; // Generates either 4 or 5 randomly
+    return Math.random() < 0.5 ? 4 : 5;
   };
 
   const renderService = (services) => {
@@ -67,12 +67,12 @@ function Service() {
 
   const renderPackageService = (packageServices) => {
     return packageServices.map((packageService, index) => (
-      <div class="gallary_image" key={index}>
+      <div className="gallary_image" key={index}>
         <img src="../assets/images/4Stu-Logo.svg" />
 
         <h3>{packageService.packageServiceName}</h3>
         <p>{packageService.packageServiceDesc}</p>
-        <a href="#" class="btn">
+        <a href="#" className="btn">
           Order Now
         </a>
       </div>
@@ -82,17 +82,16 @@ function Service() {
   return (
     <div className="ServicePage">
       <Navigation />
-      <div class="service-header">
+      <div className="service-header">
         <div className="content">
-          <div class="main">
-            <div class="men_text">
+          <div className="main">
+            <div className="men_text">
               <h1>Choose Your </h1>
               <span>Service Package</span>
             </div>
 
-            <div class="main_image">
-              {/* ../assets/images/avatar/avatar-nobita.svgking - Copy.pn */}
-              <img src="../assets/manypixels/hero-employee-b.svg" />
+            <div className="main_image">
+              <img src="../assets/manypixels/hero-employee-b.svg" alt="" />
             </div>
           </div>
 
@@ -103,20 +102,20 @@ function Service() {
             life services.
           </p>
 
-          <a class="btn" href="#">
+          <a className="btn" href="#order-now">
             Order Now
           </a>
         </div>
       </div>
 
-      <div class="about">
+      <div className="about">
         <div className="content">
-          <div class="about_main">
-            <div class="image">
+          <div className="about_main">
+            <div className="image">
               <img src="../assets/manypixels/hiking-20.svg" />
             </div>
 
-            <div class="about_text">
+            <div className="about_text">
               <h2>
                 Why Choose <span>4Stu Services</span>?
               </h2>
@@ -148,45 +147,45 @@ function Service() {
             </div>
           </div>
 
-          <a href="#" class="btn">
+          <a href="#order-now" className="btn">
             Order Now
           </a>
         </div>
       </div>
 
       <div className="content">
-        <div class="menu">
+        <div id="order-now" className="menu">
           <h1>
             Our<span>Services</span>
           </h1>
 
-          <div class="menu_box">{renderService(allServices)}</div>
+          <div className="menu_box">{renderService(allServices)}</div>
         </div>
       </div>
 
       <div className="service-package-content">
-        <div class="gallary">
+        <div className="gallary">
           <h1>
             Our<span>Package Services</span>
           </h1>
 
-          <div class="gallary_image_box">{renderPackageService(allPackageServices)}</div>
+          <div className="gallary_image_box">{renderPackageService(allPackageServices)}</div>
         </div>
       </div>
 
-      <div class="review" id="Review">
+      <div className="review" id="Review">
         <h1>
           Process Of Using The<span>Services </span>
         </h1>
 
-        <div class="review_box">
-          <div class="review_card">
-            <div class="review_profile">
+        <div className="review_box">
+          <div className="review_card">
+            <div className="review_profile">
               <img src="../assets/manypixels/new-message-e.png" alt="" />
             </div>
 
-            <div class="review_text">
-              <h2 class="name">Choose A Service</h2>
+            <div className="review_text">
+              <h2 className="name">Choose A Service</h2>
 
               <p>
                 We offer over 20 convenient utility services ready to assist you whenever you need.
@@ -195,13 +194,13 @@ function Service() {
             </div>
           </div>
 
-          <div class="review_card">
-            <div class="review_profile">
+          <div className="review_card">
+            <div className="review_profile">
               <img src="../assets/manypixels/completed-task-d.svg" />
             </div>
 
-            <div class="review_text">
-              <h2 class="name">Confirm Information</h2>
+            <div className="review_text">
+              <h2 className="name">Confirm Information</h2>
 
               <p>
                 Provide your full name, contact phone number, preferred date and time, and specific
@@ -211,13 +210,13 @@ function Service() {
             </div>
           </div>
 
-          <div class="review_card">
-            <div class="review_profile">
+          <div className="review_card">
+            <div className="review_profile">
               <img src="../assets/manypixels/achievement-3.svg" />
             </div>
 
-            <div class="review_text">
-              <h2 class="name">Proceed The Task</h2>
+            <div className="review_text">
+              <h2 className="name">Proceed The Task</h2>
 
               <p>
                 Provide your full name, contact phone number, preferred date and time, and specific
@@ -227,13 +226,13 @@ function Service() {
             </div>
           </div>
 
-          <div class="review_card">
-            <div class="review_profile">
+          <div className="review_card">
+            <div className="review_profile">
               <img src="../assets/manypixels/quality-check-b.svg" />
             </div>
 
-            <div class="review_text">
-              <h2 class="name">Proceed The Task</h2>
+            <div className="review_text">
+              <h2 className="name">Proceed The Task</h2>
 
               <p>
                 You can assess the quality of the services through the Feedback section for 4Stu.
@@ -245,68 +244,68 @@ function Service() {
         </div>
       </div>
 
-      <div class="team">
+      <div className="team">
         <h1>
           Our<span>Staff</span>
         </h1>
 
-        <div class="team_box">
-          <div class="profile">
+        <div className="team_box">
+          <div className="profile">
             <img src="../assets/images/avatar/avatar-nobita.svg" />
 
-            <div class="info">
-              <h2 class="name">Staff</h2>
-              <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div className="info">
+              <h2 className="name">Staff</h2>
+              <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-              <div class="team_icon">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
+              <div className="team_icon">
+                <i className="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-instagram"></i>
               </div>
             </div>
           </div>
 
-          <div class="profile">
+          <div className="profile">
             <img src="../assets/images/avatar/avatar-nobita.svg" />
 
-            <div class="info">
-              <h2 class="name">Staff</h2>
-              <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div className="info">
+              <h2 className="name">Staff</h2>
+              <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-              <div class="team_icon">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
+              <div className="team_icon">
+                <i className="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-instagram"></i>
               </div>
             </div>
           </div>
 
-          <div class="profile">
+          <div className="profile">
             <img src="../assets/images/avatar/avatar-nobita.svg" />
 
-            <div class="info">
-              <h2 class="name">Staff</h2>
-              <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div className="info">
+              <h2 className="name">Staff</h2>
+              <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-              <div class="team_icon">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
+              <div className="team_icon">
+                <i className="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-instagram"></i>
               </div>
             </div>
           </div>
 
-          <div class="profile">
+          <div className="profile">
             <img src="../assets/images/avatar/avatar-nobita.svg" />
 
-            <div class="info">
-              <h2 class="name">Staff</h2>
-              <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div className="info">
+              <h2 className="name">Staff</h2>
+              <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-              <div class="team_icon">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
+              <div className="team_icon">
+                <i className="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-instagram"></i>
               </div>
             </div>
           </div>

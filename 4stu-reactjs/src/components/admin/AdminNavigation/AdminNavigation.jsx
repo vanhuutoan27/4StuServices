@@ -54,9 +54,6 @@ function AdminNavbar() {
           </div>
           <div className="interface-essential-wrapper"></div>
         </div>
-        <div className="user-role">
-          <div className="admin-role-content">Admin</div>
-        </div>
       </div>
 
       <div className="boundary" />

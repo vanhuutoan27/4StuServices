@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
@@ -22,6 +22,9 @@ import About from './pages/customer/About/About';
 import Service from './pages/customer/Service/Service';
 import Contact from './pages/customer/Contact/Contact';
 import Detail from './pages/customer/Detail/Detail';
+import Account from './pages/customer/Order/Account';
+import Shipping from './pages/customer/Order/Shipping';
+import Payment from './pages/customer/Order/Payment';
 
 export const Session = createContext(null);
 
@@ -37,7 +40,6 @@ function App() {
   useEffect(() => {
     // Create a custom Axios instance with headers
     const axiosInstance = axios.create({
-      // gắn token vào header để backend giải quyết
       headers: {
         Authorization: `Bearer ${accessToken}`, // Attach the access token as a Bearer token
       },
@@ -66,34 +68,42 @@ function App() {
   return (
     <Session.Provider value={{ user, setUser }}>
       <div className="App">
-        <Routes>
-          <Route path="/" element={isLoading ? <Loading /> : <Home />} />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Routes>
+            {/* ROUTES FOR ADMIN */}
+            {user?.email === 'admin1@gmail.com' ? (
+              <>
+                <Route path="/admin-dashboard" element={<Dashboard />} />
+                <Route path="/admin-overview" element={<Dashboard />} />
+                <Route path="/admin-analysis" element={<Dashboard />} />
+                <Route path="/admin-feedback" element={<Dashboard />} />
+                <Route path="/admin-user-management" element={<UserManagement />} />
+                <Route
+                  path="/admin-package-service-management"
+                  element={<PackageServiceManagement />}
+                />
+                <Route path="/admin-service-management" element={<ServiceManagement />} />
+              </>
+            ) : null}
 
-          <Route path="/admin-dashboard" element={isLoading ? <Loading /> : <Dashboard />} />
-          <Route path="/admin-overview" element={isLoading ? <Loading /> : <Dashboard />} />
-          <Route path="/admin-analysis" element={isLoading ? <Loading /> : <Dashboard />} />
-          <Route path="/admin-feedback" element={isLoading ? <Loading /> : <Dashboard />} />
-          <Route
-            path="/admin-user-management"
-            element={isLoading ? <Loading /> : <UserManagement />}
-          />
-          <Route
-            path="/admin-package-service-management"
-            element={isLoading ? <Loading /> : <PackageServiceManagement />}
-          />
-          <Route
-            path="/admin-service-management"
-            element={isLoading ? <Loading /> : <ServiceManagement />}
-          />
+            {/* ROUTES FOR CUSTOMER */}
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/service" element={<Service />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/order" element={<Account />} />
+            <Route path="/order-account" element={<Account />} />
+            <Route path="/order-shipping" element={<Shipping />} />
+            <Route path="/order-payment" element={<Payment />} />
 
-          {/* CUSTOMER */}
-          <Route path="/home" element={isLoading ? <Loading /> : <Home />} />
-          <Route path="/login" element={isLoading ? <Loading /> : <Login />} />
-          <Route path="/service" element={isLoading ? <Loading /> : <Service />} />
-          <Route path="/about" element={isLoading ? <Loading /> : <About />} />
-          <Route path="/contact" element={isLoading ? <Loading /> : <Contact />} />
-          <Route path="/detail" element={isLoading ? <Loading /> : <Detail />} />
-        </Routes>
+            {/* Redirect to login for non-admin users */}
+            {user?.email !== 'admin1@gmail.com' && <Route path="*" element={<Navigate to="/" />} />}
+          </Routes>
+        )}
       </div>
     </Session.Provider>
   );

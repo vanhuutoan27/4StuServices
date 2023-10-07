@@ -377,6 +377,13 @@ button:active {
   margin-top: 5px;
 }
 
+.mb-3.form-user-id {
+  position: absolute;
+  top: 0px;
+  left: 360px;
+  width: 23%;
+}
+
 .mb-3.form-id {
   position: absolute;
   top: 0px;
@@ -398,12 +405,12 @@ button:active {
   width: 48%;
 }
 
-.mb-3.form-id {
+/* .mb-3.form-id {
   position: absolute;
   top: 0;
   left: 360px;
   width: 23%;
-}
+} */
 
 .mb-3.form-date-created {
   position: absolute;

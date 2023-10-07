@@ -25,7 +25,7 @@ function ViewUser({ selectedUser, onClose }) {
               </Form.Group>
               <Col sm={4}></Col>
               <Col sm={4}>
-                <Form.Group className="mb-3 form-id">
+                <Form.Group className="mb-3 form-user-id">
                   <Form.Label>ID</Form.Label>
                   <Form.Control
                     type="text"
