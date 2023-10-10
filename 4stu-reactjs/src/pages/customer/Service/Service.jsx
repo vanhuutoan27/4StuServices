@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-
 import axios from 'axios';
+import Cookies from 'js-cookie'; // Import thư viện js-cookie
 
 import './Service.css';
-
 import Navigation from '../../../components/Navigation';
 import Footer from '../../../components/Footer';
 
 function Service() {
   const [allServices, setAllServices] = useState([]);
   const [allPackageServices, setAllPackageServices] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,6 +23,12 @@ function Service() {
       .get('https://localhost:7088/api/PackageServiceManagements')
       .then((response) => setAllPackageServices(response.data))
       .catch((error) => console.log(error));
+
+    // Kiểm tra cookie accessToken để xác định trạng thái đăng nhập
+    const accessToken = Cookies.get('accessToken');
+    if (accessToken) {
+      setLoggedIn(true);
+    }
   }, []);
 
   const formatPriceWithDot = (price) => {
@@ -57,9 +63,16 @@ function Service() {
               />
             ))}
           </div>
-          <a href="#" className="btn">
-            Order Now
-          </a>
+
+          {loggedIn ? (
+            <a href="/order" className="btn">
+              Order Now
+            </a>
+          ) : (
+            <a href="/order" className="btn">
+              Order Now
+            </a>
+          )}
         </div>
       </div>
     ));
@@ -68,13 +81,19 @@ function Service() {
   const renderPackageService = (packageServices) => {
     return packageServices.map((packageService, index) => (
       <div className="gallary_image" key={index}>
-        <img src="../assets/images/4Stu-Logo.svg" />
+        <img src="../assets/images/4Stu-Logo.svg" alt="4Stu Logo" />
 
         <h3>{packageService.packageServiceName}</h3>
         <p>{packageService.packageServiceDesc}</p>
-        <a href="#" className="btn">
-          Order Now
-        </a>
+        {loggedIn ? (
+          <a href="/order-shipping" className="btn">
+            Order Now
+          </a>
+        ) : (
+          <a href="/order-account" className="btn">
+            Order Now
+          </a>
+        )}
       </div>
     ));
   };
@@ -112,7 +131,7 @@ function Service() {
         <div className="content">
           <div className="about_main">
             <div className="image">
-              <img src="../assets/manypixels/hiking-20.svg" />
+              <img src="../assets/manypixels/hiking-20.svg" alt="Hiking" />
             </div>
 
             <div className="about_text">
@@ -146,7 +165,6 @@ function Service() {
               </ol>
             </div>
           </div>
-
           <a href="#order-now" className="btn">
             Order Now
           </a>
@@ -181,7 +199,7 @@ function Service() {
         <div className="review_box">
           <div className="review_card">
             <div className="review_profile">
-              <img src="../assets/manypixels/new-message-e.png" alt="" />
+              <img src="../assets/manypixels/new-message-e.png" alt="Choose A Service" />
             </div>
 
             <div className="review_text">
@@ -196,7 +214,7 @@ function Service() {
 
           <div className="review_card">
             <div className="review_profile">
-              <img src="../assets/manypixels/completed-task-d.svg" />
+              <img src="../assets/manypixels/completed-task-d.svg" alt="Confirm Information" />
             </div>
 
             <div className="review_text">
@@ -212,7 +230,7 @@ function Service() {
 
           <div className="review_card">
             <div className="review_profile">
-              <img src="../assets/manypixels/achievement-3.svg" />
+              <img src="../assets/manypixels/achievement-3.svg" alt="Proceed The Task" />
             </div>
 
             <div className="review_text">
@@ -228,11 +246,11 @@ function Service() {
 
           <div className="review_card">
             <div className="review_profile">
-              <img src="../assets/manypixels/quality-check-b.svg" />
+              <img src="../assets/manypixels/quality-check-b.svg" alt="Feedback And Rating" />
             </div>
 
             <div className="review_text">
-              <h2 className="name">Proceed The Task</h2>
+              <h2 className="name">Feedback And Rating</h2>
 
               <p>
                 You can assess the quality of the services through the Feedback section for 4Stu.
@@ -251,7 +269,7 @@ function Service() {
 
         <div className="team_box">
           <div className="profile">
-            <img src="../assets/images/avatar/avatar-nobita.svg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" alt="Staff" />
 
             <div className="info">
               <h2 className="name">Staff</h2>
@@ -266,7 +284,7 @@ function Service() {
           </div>
 
           <div className="profile">
-            <img src="../assets/images/avatar/avatar-nobita.svg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" alt="Staff" />
 
             <div className="info">
               <h2 className="name">Staff</h2>
@@ -281,7 +299,7 @@ function Service() {
           </div>
 
           <div className="profile">
-            <img src="../assets/images/avatar/avatar-nobita.svg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" alt="Staff" />
 
             <div className="info">
               <h2 className="name">Staff</h2>
@@ -296,7 +314,7 @@ function Service() {
           </div>
 
           <div className="profile">
-            <img src="../assets/images/avatar/avatar-nobita.svg" />
+            <img src="../assets/images/avatar/avatar-nobita.svg" alt="Staff" />
 
             <div className="info">
               <h2 className="name">Staff</h2>

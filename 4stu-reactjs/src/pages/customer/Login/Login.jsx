@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
 
 import './Login.css';
 
@@ -47,6 +48,9 @@ function Login() {
           // Đăng nhập thành công, cập nhật trạng thái user và điều hướng đến '/home'
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
+
+          // Lưu token vào cookie
+          Cookies.set('accessToken', response.data.accessToken);
 
           // Hiển thị thông báo SweetAlert2
           Swal.fire({

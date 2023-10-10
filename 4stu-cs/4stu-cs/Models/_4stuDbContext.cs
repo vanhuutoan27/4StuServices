@@ -17,13 +17,13 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<CustomerManagement> CustomerManagements { get; set; }
 
-    public virtual DbSet<CustomerManagementTemp> CustomerManagementTemps { get; set; }
+    public virtual DbSet<OrderManagement> OrderManagements { get; set; }
+
+    public virtual DbSet<OrderManagementTest> OrderManagementTests { get; set; }
 
     public virtual DbSet<PackageServiceManagement> PackageServiceManagements { get; set; }
 
     public virtual DbSet<ServiceManagement> ServiceManagements { get; set; }
-
-    public virtual DbSet<ServiceManagementTemp> ServiceManagementTemps { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -33,7 +33,7 @@ public partial class _4stuDbContext : DbContext
     {
         modelBuilder.Entity<CustomerManagement>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B83D72DF3F");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B8BC5E182F");
 
             entity.ToTable("CustomerManagement");
 
@@ -44,7 +44,7 @@ public partial class _4stuDbContext : DbContext
                 .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
             entity.Property(e => e.DateCreated)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .HasColumnName("dateCreated");
             entity.Property(e => e.Dob)
                 .HasMaxLength(50)
@@ -77,74 +77,101 @@ public partial class _4stuDbContext : DbContext
                 .HasDefaultValueSql("('Active')");
         });
 
-        modelBuilder.Entity<CustomerManagementTemp>(entity =>
+        modelBuilder.Entity<OrderManagement>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B855F1E9E7");
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCF64919F44");
 
-            entity.ToTable("CustomerManagementTemp");
+            entity.ToTable("OrderManagement");
 
-            entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
-            entity.Property(e => e.Avatar)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("avatar");
-            entity.Property(e => e.Dob)
+            entity.Property(e => e.Address).HasColumnType("text");
+            entity.Property(e => e.DateCompleted)
                 .HasColumnType("date")
-                .HasColumnName("dob");
+                .HasColumnName("dateCompleted");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date")
+                .HasColumnName("dateCreated");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("email");
-            entity.Property(e => e.FirstName)
+                .IsUnicode(false);
+            entity.Property(e => e.Item).HasColumnType("text");
+            entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)
                 .IsUnicode(false)
-                .HasColumnName("firstName");
-            entity.Property(e => e.LastName)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("lastName");
-            entity.Property(e => e.Password)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("password");
+                .HasColumnName("paymentMethod");
             entity.Property(e => e.Phone)
                 .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Price)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
                 .IsUnicode(false)
-                .HasColumnName("phone");
-            entity.Property(e => e.Sex).HasColumnName("sex");
-            entity.Property(e => e.Username)
+                .HasDefaultValueSql("('Pending')");
+        });
+
+        modelBuilder.Entity<OrderManagementTest>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCF568B4C46");
+
+            entity.ToTable("OrderManagementTest");
+
+            entity.Property(e => e.Address).HasColumnType("text");
+            entity.Property(e => e.CustomerName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DateCompleted)
+                .HasColumnType("date")
+                .HasColumnName("dateCompleted");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date")
+                .HasColumnName("dateCreated");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)
                 .IsUnicode(false)
-                .HasColumnName("username");
+                .HasColumnName("paymentMethod");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Pending')");
         });
 
         modelBuilder.Entity<PackageServiceManagement>(entity =>
         {
-            entity.HasKey(e => e.PackageServiceId).HasName("PK__PackageS__5EAFC2102A027469");
+            entity.HasKey(e => e.PackageServiceId).HasName("PK__PackageS__5EAFC21048985BFD");
 
             entity.ToTable("PackageServiceManagement");
 
             entity.Property(e => e.PackageServiceId).HasColumnName("PackageServiceID");
             entity.Property(e => e.Image)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
             entity.Property(e => e.PackageServiceDesc).HasColumnType("text");
             entity.Property(e => e.PackageServiceName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Price)
+                .HasMaxLength(20)
+                .IsUnicode(false);
             entity.Property(e => e.RepetitionCycle)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
+            entity.Property(e => e.Time)
+                .HasMaxLength(10)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Service).WithMany(p => p.PackageServiceManagements)
-                .HasForeignKey(d => d.ServiceId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PackageSe__Servi__73BA3083");
         });
 
         modelBuilder.Entity<ServiceManagement>(entity =>
@@ -171,36 +198,6 @@ public partial class _4stuDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasDefaultValueSql("('Active')");
-            entity.Property(e => e.Tag)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Time)
-                .HasMaxLength(10)
-                .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<ServiceManagementTemp>(entity =>
-        {
-            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA58FF819E");
-
-            entity.ToTable("ServiceManagementTemp");
-
-            entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
-            entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
-            entity.Property(e => e.Image)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Price)
-                .HasMaxLength(20)
-                .IsUnicode(false);
-            entity.Property(e => e.ServiceDesc).HasColumnType("text");
-            entity.Property(e => e.ServiceName)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Status)
-                .HasMaxLength(20)
-                .IsUnicode(false);
             entity.Property(e => e.Tag)
                 .HasMaxLength(50)
                 .IsUnicode(false);

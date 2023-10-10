@@ -22,9 +22,7 @@ import About from './pages/customer/About/About';
 import Service from './pages/customer/Service/Service';
 import Contact from './pages/customer/Contact/Contact';
 import Detail from './pages/customer/Detail/Detail';
-import Account from './pages/customer/Order/Account';
-import Shipping from './pages/customer/Order/Shipping';
-import Payment from './pages/customer/Order/Payment';
+import Order from './pages/customer/Order/Order';
 
 export const Session = createContext(null);
 
@@ -95,10 +93,7 @@ function App() {
             <Route path="/service" element={<Service />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/order" element={<Account />} />
-            <Route path="/order-account" element={<Account />} />
-            <Route path="/order-shipping" element={<Shipping />} />
-            <Route path="/order-payment" element={<Payment />} />
+            <Route path="/order" element={<Order />} />
 
             {/* Redirect to login for non-admin users */}
             {user?.email !== 'admin1@gmail.com' && <Route path="*" element={<Navigate to="/" />} />}

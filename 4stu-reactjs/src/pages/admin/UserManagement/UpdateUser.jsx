@@ -17,7 +17,7 @@ function UpdateUser({ selectedUser, onClose }) {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    return `${month < 10 ? '0' : ''}${month}/${day < 10 ? '0' : ''}${day}/${year}`;
+    return `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
   };
 
   const handleSave = async () => {
@@ -174,8 +174,8 @@ function UpdateUser({ selectedUser, onClose }) {
                 <Form.Group className="mb-3">
                   <Form.Label>Date of Birth</Form.Label>
                   <Form.Control
-                    type="text"
-                    value={formatDate(updatedUser.dob)}
+                    type="date"
+                    value={updatedUser.dob}
                     onChange={(e) => setUpdatedUser({ ...updatedUser, dob: e.target.value })}
                   />
                 </Form.Group>

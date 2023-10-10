@@ -11,7 +11,7 @@ CREATE TABLE CustomerManagement (
   dob VARCHAR(50),
   sex BIT,
   Status VARCHAR(20) DEFAULT 'Active' NULL,
-  dateCreated DATETIME DEFAULT GETDATE(),
+  dateCreated DATE DEFAULT GETDATE(),
   PRIMARY KEY (CustomerID)
 );
 

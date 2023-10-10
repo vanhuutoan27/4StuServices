@@ -37,6 +37,15 @@
     margin-top: 40px;
   }
 }
+#account-section .main-info-section,
+#shipping-section .main-info-section,
+#payment-section .main-info-section {
+  margin-top: 30px;
+}
+
+.hidden {
+  display: none;
+}
 
 .step-wizard-list {
   display: flex;
@@ -134,7 +143,7 @@
 .info-section {
   background-color: #fff;
   width: 778px;
-  height: 572px;
+  /* height: 572px; */
   border-radius: 16px;
   padding: 36px 42px 60px 42px;
   box-shadow: 4px 12px 20px 8px rgba(0, 0, 0, 0.15);

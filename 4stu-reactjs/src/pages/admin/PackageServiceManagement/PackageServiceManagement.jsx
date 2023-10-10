@@ -31,12 +31,12 @@ function PackageServiceManagement() {
     return price;
   };
 
-  const handleViewServiceClick = (service) => {
-    setSelectedPackageService(service);
+  const handleViewServiceClick = (packageService) => {
+    setSelectedPackageService(packageService);
   };
 
-  const handleUpdateServiceClick = (service) => {
-    setUpdatingPackageService(service);
+  const handleUpdateServiceClick = (packageService) => {
+    setUpdatingPackageService(packageService);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -72,48 +72,52 @@ function PackageServiceManagement() {
               </tr>
             </thead>
             <tbody>
-              {displayedServices.map((service, index) => (
+              {displayedServices.map((packageService, index) => (
                 <tr key={index}>
                   <td>
                     <span className={`serviceID`}>
                       P
-                      {service.packageServiceId < 10
-                        ? '00' + service.packageServiceId
-                        : '0' + service.packageServiceId}
+                      {packageService.packageServiceId < 10
+                        ? '00' + packageService.packageServiceId
+                        : '0' + packageService.packageServiceId}
                     </span>
                   </td>
 
                   <td>
-                    <span className="service-name">{service.packageServiceName}</span>
+                    <span className="service-name">{packageService.packageServiceName}</span>
                   </td>
 
                   <td>
-                    <span className="service-name">{service.packageServiceDesc}</span>
+                    <span className="service-name">{packageService.packageServiceDesc}</span>
                   </td>
 
                   <td>
-                    <span className="service-price">{formatPriceWithDot(service.price)}</span>
+                    <span className="service-price">
+                      {formatPriceWithDot(packageService.price)}
+                    </span>
                   </td>
 
                   <td>
-                    <span className="service-time">{service.time}</span>
+                    <span className="service-time">{packageService.time}</span>
                   </td>
 
                   <td>
                     <span className="statuss">
-                      <span className={`status status--${service.status}`}>{service.status}</span>
+                      <span className={`status status--${packageService.status}`}>
+                        {packageService.status}
+                      </span>
                     </span>
                   </td>
                   <td>
                     <button
                       className="admin-btn-action view btn"
-                      onClick={() => handleViewServiceClick(service)}
+                      onClick={() => handleViewServiceClick(packageService)}
                     >
                       <FontAwesomeIcon icon={faEye} />
                     </button>
                     <button
                       className="admin-btn-action edit btn"
-                      onClick={() => handleUpdateServiceClick(service)}
+                      onClick={() => handleUpdateServiceClick(packageService)}
                     >
                       <FontAwesomeIcon icon={faPen} />
                     </button>

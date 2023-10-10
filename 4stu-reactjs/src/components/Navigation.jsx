@@ -1,8 +1,9 @@
+import { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { useLocation } from 'react-router-dom';
-import { useContext } from 'react';
 import { Session } from '../App';
+import Cookies from 'js-cookie';
 
 function Navigation() {
   // Lấy ra user trong session
@@ -18,10 +19,19 @@ function Navigation() {
     // Xóa session và thực hiện các thao tác khác (xóa access token, vv.)
     session.setUser(null);
     localStorage.removeItem('accessToken');
+    Cookies.remove('accessToken'); // Xóa cookie khi đăng xuất
     // Chuyển hướng người dùng đến trang đăng nhập
     window.location.href = '/';
-    // window.location.reload();
   };
+
+  useEffect(() => {
+    // Kiểm tra nếu có cookie accessToken
+    const accessToken = Cookies.get('accessToken');
+    if (accessToken) {
+      // Thực hiện các thao tác khác cần thiết khi người dùng đã đăng nhập
+      console.log('Logged in with accessToken:', user);
+    }
+  }, [user]);
 
   return (
     <header className="header fixed-header">
@@ -70,10 +80,9 @@ function Navigation() {
                   <li className="user-list">
                     <div>
                       <span>
-                        {user.firstName}
-                        {user.lastName}
+                        {user.firstName} {user.lastName}
                       </span>
-                      <img src="../assets/images/avatar/avatar-nobita.svg" alt="" />
+                      <img src={user.avatar} alt="" />
                     </div>
                     <ul className="sub-nav-user">
                       <li>

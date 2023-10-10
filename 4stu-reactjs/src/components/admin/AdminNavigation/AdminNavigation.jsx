@@ -8,6 +8,7 @@ function AdminNavbar() {
   const [customerCount, setCustomerCount] = useState(0);
   const [packageServiceCount, setPackageServiceCount] = useState(0);
   const [serviceCount, setServiceCount] = useState(0);
+  const [adminInfo, setAdminInfo] = useState({ name: '', email: '' });
 
   useEffect(() => {
     axios
@@ -15,6 +16,16 @@ function AdminNavbar() {
       .then((response) => {
         const customers = response.data;
         setCustomerCount(customers.length);
+
+        const admin = customers.find((customer) => customer.email === 'admin1@gmail.com');
+        if (admin) {
+          setAdminInfo({
+            firstName: admin.firstName,
+            lastName: admin.lastName,
+            email: admin.email,
+            avatar: admin.avatar,
+          });
+        }
       })
       .catch((error) => console.log(error));
 
@@ -42,15 +53,14 @@ function AdminNavbar() {
       <div className="admin-nav-header">
         <div className="admin-account">
           <a href="#">
-            <img
-              className="admin-avatar"
-              alt="admin-avatar"
-              src="../assets/images/avatar/picrew1.jpg"
-            />
+            <img className="admin-avatar" alt="admin-avatar" src={adminInfo.avatar} />
           </a>
           <div className="admin-info">
-            <div className="admin-name">Van Huu Toan</div>
-            <div className="admin-mail">huutoanvan1@gmail.com</div>
+            <div className="admin-name">
+              {adminInfo.firstName}
+              {adminInfo.lastName}
+            </div>
+            <div className="admin-mail">{adminInfo.email}</div>
           </div>
           <div className="interface-essential-wrapper"></div>
         </div>

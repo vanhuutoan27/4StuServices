@@ -170,7 +170,7 @@ function Home() {
 
           <div className="process-all">
             <div className="process-step">
-              <div className="process-info">
+              <div className="home-process-info">
                 <h3 className="process-name">Choose A Service</h3>
                 <p className="process-desc">
                   We offer over 20 convenient utility services ready to assist you whenever you
@@ -182,7 +182,7 @@ function Home() {
             </div>
 
             <div className="process-step">
-              <div className="process-info">
+              <div className="home-process-info">
                 <img className="process-img" src="../assets/images/process-2.svg" alt="process-2" />
                 <h3 className="process-name">Confirm Information</h3>
                 <p className="process-desc">
@@ -194,7 +194,7 @@ function Home() {
             </div>
 
             <div className="process-step">
-              <div className="process-info">
+              <div className="home-process-info">
                 <h3 className="process-name">Proceed The Task</h3>
                 <p className="process-desc">
                   Our staffs will accept the service and come to the confirmed address on the order
@@ -206,7 +206,7 @@ function Home() {
             </div>
 
             <div className="process-step">
-              <div className="process-info">
+              <div className="home-process-info">
                 <img className="process-img" src="../assets/images/process-4.svg" alt="process-4" />
                 <h3 className="process-name">Feedback And Rating</h3>
                 <p className="process-desc">

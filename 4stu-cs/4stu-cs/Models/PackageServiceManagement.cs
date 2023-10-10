@@ -11,17 +11,13 @@ public partial class PackageServiceManagement
 
     public string PackageServiceDesc { get; set; } = null!;
 
-    public int Time { get; set; }
+    public string Time { get; set; } = null!;
 
-    public decimal Price { get; set; }
+    public string Price { get; set; } = null!;
 
-    public string? RepetitionCycle { get; set; }
-
-    public int ServiceId { get; set; }
-
-    public string? Image { get; set; }
+    public string RepetitionCycle { get; set; } = null!;
 
     public string? Status { get; set; }
 
-    public virtual ServiceManagementTemp Service { get; set; } = null!;
+    public string? Image { get; set; }
 }

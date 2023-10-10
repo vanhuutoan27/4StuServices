@@ -36,9 +36,13 @@ function UserManagement() {
     setCurrentPage(pageNumber);
   };
 
+  // Hàm để định dạng ngày tháng năm
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
