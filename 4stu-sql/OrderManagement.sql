@@ -9,7 +9,8 @@ CREATE TABLE OrderManagement (
     Address TEXT NOT NULL,
     Price VARCHAR(20) NOT NULL,
     paymentMethod VARCHAR(50) NOT NULL,
-    Item TEXT NOT NULL,
+    ServiceId INT NOT NULL,
+	ServiceName VARCHAR(50) NOT NULL,
     Status VARCHAR(20) DEFAULT 'Pending' NULL, -- Processing or Completed 
     StaffId INT NOT NULL,
 	PRIMARY KEY(OrderId)

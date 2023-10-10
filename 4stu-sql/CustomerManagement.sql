@@ -1,5 +1,3 @@
-USE [4StuDB];
-
 CREATE TABLE CustomerManagement (
   CustomerID INT NOT NULL IDENTITY(1,1),
   email VARCHAR(50) NOT NULL,
@@ -7,7 +5,7 @@ CREATE TABLE CustomerManagement (
   firstName VARCHAR(50) NOT NULL,
   lastName VARCHAR(50) NOT NULL,
   phone VARCHAR(20),
-  Avatar VARCHAR(255) NULL DEFAULT 'https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w',
+  Avatar VARCHAR(MAX) NULL DEFAULT 'https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2Favatar-nobita.png?alt=media&token=b7b03285-7690-47ef-b1ac-44a33e4179e5&_gl=1*1rvt5ir*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM4NzcuNDEuMC4w',
   dob VARCHAR(50),
   sex BIT,
   Status VARCHAR(20) DEFAULT 'Active' NULL,
@@ -37,4 +35,5 @@ VALUES
 ('lethir@gmail.com', '123456', 'Le', 'Thi R', '0123456789', '2003-02-10', 1),
 ('tranthanhs@gmail.com', '123456', 'Tran', 'Thanh S', '0123456789', '2004-09-25', 0),
 ('nguyenvant@gmail.com', '123456', 'Nguyen', 'Van T', '0123456789', '2005-06-14', 1),
-('user1@gmail.com', '123456', 'u', 'ser1', '0123456789', '2003-01-01', 1);
+('user1@gmail.com', '123456', 'u', 'ser1', '0123456789', '2003-01-01', 1),
+('admin1@gmail.com', '123456', 'a', 'min1', '111111111', '2003-01-01', 1);

@@ -519,11 +519,13 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   margin-right: 10px;
   /* max-width: 40px; */
   height: auto;
+  font-weight: 600;
 }
 
 .user-list div {
   display: flex;
   align-items: center;
+  min-height: 46px;
 }
 
 /*==================== HERO ====================*/

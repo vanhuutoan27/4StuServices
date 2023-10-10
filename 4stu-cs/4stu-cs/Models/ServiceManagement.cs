@@ -15,13 +15,13 @@ public partial class ServiceManagement
 
     public string Price { get; set; } = null!;
 
-    public int? FeedbackId { get; set; }
-
-    public int? OrderId { get; set; }
-
     public string Tag { get; set; } = null!;
 
     public string? Status { get; set; }
 
     public string? Image { get; set; }
+
+    public string? LongImage { get; set; }
+
+    public decimal? Rating { get; set; }
 }

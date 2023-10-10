@@ -33,15 +33,14 @@ public partial class _4stuDbContext : DbContext
     {
         modelBuilder.Entity<CustomerManagement>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B8BC5E182F");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B8F2D05451");
 
             entity.ToTable("CustomerManagement");
 
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Avatar)
-                .HasMaxLength(255)
                 .IsUnicode(false)
-                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2Favatar-nobita.png?alt=media&token=b7b03285-7690-47ef-b1ac-44a33e4179e5&_gl=1*1rvt5ir*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM4NzcuNDEuMC4w')");
             entity.Property(e => e.DateCreated)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("date")
@@ -79,11 +78,14 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<OrderManagement>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCF64919F44");
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFD88548EE");
 
             entity.ToTable("OrderManagement");
 
             entity.Property(e => e.Address).HasColumnType("text");
+            entity.Property(e => e.CustomerName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.DateCompleted)
                 .HasColumnType("date")
                 .HasColumnName("dateCompleted");
@@ -94,7 +96,6 @@ public partial class _4stuDbContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Item).HasColumnType("text");
             entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -104,6 +105,9 @@ public partial class _4stuDbContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Price)
                 .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.ServiceName)
+                .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
@@ -146,15 +150,17 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<PackageServiceManagement>(entity =>
         {
-            entity.HasKey(e => e.PackageServiceId).HasName("PK__PackageS__5EAFC21048985BFD");
+            entity.HasKey(e => e.PackageServiceId).HasName("PK__PackageS__5EAFC2106AA6997E");
 
             entity.ToTable("PackageServiceManagement");
 
             entity.Property(e => e.PackageServiceId).HasColumnName("PackageServiceID");
             entity.Property(e => e.Image)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
+            entity.Property(e => e.LongImage)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo%20(320%20x%20160%20px).png?alt=media&token=e63499fb-1d54-498e-9687-103ab9f255bc&_gl=1*2scf3l*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM2MDQuMjIuMC4w')");
             entity.Property(e => e.PackageServiceDesc).HasColumnType("text");
             entity.Property(e => e.PackageServiceName)
                 .HasMaxLength(50)
@@ -162,6 +168,7 @@ public partial class _4stuDbContext : DbContext
             entity.Property(e => e.Price)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+            entity.Property(e => e.Rating).HasColumnType("decimal(2, 1)");
             entity.Property(e => e.RepetitionCycle)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -176,20 +183,21 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<ServiceManagement>(entity =>
         {
-            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA7BDE3D91");
+            entity.HasKey(e => e.ServiceId).HasName("PK__ServiceM__C51BB0EA1EF49DE5");
 
             entity.ToTable("ServiceManagement");
 
             entity.Property(e => e.ServiceId).HasColumnName("ServiceID");
-            entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
             entity.Property(e => e.Image)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo.png?alt=media&token=2736aeb6-4735-4890-a257-9ef1a0593566&_gl=1*1e16zej*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5NjM0Mzg5OC4xMi4xLjE2OTYzNDM5NDUuMTMuMC4w')");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.LongImage)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2F4Stu-Logo%20(320%20x%20160%20px).png?alt=media&token=e63499fb-1d54-498e-9687-103ab9f255bc&_gl=1*2scf3l*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM2MDQuMjIuMC4w')");
             entity.Property(e => e.Price)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+            entity.Property(e => e.Rating).HasColumnType("decimal(2, 1)");
             entity.Property(e => e.ServiceDesc).HasColumnType("text");
             entity.Property(e => e.ServiceName)
                 .HasMaxLength(50)

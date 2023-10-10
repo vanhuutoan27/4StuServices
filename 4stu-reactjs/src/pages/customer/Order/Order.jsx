@@ -24,6 +24,20 @@ function Order() {
   const [hasSession, setHasSession] = useState(session.user != null);
   const [isAccountSectionVisible, setIsAccountSectionVisible] = useState(!hasSession);
 
+  const selectedService = JSON.parse(localStorage.getItem('selectedService'));
+  const subTotalString = selectedService.price;
+  const subTotalWithoutCurrency = subTotalString.replace(/\D/g, '');
+  const subTotal = parseFloat(subTotalWithoutCurrency);
+  const tax = 15000;
+  const total = subTotal + tax;
+
+  const formatPriceWithDot = (price) => {
+    if (!isNaN(price)) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return price;
+  };
+
   useEffect(() => {
     const accessToken = Cookies.get('accessToken');
     if (accessToken) {
@@ -351,9 +365,9 @@ function Order() {
                   <Form.Label>Payment Content</Form.Label>
                   <Form.Control
                     type="text"
-                    value={`${session.user?.firstName || ''} ${session.user?.lastName || ''} - ${
-                      session.user?.phone || ''
-                    } - ${randomCode}`}
+                    value={`${session.user?.firstName.toUpperCase() || ''} ${
+                      session.user?.lastName.toUpperCase() || ''
+                    } - ${session.user?.phone || ''} - ${randomCode}`}
                     readOnly
                   />
                 </Form.Group>
@@ -363,34 +377,40 @@ function Order() {
           )}
 
           <div className="btn-next-action">
-            <Link to="/service">Cancel Order</Link>
-            <button type="button" className="btn" onClick={handleSubmitOrder}>
-              Done
-            </button>
+            {!isAccountSectionVisible && <Link to="/service">Cancel Order</Link>}
+            {!isAccountSectionVisible && (
+              <button type="button" className="btn" onClick={handleSubmitOrder}>
+                Done
+              </button>
+            )}
           </div>
         </div>
 
         <div className="order-section">
           <h2>Order Summary</h2>
-          <img src="../assets/images/4Stu-Logo.svg" alt="Image Order" />
-          <p>Nguyen Tan Loc</p>
-          <h3>50.000VND</h3>
+          {selectedService && (
+            <>
+              <img src={selectedService.longImage} alt={selectedService.serviceName} />
+              <p>{selectedService.serviceName}</p>
+              <h3>{formatPriceWithDot(selectedService.price)} VND</h3>
+            </>
+          )}
           <div className="price-content">
             <div className="discount-section">
               <Form.Control type="text" placeholder="Discount Code" />
-              <a href="" className="btn">
+              <a href="#!" className="btn">
                 Apply
               </a>
             </div>
 
             <div className="sub-total">
               <p>Sub Total</p>
-              <p>45.000 VND</p>
+              <p>{formatPriceWithDot(subTotal)} VND</p>
             </div>
 
             <div className="tax">
               <p>Tax</p>
-              <p>5.000 VND</p>
+              <p>{formatPriceWithDot(tax)} VND</p>
             </div>
 
             <div className="shipping">
@@ -400,7 +420,7 @@ function Order() {
 
             <div className="total">
               <p>Total</p>
-              <p>50.000 VND</p>
+              <p>{formatPriceWithDot(total)} VND</p>
             </div>
           </div>
         </div>

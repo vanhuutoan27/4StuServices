@@ -3,15 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import thư viện js-cookie
+import { Link } from 'react-router-dom';
 
-import './Service.css';
 import Navigation from '../../../components/Navigation';
 import Footer from '../../../components/Footer';
+import './Service.css';
 
 function Service() {
   const [allServices, setAllServices] = useState([]);
   const [allPackageServices, setAllPackageServices] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleOrderClick = (service) => {
+    localStorage.setItem('selectedService', JSON.stringify(service));
+    window.scrollTo(0, 0);
+  };
 
   useEffect(() => {
     axios
@@ -63,16 +70,13 @@ function Service() {
               />
             ))}
           </div>
-
-          {loggedIn ? (
-            <a href="/order" className="btn">
-              Order Now
-            </a>
-          ) : (
-            <a href="/order" className="btn">
-              Order Now
-            </a>
-          )}
+          <Link
+            to={`/order?serviceName=${service.serviceName}&price=${service.price}&image=${service.longImage}`}
+            className="btn"
+            onClick={() => handleOrderClick(service)}
+          >
+            Order Now
+          </Link>
         </div>
       </div>
     ));
@@ -85,15 +89,9 @@ function Service() {
 
         <h3>{packageService.packageServiceName}</h3>
         <p>{packageService.packageServiceDesc}</p>
-        {loggedIn ? (
-          <a href="/order-shipping" className="btn">
-            Order Now
-          </a>
-        ) : (
-          <a href="/order-account" className="btn">
-            Order Now
-          </a>
-        )}
+        <a href="/order-shipping" className="btn">
+          Order Now
+        </a>
       </div>
     ));
   };
@@ -106,24 +104,22 @@ function Service() {
           <div className="main">
             <div className="men_text">
               <h1>Choose Your </h1>
-              <span>Service Package</span>
+              <h2>Service Package</h2>
+              <p>
+                We're delighted to introduce our specialized software system designed to provide
+                high-quality service packages for student apartments. Our commitment is to bring
+                convenience and time-saving solutions to your student community through perfect
+                daily life services.
+              </p>
+              <a className="btn" href="#order-now">
+                Order Now
+              </a>
             </div>
 
             <div className="main_image">
               <img src="../assets/manypixels/hero-employee-b.svg" alt="" />
             </div>
           </div>
-
-          <p>
-            We're delighted to introduce our specialized software system designed to provide
-            high-quality service packages for student apartments. Our commitment is to bring
-            convenience and time-saving solutions to your student community through perfect daily
-            life services.
-          </p>
-
-          <a className="btn" href="#order-now">
-            Order Now
-          </a>
         </div>
       </div>
 
@@ -274,12 +270,6 @@ function Service() {
             <div className="info">
               <h2 className="name">Staff</h2>
               <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-              <div className="team_icon">
-                <i className="fa-brands fa-facebook-f"></i>
-                <i className="fa-brands fa-twitter"></i>
-                <i className="fa-brands fa-instagram"></i>
-              </div>
             </div>
           </div>
 
@@ -289,12 +279,6 @@ function Service() {
             <div className="info">
               <h2 className="name">Staff</h2>
               <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-              <div className="team_icon">
-                <i className="fa-brands fa-facebook-f"></i>
-                <i className="fa-brands fa-twitter"></i>
-                <i className="fa-brands fa-instagram"></i>
-              </div>
             </div>
           </div>
 
@@ -304,12 +288,6 @@ function Service() {
             <div className="info">
               <h2 className="name">Staff</h2>
               <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-              <div className="team_icon">
-                <i className="fa-brands fa-facebook-f"></i>
-                <i className="fa-brands fa-twitter"></i>
-                <i className="fa-brands fa-instagram"></i>
-              </div>
             </div>
           </div>
 
@@ -319,12 +297,6 @@ function Service() {
             <div className="info">
               <h2 className="name">Staff</h2>
               <p className="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-
-              <div className="team_icon">
-                <i className="fa-brands fa-facebook-f"></i>
-                <i className="fa-brands fa-twitter"></i>
-                <i className="fa-brands fa-instagram"></i>
-              </div>
             </div>
           </div>
         </div>

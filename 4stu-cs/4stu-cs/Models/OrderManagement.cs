@@ -13,6 +13,8 @@ public partial class OrderManagement
 
     public int CustomerId { get; set; }
 
+    public string CustomerName { get; set; } = null!;
+
     public string Email { get; set; } = null!;
 
     public string Phone { get; set; } = null!;
@@ -23,7 +25,9 @@ public partial class OrderManagement
 
     public string PaymentMethod { get; set; } = null!;
 
-    public string Item { get; set; } = null!;
+    public int ServiceId { get; set; }
+
+    public string ServiceName { get; set; } = null!;
 
     public string? Status { get; set; }
 
