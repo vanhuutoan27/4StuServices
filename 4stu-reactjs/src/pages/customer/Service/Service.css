@@ -108,12 +108,12 @@
 
 /*Menu*/
 .filled-star {
-  color: var(--primary-color-1); /* or any color you want for filled stars */
+  color: var(--primary-color-1);
   cursor: pointer;
 }
 
 .outline-star {
-  color: var(--primary-color-4); /* or any color you want for outline stars */
+  color: var(--primary-color-4);
 }
 
 .menu {

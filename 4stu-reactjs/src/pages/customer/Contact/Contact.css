@@ -3,6 +3,13 @@
   height: 100vh;
 }
 
+.ContactPage .btn {
+  &:active {
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
+  }
+}
+
 .custom-icon-contact {
   color: #fff;
 }

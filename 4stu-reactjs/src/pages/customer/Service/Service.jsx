@@ -23,7 +23,13 @@ function Service() {
   useEffect(() => {
     axios
       .get('https://localhost:7088/api/ServiceManagements')
-      .then((response) => setAllServices(response.data))
+      .then((response) => {
+        const servicesWithRating = response.data.map((service) => ({
+          ...service,
+          rating: service.rating,
+        }));
+        setAllServices(servicesWithRating);
+      })
       .catch((error) => console.log(error));
 
     axios
@@ -45,9 +51,17 @@ function Service() {
     return price;
   };
 
-  const getRandomRating = () => {
-    return Math.random() < 0.5 ? 4 : 5;
-  };
+  function renderStars(rating) {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < Math.ceil(rating)) {
+        stars.push(<FontAwesomeIcon key={i} icon={faStar} className="filled-star" />);
+      } else {
+        stars.push(<FontAwesomeIcon key={i} icon={faStar} className="outline-star" />);
+      }
+    }
+    return stars;
+  }
 
   const renderService = (services) => {
     return services.map((service, index) => (
@@ -61,15 +75,7 @@ function Service() {
             <a href="#">{service.serviceName}</a>
           </h2>
           <h3>{formatPriceWithDot(service.price)} VND</h3>
-          <div className="menu_icon">
-            {Array.from({ length: 5 }, (_, i) => (
-              <FontAwesomeIcon
-                key={i}
-                icon={faStar}
-                className={i < getRandomRating() ? 'filled-star' : 'outline-star'}
-              />
-            ))}
-          </div>
+          <div className="menu_icon">{renderStars(service.rating)}</div>
           <Link
             to={`/order?serviceName=${service.serviceName}&price=${service.price}&image=${service.longImage}`}
             className="btn"
