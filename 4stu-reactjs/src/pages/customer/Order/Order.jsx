@@ -105,6 +105,8 @@ function Order() {
 
           setHasSession(true);
           setIsAccountSectionVisible(false);
+
+          window.location.reload();
         })
         .catch((error) => {
           setLoginError('Invalid email or password. Please try again.');
@@ -153,19 +155,37 @@ function Order() {
         email: hasSession ? session.user.email : '',
         phone: values.phoneNumber,
         address: values.address,
+        serviceId: selectedService.serviceId,
+        serviceName: selectedService.serviceName,
+        price: total.toString(),
         note: values.note,
         paymentMethod: selectedPaymentMethod,
       };
 
       axios
-        .post('https://localhost:7088/api/OrderManagementTests', orderData)
+        .post('https://localhost:7088/api/OrderManagements', orderData)
         .then((response) => {
           console.log(response.data);
-          alert('Order successfully!');
+          console.log('Order Data:', orderData);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Order Successful!',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            window.location.href = '';
+          });
         })
         .catch((error) => {
           console.log(error);
-          alert('Order failed!');
+          console.log('Order Data:', orderData);
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Order failed!',
+            text: 'Failed to place your order! Please try again.',
+          });
         });
     },
   });

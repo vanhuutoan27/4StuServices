@@ -224,6 +224,11 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   background-color: var(--primary-color-1) !important;
   color: var(--primary-color-2) !important;
   border-radius: 8px !important;
+  font-weight: 700 !important;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+  font-size: 1.3em !important;
 }
 
 /* SCROLLBAR */
