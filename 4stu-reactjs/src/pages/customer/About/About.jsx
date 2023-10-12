@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './About.css';
-import Navigation from '../../../components/Navigation';
-import Footer from '../../../components/Footer';
+import Navigation from '../../../components/Navigation.jsx';
+import Footer from '../../../components/Footer.jsx';
 
 function About() {
   return (
