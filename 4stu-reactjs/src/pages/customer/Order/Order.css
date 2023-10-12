@@ -203,6 +203,10 @@
 .btn-next-action a:first-child {
   margin-left: auto;
   line-height: 60px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .btn-action .btn,

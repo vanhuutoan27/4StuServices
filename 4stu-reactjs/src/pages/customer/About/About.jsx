@@ -1,14 +1,14 @@
 import React from 'react';
 
 import './About.css';
-import Navigation from '../../../components/Navigation';
-import Footer from '../../../components/Footer';
+// import Navigation from '../../../components/Navigation';
+// import Footer from '../../../components/Footer';
 
 function About() {
   return (
     <div className="AboutPage">
-      <Navigation />
-      <Footer />
+      {/* <Navigation />
+      <Footer /> */}
     </div>
   );
 }
