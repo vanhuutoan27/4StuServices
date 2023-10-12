@@ -9,9 +9,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import './Home.css';
-import Navigation from '../../../components/Navigation.jsx';
-import Hero from '../../../components/Hero.jsx';
-import Footer from '../../../components/Footer.jsx';
+import Navigation from '../../../components/Navigation';
+import Hero from '../../../components/Hero';
+import Footer from '../../../components/Footer';
 
 function Home() {
   const [customerCount, setCustomerCount] = useState('100,000+');

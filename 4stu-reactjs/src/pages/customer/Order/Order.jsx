@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import { Session } from '../../../App';
 import Swal from 'sweetalert2';
 
-import Navigation from '../../../components/Navigation.jsx';
-import Footer from '../../../components/Footer.jsx';
+import Navigation from '../../../components/Navigation';
+import Footer from '../../../components/Footer';
 import './Order.css';
 
 function Order() {

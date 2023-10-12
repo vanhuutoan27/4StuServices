@@ -5,8 +5,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie'; // Import thư viện js-cookie
 import { Link } from 'react-router-dom';
 
-import Navigation from '../../../components/Navigation.jsx';
-import Footer from '../../../components/Footer.jsx';
+import Navigation from '../../../components/Navigation';
+import Footer from '../../../components/Footer';
 import './Service.css';
 
 function Service() {

@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import './Contact.css';
-import Navigation from '../../../components/Navigation.jsx';
-import Footer from '../../../components/Footer.jsx';
+import Navigation from '../../../components/Navigation';
+import Footer from '../../../components/Footer';
 
 function Contact() {
   return (
