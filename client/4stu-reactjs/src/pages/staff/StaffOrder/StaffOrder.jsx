@@ -40,8 +40,6 @@ function StaffOrder() {
       .catch((error) => console.log(error));
   }, []);
 
-  const isStaffLoggedIn = user.email === staffEmail;
-
   const handleViewOrderDetailClick = (order) => {
     setSelectedOrder(order);
     setOrderDetailModalVisible(true);
@@ -75,7 +73,7 @@ function StaffOrder() {
               <tr>
                 <th>ID</th>
                 <th>Date Created</th>
-                <th>Service Name</th>
+                <th>Service</th>
                 <th>Address</th>
                 <th>Status</th>
                 <th>Action</th>
