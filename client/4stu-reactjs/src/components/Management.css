@@ -26,7 +26,6 @@
   }
 
   .admin-btn-action.view {
-    padding: 8px 36px;
     background-color: #fce09b;
 
     &:active {
@@ -57,12 +56,25 @@
   }
 
   .admin-btn-action.view {
-    padding: 8px 36px;
     background-color: #fce09b;
 
     &:active {
       background-color: #fce09b;
     }
+  }
+}
+
+.order-management-content {
+  .table-widget th:nth-child(2) {
+    width: 120px;
+  }
+
+  .table-widget th:nth-child(3) {
+    width: 120px;
+  }
+
+  .table-widget th:nth-child(4) {
+    width: 120px;
   }
 }
 
@@ -75,6 +87,7 @@ button {
   border: none;
 }
 
+.order-management-content,
 .user-management-content,
 .service-management-content,
 .package-service-management-content,
@@ -309,6 +322,7 @@ button:active {
 .service-time {
   font-size: 1.4rem;
   text-transform: capitalize;
+  font-weight: 500;
 }
 
 .customer-name {

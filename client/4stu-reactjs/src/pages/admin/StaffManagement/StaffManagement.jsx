@@ -1,0 +1,155 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
+
+import AdminNavigation from '../../../components/AdminNavigation';
+import ViewStaff from './ViewStaff';
+
+import '../../../components/Management.css';
+
+function StaffManagement() {
+  const [allStaffs, setAllStaffs] = useState([]);
+  const [selectedStaff, setSelectedStaff] = useState(null);
+  const [updatingStaff, setUpdatingStaff] = useState(null);
+  const itemsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    axios
+      .get('https://localhost:7088/api/StaffManagements')
+      .then((response) => setAllStaffs(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleViewServiceClick = (staff) => {
+    setSelectedStaff(staff);
+  };
+
+  const handleUpdateServiceClick = (staff) => {
+    setUpdatingStaff(staff);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Hàm để định dạng ngày tháng năm
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedServices = allStaffs.slice(startIndex, endIndex);
+
+  return (
+    <div className="user-management-content">
+      <div className="admin-navbar">
+        <AdminNavigation />
+      </div>
+      <div className="table-content">
+        <div className="table-widget">
+          <caption>
+            <h2>All Staffs</h2>
+            <span className="table-row-count">({allStaffs.length} Staffs)</span>
+            {/* <CreateUser /> */}
+          </caption>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Full Name</th>
+                <th>Date Created</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayedServices.map((staff, index) => (
+                <tr key={index}>
+                  <td>
+                    <span className={`serviceID`}>
+                      S{staff.staffId < 10 ? '00' + staff.staffId : '0' + staff.staffId}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span className="customer-name">{staff.email}</span>
+                  </td>
+
+                  <td>
+                    <span className="service-name">{staff.phone}</span>
+                  </td>
+
+                  <td>
+                    <span className="service-price">
+                      {staff.firstName} {staff.lastName}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span className="service-time">{formatDate(staff.dateCreated)}</span>
+                  </td>
+
+                  <td>
+                    <span className="statuss">
+                      <span className={`status status--${staff.status}`}>{staff.status}</span>
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      className="admin-btn-action view btn"
+                      onClick={() => handleViewServiceClick(staff)}
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </button>
+                    <button
+                      className="admin-btn-action edit btn"
+                      onClick={() => handleUpdateServiceClick(staff)}
+                    >
+                      <FontAwesomeIcon icon={faPen} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan="10">
+                  <ul className="pagination">
+                    {Array.from(
+                      { length: Math.ceil(allStaffs.length / itemsPerPage) },
+                      (_, index) => (
+                        <li key={index}>
+                          <button
+                            onClick={() => handlePageChange(index + 1)}
+                            className={currentPage === index + 1 ? 'Admin' : ''}
+                          >
+                            {index + 1}
+                          </button>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      {selectedStaff && (
+        <ViewStaff selectedStaff={selectedStaff} onClose={() => setSelectedStaff(null)} />
+      )}
+    </div>
+  );
+}
+
+export default StaffManagement;

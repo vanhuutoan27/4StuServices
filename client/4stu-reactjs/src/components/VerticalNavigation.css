@@ -85,7 +85,7 @@
 .vertical-nav .vertical-name {
   color: #fff;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: normal;
   margin-top: -1px;
@@ -96,7 +96,7 @@
 .vertical-nav .vertical-mail {
   color: #ededed;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0;
   line-height: normal;
   position: relative;
@@ -146,12 +146,13 @@
 /* vertical BODY */
 .vertical-nav-body .frame-content {
   /* color: #000000; */
-  font-size: 14px;
+  font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
   position: relative;
   width: fit-content;
+  font-weight: 500;
 }
 
 .frame-selected {
@@ -235,10 +236,10 @@
 }
 
 .vertical-nav .frame-data {
-  background-color: #ededed;
+  background-color: #6499e9;
   color: var(--primary-color-4);
   /* color: rgba(17, 167, 92, 1); */
-
+  width: 30px;
   align-items: center;
   border-radius: 99px;
   display: inline-flex;
@@ -251,9 +252,6 @@
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
-  margin-top: -1px;
-  white-space: nowrap;
-  width: fit-content;
 }
 
 .vertical-nav .vertical-nav-footer.logout {

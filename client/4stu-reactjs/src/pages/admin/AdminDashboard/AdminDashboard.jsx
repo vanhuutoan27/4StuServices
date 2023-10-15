@@ -4,8 +4,10 @@ import AdminNavigation from '../../../components/AdminNavigation';
 
 function AdminDashboard() {
   return (
-    <div>
-      <AdminNavigation />
+    <div className="admin-dashboard">
+      <div className="admin-navbar">
+        <AdminNavigation />
+      </div>
     </div>
   );
 }
