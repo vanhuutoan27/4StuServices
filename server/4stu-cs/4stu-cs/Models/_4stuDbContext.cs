@@ -27,6 +27,8 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<StaffOrderManagement> StaffOrderManagements { get; set; }
 
+    public virtual DbSet<StaffOrderManagementTemp> StaffOrderManagementTemps { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=4StuDB;TrustServerCertificate=True");
@@ -251,9 +253,22 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<StaffOrderManagement>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__StaffOrd__C3905BAFA76CEE3B");
+            entity.HasKey(e => new { e.OrderId, e.StaffId }).HasName("PK__StaffOrd__AAFD1100A9A4BB4E");
 
             entity.ToTable("StaffOrderManagement");
+
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.StaffId).HasColumnName("StaffID");
+            entity.Property(e => e.DateShipping)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date");
+        });
+
+        modelBuilder.Entity<StaffOrderManagementTemp>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__StaffOrd__C3905BAFA76CEE3B");
+
+            entity.ToTable("StaffOrderManagementTemp");
 
             entity.Property(e => e.OrderId)
                 .ValueGeneratedNever()
@@ -263,7 +278,7 @@ public partial class _4stuDbContext : DbContext
                 .HasColumnType("date");
             entity.Property(e => e.StaffId).HasColumnName("StaffID");
 
-            entity.HasOne(d => d.Staff).WithMany(p => p.StaffOrderManagements)
+            entity.HasOne(d => d.Staff).WithMany(p => p.StaffOrderManagementTemps)
                 .HasForeignKey(d => d.StaffId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__StaffOrde__Staff__26CFC035");

@@ -226,6 +226,11 @@ button {
   color: #00000090;
 }
 
+.status--Processing {
+  background-color: #51ff0060;
+  color: #00000090;
+}
+
 .table-widget {
   min-height: 80px;
 }

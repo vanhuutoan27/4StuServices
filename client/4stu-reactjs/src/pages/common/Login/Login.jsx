@@ -25,7 +25,7 @@ function Login() {
   const formik = useFormik({
     //! Giá trị khởi tạo của form
     initialValues: {
-      email: 'admin1@gmail.com',
+      email: 'vanhuutoan@gmail.com',
       password: '123456',
     },
 

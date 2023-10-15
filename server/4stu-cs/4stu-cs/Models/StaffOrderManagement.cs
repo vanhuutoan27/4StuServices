@@ -10,6 +10,4 @@ public partial class StaffOrderManagement
     public int StaffId { get; set; }
 
     public DateTime? DateShipping { get; set; }
-
-    public virtual StaffManagement Staff { get; set; } = null!;
 }

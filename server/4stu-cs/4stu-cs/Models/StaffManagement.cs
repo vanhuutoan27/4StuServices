@@ -31,5 +31,5 @@ public partial class StaffManagement
 
     public string? Status { get; set; }
 
-    public virtual ICollection<StaffOrderManagement> StaffOrderManagements { get; set; } = new List<StaffOrderManagement>();
+    public virtual ICollection<StaffOrderManagementTemp> StaffOrderManagementTemps { get; set; } = new List<StaffOrderManagementTemp>();
 }
