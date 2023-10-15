@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { Session } from '../../../App';
 
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewOrder from './ViewOrder';
@@ -9,9 +10,11 @@ import ViewOrder from './ViewOrder';
 import '../../../components/Management.css';
 
 function StaffOrder() {
+  const session = useContext(Session);
+  const user = session.user;
   const [allOrders, setAllOrders] = useState([]);
-  const [allTasks, setAllTasks] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [staffEmail, setStaffEmail] = useState('');
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -26,10 +29,18 @@ function StaffOrder() {
       .catch((error) => console.log(error));
 
     axios
-      .put('https://localhost:7088/api/StaffManagements')
-      .then((response) => setAllTasks(response.data))
+      .get('https://localhost:7088/api/StaffManagements')
+      .then((response) => {
+        const staffData = response.data;
+        if (staffData.length > 0) {
+          setStaffEmail(staffData[0].email);
+          console.log('staffEmail:', staffData[0].email);
+        }
+      })
       .catch((error) => console.log(error));
   }, []);
+
+  const isStaffLoggedIn = user.email === staffEmail;
 
   const handleViewOrderDetailClick = (order) => {
     setSelectedOrder(order);
@@ -46,13 +57,6 @@ function StaffOrder() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     return `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
-  };
-
-  const formatPriceWithDot = (price) => {
-    if (!isNaN(price)) {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    }
-    return price;
   };
 
   return (
@@ -82,7 +86,7 @@ function StaffOrder() {
                 <tr key={index}>
                   <td>
                     <span className={`serviceID`}>
-                      O{order.serviceId < 10 ? '00' + order.serviceId : '0' + order.serviceId}
+                      O{order.serviceId < 10 ? '00' + order.orderId : '0' + order.orderId}
                     </span>
                   </td>
 

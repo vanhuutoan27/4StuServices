@@ -14,7 +14,7 @@ namespace _4stu_cs.Controllers
     public class StaffOrderManagementsController : ControllerBase
     {
         private readonly IConfiguration _config;
-        public StaffManagementsController(IConfiguration config)
+        public StaffOrderManagementsController(IConfiguration config)
         {
             _config = config;
         }
