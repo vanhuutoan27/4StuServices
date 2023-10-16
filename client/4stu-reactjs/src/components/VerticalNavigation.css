@@ -1,12 +1,12 @@
 .frame-selected {
-  color: var(--primary-color-2) !important;
+  color: #4859ca !important;
   border-color: var(--primary-color-4);
 }
 
 .frame-1:hover,
 .frame-2:hover {
   background-color: #ededed;
-  color: var(--primary-color-2) !important;
+  color: #4859ca !important;
 }
 
 .frame-1:active,
@@ -18,9 +18,10 @@
 
 .staff-nav,
 .admin-navbar {
-  background-color: var(--primary-color-2);
+  background-color: #4859ca;
   box-shadow: 15px 0px 5px rgba(0, 0, 0, 0.1);
   z-index: 99;
+  height: 100vh;
 }
 
 .vertical-nav {
@@ -31,7 +32,7 @@
   flex-direction: column;
   gap: 12px;
   /* justify-content: center; */
-  /* background-color: var(--primary-color-2); */
+  /* background-color: #4859ca; */
 
   overflow: hidden;
   padding: 16px;
@@ -52,6 +53,7 @@
   position: relative;
   width: 100%;
   padding: 12px 0;
+  margin-left: 12px;
 }
 
 .vertical-nav .vertical-account {
@@ -236,7 +238,7 @@
 }
 
 .vertical-nav .frame-data {
-  background-color: #6499e9;
+  background-color: var(--primary-color-1);
   color: var(--primary-color-4);
   /* color: rgba(17, 167, 92, 1); */
   width: 30px;
@@ -266,7 +268,6 @@
   position: relative;
   padding: 12px;
   width: 100%;
-  margin-top: 12px;
   transition: 0.2s ease-in-out;
 
   &:hover {
@@ -281,4 +282,8 @@
 
 .frame-2.frame-selected > div:last-of-type {
   display: none;
+}
+
+.custom-icon-nav {
+  padding: 0 16px 0 8px;
 }
