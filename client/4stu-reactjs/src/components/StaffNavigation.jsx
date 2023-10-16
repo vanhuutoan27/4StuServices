@@ -124,7 +124,7 @@ function StaffNavigation() {
 
             {/* FOOTER */}
             <a href="/">
-              <div className="frame-1 home">
+              <div className="frame-1">
                 <div className="frame-content">
                   <FontAwesomeIcon icon={faHouse} className="custom-icon-nav" /> Home
                 </div>

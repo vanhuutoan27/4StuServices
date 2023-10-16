@@ -84,7 +84,7 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<OrderManagement>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCF1B9BFE6D");
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFE6E150C0");
 
             entity.ToTable("OrderManagement");
 
@@ -253,35 +253,33 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<StaffOrderManagement>(entity =>
         {
-            entity.HasKey(e => new { e.OrderId, e.StaffId }).HasName("PK__StaffOrd__AAFD1100A9A4BB4E");
+            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D12A5462F3");
 
             entity.ToTable("StaffOrderManagement");
 
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.StaffId).HasColumnName("StaffID");
+            entity.Property(e => e.TaskId).HasColumnName("TaskID");
             entity.Property(e => e.DateShipping)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("date");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.StaffId).HasColumnName("StaffID");
+            entity.Property(e => e.TaskTitle)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<StaffOrderManagementTemp>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__StaffOrd__C3905BAFA76CEE3B");
+            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D16437A5F3");
 
             entity.ToTable("StaffOrderManagementTemp");
 
-            entity.Property(e => e.OrderId)
-                .ValueGeneratedNever()
-                .HasColumnName("OrderID");
+            entity.Property(e => e.TaskId).HasColumnName("TaskID");
             entity.Property(e => e.DateShipping)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("date");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.StaffId).HasColumnName("StaffID");
-
-            entity.HasOne(d => d.Staff).WithMany(p => p.StaffOrderManagementTemps)
-                .HasForeignKey(d => d.StaffId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__StaffOrde__Staff__26CFC035");
         });
 
         OnModelCreatingPartial(modelBuilder);

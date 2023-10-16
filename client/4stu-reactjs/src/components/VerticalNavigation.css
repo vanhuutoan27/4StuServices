@@ -26,14 +26,10 @@
 
 .vertical-nav {
   align-items: center;
-  /* background-color: #ffffff; */
   border-radius: 0px 0px 13px 13px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  /* justify-content: center; */
-  /* background-color: #4859ca; */
-
+  gap: 4px;
   overflow: hidden;
   padding: 16px;
   position: relative;
@@ -128,7 +124,7 @@
   height: 2px;
   margin-left: -16px;
   margin-right: -16px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   position: relative;
   width: 350px;
 }
@@ -145,9 +141,7 @@
   width: 100%;
 }
 
-/* vertical BODY */
 .vertical-nav-body .frame-content {
-  /* color: #000000; */
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -240,7 +234,6 @@
 .vertical-nav .frame-data {
   background-color: var(--primary-color-1);
   color: var(--primary-color-4);
-  /* color: rgba(17, 167, 92, 1); */
   width: 30px;
   align-items: center;
   border-radius: 99px;

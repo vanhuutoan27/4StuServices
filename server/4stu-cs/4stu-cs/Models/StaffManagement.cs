@@ -30,6 +30,4 @@ public partial class StaffManagement
     public double? AverageRating { get; set; }
 
     public string? Status { get; set; }
-
-    public virtual ICollection<StaffOrderManagementTemp> StaffOrderManagementTemps { get; set; } = new List<StaffOrderManagementTemp>();
 }

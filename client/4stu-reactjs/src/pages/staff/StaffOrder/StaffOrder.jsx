@@ -7,6 +7,7 @@ import { Session } from '../../../App';
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewOrder from './ViewOrder';
 
+import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
 
 function StaffOrder() {
@@ -47,14 +48,6 @@ function StaffOrder() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${day < 10 ? '0' : ''}${day}/${month < 10 ? '0' : ''}${month}/${year}`;
   };
 
   return (

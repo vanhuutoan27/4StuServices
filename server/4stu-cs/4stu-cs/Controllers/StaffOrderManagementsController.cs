@@ -55,7 +55,7 @@ namespace _4stu_cs.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStaffOrderManagement(int id, StaffOrderManagement staffOrderManagement)
         {
-            if (id != staffOrderManagement.OrderId)
+            if (id != staffOrderManagement.TaskId)
             {
                 return BadRequest();
             }
@@ -91,23 +91,9 @@ namespace _4stu_cs.Controllers
               return Problem("Entity set '_4stuDbContext.StaffOrderManagements'  is null.");
           }
             _context.StaffOrderManagements.Add(staffOrderManagement);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (StaffOrderManagementExists(staffOrderManagement.OrderId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStaffOrderManagement", new { id = staffOrderManagement.OrderId }, staffOrderManagement);
+            return CreatedAtAction("GetStaffOrderManagement", new { id = staffOrderManagement.TaskId }, staffOrderManagement);
         }
 
         // DELETE: api/StaffOrderManagements/5
@@ -132,7 +118,7 @@ namespace _4stu_cs.Controllers
 
         private bool StaffOrderManagementExists(int id)
         {
-            return (_context.StaffOrderManagements?.Any(e => e.OrderId == id)).GetValueOrDefault();
+            return (_context.StaffOrderManagements?.Any(e => e.TaskId == id)).GetValueOrDefault();
         }
     }
 }

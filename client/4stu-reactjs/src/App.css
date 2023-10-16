@@ -211,6 +211,10 @@ a {
     background-color: var(--primary-color-1);
     color: var(--primary-color-2);
   } */
+
+  &:active {
+    text-decoration: none;
+  }
 }
 
 div:where(.swal2-container).swal2-center > .swal2-popup {
