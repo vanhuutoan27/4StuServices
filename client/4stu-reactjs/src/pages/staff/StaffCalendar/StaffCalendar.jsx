@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Session } from '../../../App';
 
 import StaffNavigation from '../../../components/StaffNavigation';
-import ViewTask from '../StaffTask/ViewTask';
+import ViewCalendar from './ViewCalendar';
 
 import './StaffCalendar.css';
 
@@ -19,7 +19,7 @@ function StaffCalendar() {
   const [eventsData, setEventsData] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isTaskDetailModalVisible, setTaskDetailModalVisible] = useState(false);
-  const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -49,15 +49,20 @@ function StaffCalendar() {
               );
               const order = orderResponse.data;
 
+              if (order.status === 'Completed') {
+                continue;
+              }
+
               const newEvent = {
                 title: order.serviceName,
                 start: new Date(dateShipping),
                 end: new Date(dateShipping),
+                orderInfo: order,
               };
 
               newEventsData.push(newEvent);
             } else {
-              const taskTitle = staffOrder.taskTitle; // Lấy taskTitle từ staffOrder
+              const taskTitle = staffOrder.taskTitle;
               const newEvent = {
                 title: taskTitle,
                 start: new Date(dateShipping),
@@ -102,8 +107,9 @@ function StaffCalendar() {
 
             const newEvent = {
               title: order.serviceName,
-              start,
-              end,
+              start: moment(start).add(7, 'hours').toDate(),
+              end: end,
+              orderInfo: order,
             };
 
             try {
@@ -122,8 +128,8 @@ function StaffCalendar() {
           } else {
             const newEvent = {
               title: taskTitle,
-              start,
-              end,
+              start: moment(start).add(7, 'hours').toDate(),
+              end: end,
             };
 
             try {
@@ -150,9 +156,14 @@ function StaffCalendar() {
     }
   };
 
-  const handleViewTaskDetailClick = (task) => {
-    setSelectedTask(task.task);
+  const handleViewTaskDetailClick = (event) => {
+    setSelectedEvent(event);
     setTaskDetailModalVisible(true);
+  };
+
+  const handleCloseTaskDetailModal = () => {
+    setSelectedEvent(null);
+    setTaskDetailModalVisible(false);
   };
 
   return (
@@ -175,9 +186,7 @@ function StaffCalendar() {
         />
       </div>
 
-      {isTaskDetailModalVisible && (
-        <ViewTask selectedTask={selectedTask} onClose={() => setTaskDetailModalVisible(false)} />
-      )}
+      {selectedEvent && <ViewCalendar task={selectedEvent} onClose={handleCloseTaskDetailModal} />}
     </div>
   );
 }

@@ -27,8 +27,6 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<StaffOrderManagement> StaffOrderManagements { get; set; }
 
-    public virtual DbSet<StaffOrderManagementTemp> StaffOrderManagementTemps { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=4StuDB;TrustServerCertificate=True");
@@ -253,33 +251,19 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<StaffOrderManagement>(entity =>
         {
-            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D12A5462F3");
+            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D1927EFA2A");
 
             entity.ToTable("StaffOrderManagement");
 
             entity.Property(e => e.TaskId).HasColumnName("TaskID");
             entity.Property(e => e.DateShipping)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnType("date");
+                .HasColumnType("datetime");
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.StaffId).HasColumnName("StaffID");
             entity.Property(e => e.TaskTitle)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<StaffOrderManagementTemp>(entity =>
-        {
-            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D16437A5F3");
-
-            entity.ToTable("StaffOrderManagementTemp");
-
-            entity.Property(e => e.TaskId).HasColumnName("TaskID");
-            entity.Property(e => e.DateShipping)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("date");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.StaffId).HasColumnName("StaffID");
         });
 
         OnModelCreatingPartial(modelBuilder);

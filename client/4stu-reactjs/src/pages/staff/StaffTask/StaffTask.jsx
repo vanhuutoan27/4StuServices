@@ -9,6 +9,7 @@ import ViewTask from './ViewTask';
 
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
+
 function StaffTask() {
   const session = useContext(Session);
   const user = session.user;

@@ -3,6 +3,6 @@ CREATE TABLE StaffOrderManagement (
   TaskTitle VARCHAR(50),
   OrderID INT,
   StaffID INT,
-  DateShipping DATE DEFAULT GETDATE()
+  DateShipping DATETIME DEFAULT GETDATE()
   PRIMARY KEY (TaskID),
 );
