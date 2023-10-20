@@ -9,19 +9,36 @@
 .banner-title h2{
     font-size: 30px;
     font-weight: bold;
-    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
 }
-.aboutus-infor-detail h2{
+.aboutus-infor-detail{
+  display: flex;
+  gap: 60px;
+}
+.title-aboutus{
+  text-align: justify;
+}
+.title-aboutus span{
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  
+}
+.aboutus-infor-detail img{
+  width: 90%;
+}
+.about{
     font-size: 32px;
-    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     margin-bottom: 45px;
     margin-top: 73px;
+    text-align: center;
 }
 .title-aboutus {
     line-height: 30px;
-    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
 .contactus{
@@ -37,7 +54,7 @@
 }
 .contactus .contact-title h1, .contact-for-title{
     color: white;
-    font-family: UberMove, UberMoveText, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .contactus .contact-title h1{
     font-size: 32px;
@@ -160,12 +177,15 @@
   display: flex;
   /* margin-top: 60px; */
   padding: 64px;
+  text-align: justify;
 }
 .box img{
   margin-right: 40px;
   width: 520px;
   height: 300px;
   justify-content: center;
+}.right-title h3{
+  text-align: center;
 }
 .right-title{
   margin: auto;
@@ -175,17 +195,21 @@
   font-weight: bold;
   font-size: 20.8px;
   line-height: 24.96px;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-  Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: 'Poppins', sans-serif;
 }
 .right-title span{
   margin-top: 13px;
   font-size: 16px;
   text-align: left;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-  Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family:'Poppins', sans-serif;
+  line-height: 1.4;
+}
+.company-info h1{
+  text-align: center;
+  font-size: 36px;
+  margin: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
 }
 .company-info{
   margin-left: 39px;
@@ -208,7 +232,7 @@
   background-size: cover;
 }
 .company1{
-  background-image: url(/4stu-html-css-js/assets/img/about-ec-image-01-thumb.jpg);
+  background-image: url(../img/about-ec-image-01-thumb.jpg);
 }
 .content-title{
   padding: 10px;
@@ -218,4 +242,44 @@
 }
 .card a{
   padding: 10px;
+  text-decoration: underline;
+}
+.element-title h1{
+  font-size: 32px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin-bottom: 45px;
+  margin-top: 73px;
+  text-align: center;
+}
+.box-content{
+  display: flex;
+  width: 100%;
+  margin-right:auto;
+  margin-left: auto;
+}
+.box-for-title-img{
+  width: calc(100% / 4);
+  padding: 20px;
+  text-align: justify;
+}
+.box-for-title-img .img-for-title img{
+  width: 40px;
+}
+.box-for-title-img .img-for-title{
+  margin-bottom: 20px;
+}
+.box-title span{
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+.box-title p{
+  font-family: 'Poppins', sans-serif;
+  margin-top: 25px;
+  font-size: 16px;
+  text-align: left;
+  line-height: 19.2px;
+  letter-spacing: normal;
 }
