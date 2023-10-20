@@ -11,7 +11,9 @@ CREATE TABLE CustomerManagement (
   sex BIT,
   totalOrders INT DEFAULT 0 NULL,
   Status VARCHAR(20) DEFAULT 'Active' NULL,
+      Role VARCHAR(20) DEFAULT 'Customer', -- Staff or Admin ,
   PRIMARY KEY (CustomerID)
+
 );
 
 INSERT INTO CustomerManagement (email, password, firstName, lastName, phone, dob, sex)
@@ -38,4 +40,9 @@ VALUES
 ('nguyenvant@gmail.com', '123456', 'Nguyen', 'Van T', '0123456789', '2005-06-14', 1),
 ('user1@gmail.com', '123456', 'u', 'ser1', '0123456789', '2003-01-01', 1),
 ('admin1@gmail.com', '123456', 'a', 'min1', '0123456789', '2003-01-01', 1),
-('staff1@gmail.com', '123456', 's', 'taff1', '0123456789', '2003-01-01', 1);
+('staff1@gmail.com', '123456', 's', 'taff1', '0123456789', '2003-01-01', 1),
+
+('phta020503@gmail', '123456', 'Pham', 'hoang Thuy An', '0898132737', '2003-01-01', 1),
+('vhtoan27@gmail.com', '123456', 'Van', 'Huu Toan', '0792766979', '2003-01-01', 1),
+('nlocnguyen9@gmail.com', '123456', 'Nguyen', 'Tan Loc', '0965706048', '2003-01-01', 1),
+('saophadao1472@gmail.com', '123456', 'Pham', 'Hoai Duy', '0967588443', '2003-01-01', 1);
