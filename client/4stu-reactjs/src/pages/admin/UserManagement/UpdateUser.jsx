@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { storage } from '../../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import axios from 'axios';
 
+import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 
 function UpdateUser({ selectedUser, onClose }) {
@@ -17,10 +17,7 @@ function UpdateUser({ selectedUser, onClose }) {
     setIsLoading(true);
 
     try {
-      await axios.put(
-        `https://localhost:7088/api/CustomerManagements/${updatedUser.customerId}`,
-        updatedUser
-      );
+      await axios.put(`/CustomerManagements/${updatedUser.customerId}`, updatedUser);
       alert('User updated successfully');
       onClose();
       window.location.reload();

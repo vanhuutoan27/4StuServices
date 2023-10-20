@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import { Session } from '../../../App';
 
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewOrder from './ViewOrder';
 
+import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
 
@@ -14,23 +14,30 @@ function StaffOrder() {
   const session = useContext(Session);
   const user = session.user;
   const [allOrders, setAllOrders] = useState([]);
+  const [completedOrders, setCompletedOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [staffEmail, setStaffEmail] = useState('');
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayedOrders = allOrders.slice(startIndex, endIndex);
+  const displayedOrders = completedOrders.slice(startIndex, endIndex);
   const [isOrderDetailModalVisible, setOrderDetailModalVisible] = useState(false);
 
   useEffect(() => {
     axios
-      .get('https://localhost:7088/api/OrderManagements')
-      .then((response) => setAllOrders(response.data))
+      .get('/OrderManagements')
+      .then((response) => {
+        const orders = response.data;
+        setAllOrders(orders);
+
+        const completedOrders = orders.filter((order) => order.status !== 'Completed');
+        setCompletedOrders(completedOrders);
+      })
       .catch((error) => console.log(error));
 
     axios
-      .get('https://localhost:7088/api/StaffManagements')
+      .get('/StaffManagements')
       .then((response) => {
         const staffData = response.data;
         if (staffData.length > 0) {
@@ -114,7 +121,7 @@ function StaffOrder() {
                 <td colSpan="10">
                   <ul className="pagination">
                     {Array.from(
-                      { length: Math.ceil(allOrders.length / itemsPerPage) },
+                      { length: Math.ceil(completedOrders.length / itemsPerPage) },
                       (_, index) => (
                         <li key={index}>
                           <button

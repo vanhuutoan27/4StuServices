@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import AdminNavigation from '../../../components/AdminNavigation';
 import ViewStaff from './ViewStaff';
 
+import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
 
@@ -18,7 +19,7 @@ function StaffManagement() {
 
   useEffect(() => {
     axios
-      .get('https://localhost:7088/api/StaffManagements')
+      .get('/StaffManagements')
       .then((response) => setAllStaffs(response.data))
       .catch((error) => console.log(error));
   }, []);

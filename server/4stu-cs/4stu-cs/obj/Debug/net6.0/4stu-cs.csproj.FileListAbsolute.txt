@@ -1210,3 +1210,7 @@ C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Debug\
 C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.pdb
 C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Debug\net6.0\4stu-cs.genruntimeconfig.cache
 C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Debug\net6.0\ref\4stu-cs.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\bin\Debug\net6.0\MailKit.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\bin\Debug\net6.0\BouncyCastle.Crypto.dll

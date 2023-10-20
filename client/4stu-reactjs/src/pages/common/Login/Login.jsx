@@ -3,12 +3,12 @@ import { Session } from '../../../App';
 import { GoogleSignIn } from '../../../components/Google';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
 
 import Button from '@mui/material/Button';
 
+import axios from '../../../config/axios';
 import './Login.css';
 
 function Login() {
@@ -39,7 +39,7 @@ function Login() {
     //! Cái hàm sẽ xử lý nhấn Submit
     onSubmit: (values) => {
       axios
-        .post('https://localhost:7088/api/CustomerManagements/Login', {
+        .post('/CustomerManagements/Login', {
           email: values.email,
           password: values.password,
         })
@@ -99,7 +99,7 @@ function Login() {
     //! Cái hàm sẽ xử lý nhấn Submit cho form đăng ký
     onSubmit: (values) => {
       axios
-        .post('https://localhost:7088/api/CustomerManagements/Register', {
+        .post('/CustomerManagements/Register', {
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,
