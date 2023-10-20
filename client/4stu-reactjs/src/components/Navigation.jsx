@@ -81,23 +81,49 @@ function Navigation() {
                       <img src={user.avatar} alt="" />
                     </div>
                     <ul className="sub-nav-user">
-                      <li>
-                        <a href="/admin-dashboard">Admin</a>
-                      </li>
-                      <li>
-                        <a href="/staff-profile">Staff</a>
-                      </li>
-                      <li>
-                        <a href="#">Profile</a>
-                      </li>
-                      <li>
-                        <a href="#">Order</a>
-                      </li>
-                      <li>
-                        <a href="#!" onClick={handleLogout}>
-                          Logout
-                        </a>
-                      </li>
+                      {user.role === 'Admin' && (
+                        <>
+                          <li>
+                            <a href="/admin-dashboard">Admin</a>
+                          </li>
+                          <li>
+                            <a href="/staff-profile">Staff</a>
+                          </li>
+                          <li>
+                            <a href="#">Profile</a>
+                          </li>
+                          <li>
+                            <a href="#">Order</a>
+                          </li>
+                        </>
+                      )}
+                      {user.role === 'Staff' && (
+                        <>
+                          <li>
+                            <a href="/staff-profile">Staff</a>
+                          </li>
+                          <li>
+                            <a href="#!" onClick={handleLogout}>
+                              Logout
+                            </a>
+                          </li>
+                        </>
+                      )}
+                      {user.role === 'Customer' && (
+                        <>
+                          <li>
+                            <a href="#">Profile</a>
+                          </li>
+                          <li>
+                            <a href="#">Order</a>
+                          </li>
+                          <li>
+                            <a href="#!" onClick={handleLogout}>
+                              Logout
+                            </a>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </li>
                 </ul>

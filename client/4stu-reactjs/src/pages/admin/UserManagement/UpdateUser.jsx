@@ -93,13 +93,55 @@ function UpdateUser({ selectedUser, onClose }) {
                   <Form.Label>ID</Form.Label>
                   <Form.Control
                     type="text"
-                    value={`C${
-                      updatedUser.userId < 10 ? '00' + updatedUser.userId : '0' + updatedUser.userId
+                    value={`${
+                      updatedUser.role === 'Admin' ? 'A' : updatedUser.role === 'Staff' ? 'S' : 'C'
+                    }${
+                      updatedUser.userId < 10
+                        ? '00' + updatedUser.userId
+                        : updatedUser.userId < 100
+                        ? '0' + updatedUser.userId
+                        : updatedUser.userId
                     }`}
                     readOnly
                   />
                 </Form.Group>
 
+                <Form.Group className="mb-3">
+                  <Form.Label>Status</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={updatedUser.status}
+                    onChange={(e) => setUpdatedUser({ ...updatedUser, status: e.target.value })}
+                    className="custom-select"
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </Form.Control>
+                </Form.Group>
+              </Col>
+
+              <Col sm={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Role</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={updatedUser.role}
+                    onChange={(e) => setUpdatedUser({ ...updatedUser, role: e.target.value })}
+                    className="custom-select"
+                  >
+                    <option value="Customer">Customer</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Admin">Admin</option>
+                  </Form.Control>
+                </Form.Group>
+
+                <Form.Group className="mb-3 form-date-created">
+                  <Form.Label>Date Created</Form.Label>
+                  <Form.Control type="text" value={formatDate(updatedUser.dateCreated)} readOnly />
+                </Form.Group>
+              </Col>
+
+              <Col sm={6}>
                 <Form.Group className="mb-3 form-firstname">
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
@@ -110,12 +152,7 @@ function UpdateUser({ selectedUser, onClose }) {
                 </Form.Group>
               </Col>
 
-              <Col sm={4}>
-                <Form.Group className="mb-3 form-date-created">
-                  <Form.Label>Date Created</Form.Label>
-                  <Form.Control type="text" value={formatDate(updatedUser.dateCreated)} readOnly />
-                </Form.Group>
-
+              <Col sm={6}>
                 <Form.Group className="mb-3 form-lastname">
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
@@ -150,17 +187,6 @@ function UpdateUser({ selectedUser, onClose }) {
 
               <Col sm={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Date of Birth</Form.Label>
-                  <Form.Control
-                    type="date"
-                    value={updatedUser.dob}
-                    onChange={(e) => setUpdatedUser({ ...updatedUser, dob: e.target.value })}
-                  />
-                </Form.Group>
-              </Col>
-
-              <Col sm={6}>
-                <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="text"
@@ -170,18 +196,14 @@ function UpdateUser({ selectedUser, onClose }) {
                 </Form.Group>
               </Col>
 
-              <Col>
+              <Col sm={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Status</Form.Label>
+                  <Form.Label>Date of Birth</Form.Label>
                   <Form.Control
-                    as="select"
-                    value={updatedUser.status}
-                    onChange={(e) => setUpdatedUser({ ...updatedUser, status: e.target.value })}
-                    className="custom-select"
-                  >
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                  </Form.Control>
+                    type="date"
+                    value={updatedUser.dob}
+                    onChange={(e) => setUpdatedUser({ ...updatedUser, dob: e.target.value })}
+                  />
                 </Form.Group>
               </Col>
             </Row>
