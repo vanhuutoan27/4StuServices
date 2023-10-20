@@ -25,10 +25,10 @@ namespace _4stu_cs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StaffManagement>>> GetStaffManagements()
         {
-          if (_context.StaffManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.StaffManagements == null)
+            {
+                return NotFound();
+            }
             return await _context.StaffManagements.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace _4stu_cs.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<StaffManagement>> GetStaffManagement(int id)
         {
-          if (_context.StaffManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.StaffManagements == null)
+            {
+                return NotFound();
+            }
             var staffManagement = await _context.StaffManagements.FindAsync(id);
 
             if (staffManagement == null)
@@ -86,10 +86,10 @@ namespace _4stu_cs.Controllers
         [HttpPost]
         public async Task<ActionResult<StaffManagement>> PostStaffManagement(StaffManagement staffManagement)
         {
-          if (_context.StaffManagements == null)
-          {
-              return Problem("Entity set '_4stuDbContext.StaffManagements'  is null.");
-          }
+            if (_context.StaffManagements == null)
+            {
+                return Problem("Entity set '_4stuDbContext.StaffManagements'  is null.");
+            }
             _context.StaffManagements.Add(staffManagement);
             await _context.SaveChangesAsync();
 

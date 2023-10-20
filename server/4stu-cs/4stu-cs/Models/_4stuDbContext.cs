@@ -15,9 +15,11 @@ public partial class _4stuDbContext : DbContext
     {
     }
 
-    public virtual DbSet<CustomerManagement> CustomerManagements { get; set; }
+    public virtual DbSet<CustomerManagementRemp> CustomerManagementRemps { get; set; }
 
     public virtual DbSet<OrderManagement> OrderManagements { get; set; }
+
+    public virtual DbSet<OrderManagementTemp> OrderManagementTemps { get; set; }
 
     public virtual DbSet<PackageServiceManagement> PackageServiceManagements { get; set; }
 
@@ -25,7 +27,11 @@ public partial class _4stuDbContext : DbContext
 
     public virtual DbSet<StaffManagement> StaffManagements { get; set; }
 
+    public virtual DbSet<StaffManagementTemp> StaffManagementTemps { get; set; }
+
     public virtual DbSet<StaffOrderManagement> StaffOrderManagements { get; set; }
+
+    public virtual DbSet<UserManagement> UserManagements { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -33,11 +39,11 @@ public partial class _4stuDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CustomerManagement>(entity =>
+        modelBuilder.Entity<CustomerManagementRemp>(entity =>
         {
             entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B83C79F60A");
 
-            entity.ToTable("CustomerManagement");
+            entity.ToTable("CustomerManagementRemp");
 
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.Avatar)
@@ -82,9 +88,52 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<OrderManagement>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFE6E150C0");
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFADB0CD1A");
 
             entity.ToTable("OrderManagement");
+
+            entity.Property(e => e.Address).HasColumnType("text");
+            entity.Property(e => e.CustomerName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DateCompleted)
+                .HasColumnType("date")
+                .HasColumnName("dateCompleted");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date")
+                .HasColumnName("dateCreated");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Note)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("NOTE");
+            entity.Property(e => e.PaymentMethod)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("paymentMethod");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Price)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.ServiceName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Pending')");
+        });
+
+        modelBuilder.Entity<OrderManagementTemp>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFE6E150C0");
+
+            entity.ToTable("OrderManagementTemp");
 
             entity.Property(e => e.Address).HasColumnType("text");
             entity.Property(e => e.CustomerName)
@@ -201,9 +250,59 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<StaffManagement>(entity =>
         {
-            entity.HasKey(e => e.StaffId).HasName("PK__StaffMan__96D4AAF796099B08");
+            entity.HasKey(e => e.StaffId).HasName("PK__StaffMan__96D4AAF7B0D6F08E");
 
             entity.ToTable("StaffManagement");
+
+            entity.Property(e => e.StaffId).HasColumnName("StaffID");
+            entity.Property(e => e.Avatar)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2Favatar-nobita.png?alt=media&token=b7b03285-7690-47ef-b1ac-44a33e4179e5&_gl=1*1rvt5ir*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM4NzcuNDEuMC4w')");
+            entity.Property(e => e.AverageRating)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("averageRating");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date")
+                .HasColumnName("dateCreated");
+            entity.Property(e => e.Dob)
+                .HasColumnType("date")
+                .HasColumnName("dob");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("firstName");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("lastName");
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+            entity.Property(e => e.RatingCount)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("ratingCount");
+            entity.Property(e => e.Sex).HasColumnName("sex");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
+        });
+
+        modelBuilder.Entity<StaffManagementTemp>(entity =>
+        {
+            entity.HasKey(e => e.StaffId).HasName("PK__StaffMan__96D4AAF796099B08");
+
+            entity.ToTable("StaffManagementTemp");
 
             entity.Property(e => e.StaffId).HasColumnName("StaffID");
             entity.Property(e => e.Avatar)
@@ -264,6 +363,57 @@ public partial class _4stuDbContext : DbContext
             entity.Property(e => e.TaskTitle)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<UserManagement>(entity =>
+        {
+            entity.HasKey(e => e.UserId).HasName("PK__UserMana__1788CCAC7C171C44");
+
+            entity.ToTable("UserManagement");
+
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Avatar)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('https://firebasestorage.googleapis.com/v0/b/stufb-e00cc.appspot.com/o/images%2Favatar-nobita.png?alt=media&token=b7b03285-7690-47ef-b1ac-44a33e4179e5&_gl=1*1rvt5ir*_ga*MzExODI2NzcyLjE2OTQ5NjAyNDU.*_ga_CW55HF8NVT*MTY5Njk0MzU2Ni4xNi4xLjE2OTY5NDM4NzcuNDEuMC4w')");
+            entity.Property(e => e.DateCreated)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("date")
+                .HasColumnName("dateCreated");
+            entity.Property(e => e.Dob)
+                .HasColumnType("date")
+                .HasColumnName("dob");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("firstName");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("lastName");
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+            entity.Property(e => e.Role)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Customer')");
+            entity.Property(e => e.Sex).HasColumnName("sex");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('Active')");
+            entity.Property(e => e.TotalOrders)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("totalOrders");
         });
 
         OnModelCreatingPartial(modelBuilder);

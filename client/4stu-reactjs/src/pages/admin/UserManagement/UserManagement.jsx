@@ -19,7 +19,7 @@ function UserManagement() {
 
   useEffect(() => {
     axios
-      .get('/CustomerManagements')
+      .get('/UserManagements')
       .then((response) => setAllUsers(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -69,7 +69,7 @@ function UserManagement() {
                 <tr key={index}>
                   <td>
                     <span className={`serviceID`}>
-                      C{user.customerId < 10 ? '00' + user.customerId : '0' + user.customerId}
+                      C{user.userId < 10 ? '00' + user.userId : '0' + user.userId}
                     </span>
                   </td>
 

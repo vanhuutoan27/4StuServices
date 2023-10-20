@@ -17,7 +17,7 @@ function UpdateUser({ selectedUser, onClose }) {
     setIsLoading(true);
 
     try {
-      await axios.put(`/CustomerManagements/${updatedUser.customerId}`, updatedUser);
+      await axios.put(`/UserManagements/${updatedUser.userId}`, updatedUser);
       alert('User updated successfully');
       onClose();
       window.location.reload();
@@ -94,9 +94,7 @@ function UpdateUser({ selectedUser, onClose }) {
                   <Form.Control
                     type="text"
                     value={`C${
-                      updatedUser.customerId < 10
-                        ? '00' + updatedUser.customerId
-                        : '0' + updatedUser.customerId
+                      updatedUser.userId < 10 ? '00' + updatedUser.userId : '0' + updatedUser.userId
                     }`}
                     readOnly
                   />

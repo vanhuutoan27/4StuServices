@@ -12822,19 +12822,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
       "projectName": "4stu-cs",
-      "projectPath": "D:\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\4stu-cs.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12936,12 +12936,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.22, 6.0.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -12950,7 +12944,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

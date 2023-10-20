@@ -68,7 +68,7 @@ function App() {
 
     // Make the GET request using the custom Axios instance
     axiosInstance
-      .get('https://localhost:7088/api/CustomerManagements/Launch')
+      .get('https://localhost:7088/api/UserManagements/Launch')
       .then((response) => {
         setUser(response.data);
       })

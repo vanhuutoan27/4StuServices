@@ -15,9 +15,9 @@ CREATE TABLE StaffManagement (
   PRIMARY KEY (StaffID)
 );
 
-INSERT INTO StaffManagement (email, password, firstName, lastName, phone, sex)
+INSERT INTO StaffManagement (email, password, firstName, lastName, phone, dob, sex)
 VALUES
-('vanhuutoan@gmail.com', '123456', 'Van', 'Huu Toan', '0792766979', 1),
-('phamhoaiduy@gmail.com', '123456', 'Pham', 'Hoai Duy', '0123456789', 1),
-('nguyentanloc@gmail.com', '123456', 'Nguyen', 'Tan Loc', '0123456789', 1),
-('phamhoangthuyan@gmail.com', '123456', 'Pham', 'Hoang Thuy An', '0123456789', 1);
+('vhtoan27@gmail.com', '123456', 'Van', 'Huu Toan', '0792766979', '2003-01-01', 1),
+('phta020503@gmail', '123456', 'Pham', 'Hoang Thuy An', '0898132737', '2003-01-01', 1),
+('nlocnguyen9@gmail.com', '123456', 'Nguyen', 'Tan Loc', '0965706048', '2003-01-01', 1),
+('saophadao1472@gmail.com', '123456', 'Pham', 'Hoai Duy', '0967588443', '2003-01-01', 1);

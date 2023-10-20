@@ -39,7 +39,7 @@ function Login() {
     //! Cái hàm sẽ xử lý nhấn Submit
     onSubmit: (values) => {
       axios
-        .post('/CustomerManagements/Login', {
+        .post('/UserManagements/Login', {
           email: values.email,
           password: values.password,
         })
@@ -99,7 +99,7 @@ function Login() {
     //! Cái hàm sẽ xử lý nhấn Submit cho form đăng ký
     onSubmit: (values) => {
       axios
-        .post('/CustomerManagements/Register', {
+        .post('/UserManagements/Register', {
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,

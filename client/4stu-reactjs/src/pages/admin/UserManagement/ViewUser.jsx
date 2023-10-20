@@ -29,9 +29,9 @@ function ViewUser({ selectedUser, onClose }) {
                   <Form.Control
                     type="text"
                     value={`C${
-                      selectedUser.customerId < 10
-                        ? '00' + selectedUser.customerId
-                        : '0' + selectedUser.customerId
+                      selectedUser.userId < 10
+                        ? '00' + selectedUser.userId
+                        : '0' + selectedUser.userId
                     }`}
                     readOnly
                   />
