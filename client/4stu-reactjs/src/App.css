@@ -135,6 +135,7 @@ table {
 }
 
 :root {
+  --primary-color-0: #eff8ff;
   --primary-color-1: #fac031;
   --primary-color-2: #043873;
   --primary-color-3: #4f9cf9;
@@ -370,7 +371,7 @@ div:where(.swal2-container) .swal2-html-container {
   color: #fff;
   font-size: 4rem;
   font-weight: 700;
-  margin-right: 130px;
+  margin-right: 160px;
   padding-left: 8px;
 }
 
@@ -733,12 +734,32 @@ header .hero-img {
   }
 }
 
-/* .css-1hw9j7s.btn { */
+.css-1hw9j7s.btn {
+  background-color: var(--primary-color-1);
+  border-radius: 12px;
+  min-width: 98px;
+  padding: 12px 42px;
+  color: var(--primary-color-2);
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: var(--primary-color-1);
+    color: var(--primary-color-2);
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+}
+
 .css-sghohy-MuiButtonBase-root-MuiButton-root.btn {
   background-color: var(--primary-color-1);
   border-radius: 12px;
   min-width: 98px;
-  padding: 18px 50px;
+  padding: 12px 42px;
   color: var(--primary-color-2);
   font-size: 1.6rem;
   font-weight: 700;

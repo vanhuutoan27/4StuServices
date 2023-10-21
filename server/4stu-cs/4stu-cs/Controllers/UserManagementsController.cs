@@ -149,7 +149,7 @@ namespace _4stu_cs.Controllers
                 _config["Jwt:Audience"],
                 claims,
                 // có thời gian chết, 15 phút
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credentials
             );
 
@@ -162,7 +162,7 @@ namespace _4stu_cs.Controllers
         {
             if (_context.UserManagements == null)
             {
-                return Problem("Entity set '_4stuDbContext.CustomerManagements'  is null.");
+                return Problem("Entity set '_4stuDbContext.UserManagements'  is null.");
             }
             var result = await _context.UserManagements.FirstOrDefaultAsync(row => row.Email == body.Email && row.Password == body.Password);
 
@@ -177,7 +177,7 @@ namespace _4stu_cs.Controllers
             }
             else
             {
-                return NotFound("The customer is not existed!");
+                return NotFound("The user is not existed!");
             }
 
         }
@@ -198,7 +198,7 @@ namespace _4stu_cs.Controllers
         {
             if (_context.UserManagements == null)
             {
-                return Problem("Entity set '_4stuDbContext.CustomerManagements'  is null.");
+                return Problem("Entity set '_4stuDbContext.UserManagements'  is null.");
             }
 
             // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu hay không
@@ -216,7 +216,7 @@ namespace _4stu_cs.Controllers
             }
 
             // Tạo một đối tượng CustomerManagement từ dữ liệu đăng ký
-            var newCustomer = new UserManagement
+            var newUser = new UserManagement
             {
                 FirstName = body.FirstName,
                 LastName = body.LastName,
@@ -225,24 +225,24 @@ namespace _4stu_cs.Controllers
                 Phone = body.Phone,
             };
 
-            _context.UserManagements.Add(newCustomer);
+            _context.UserManagements.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomerManagement", new { id = newCustomer.UserId }, newCustomer);
+            return CreatedAtAction("GetUserManagement", new { id = newUser.UserId }, newUser);
         }
 
 
         [HttpPost]
-        public async Task<ActionResult<UserManagement>> PostCustomerManagement(UserManagement customerManagement)
+        public async Task<ActionResult<UserManagement>> PostUserManagement(UserManagement userManagement)
         {
-            _context.UserManagements.Add(customerManagement);
+            _context.UserManagements.Add(userManagement);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (UserManagementExists(customerManagement.UserId))
+                if (UserManagementExists(userManagement.UserId))
                 {
                     return Conflict();
                 }
@@ -252,7 +252,7 @@ namespace _4stu_cs.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCustomerManagement", new { id = customerManagement.UserId }, customerManagement);
+            return CreatedAtAction("GetUserManagement", new { id = userManagement.UserId }, userManagement);
         }
 
         // DELETE: api/UserManagements/5

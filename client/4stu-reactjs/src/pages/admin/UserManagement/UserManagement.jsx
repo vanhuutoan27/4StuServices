@@ -22,7 +22,20 @@ function UserManagement() {
       .get('/UserManagements')
       .then((response) => {
         const customerData = response.data.filter((user) => user.role === 'Customer');
-        customerData.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+
+        customerData.sort((a, b) => {
+          const dateA = new Date(a.dateCreated);
+          const dateB = new Date(b.dateCreated);
+
+          if (dateA < dateB) {
+            return 1;
+          } else if (dateA > dateB) {
+            return -1;
+          } else {
+            return b.userId - a.userId;
+          }
+        });
+
         setAllUsers(customerData);
       })
       .catch((error) => console.log(error));
@@ -54,7 +67,6 @@ function UserManagement() {
           <caption>
             <h2>All Users</h2>
             <span className="table-row-count">({allUsers.length} Users)</span>
-            {/* <CreateUser /> */}
           </caption>
           <table>
             <thead>
