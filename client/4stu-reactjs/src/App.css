@@ -155,13 +155,14 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   /* scroll-padding-top: 12rem; */
+  overflow-x: hidden;
+
 }
 
 body {
   font-size: 1.6rem;
   font-family: 'Poppins', sans-serif;
   color: var(--primary-color-4);
-  overflow-x: hidden;
 }
 
 a {

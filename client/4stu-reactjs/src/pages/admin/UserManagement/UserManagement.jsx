@@ -16,6 +16,7 @@ function UserManagement() {
   const [updatingUser, setUpdatingUser] = useState(null);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     axios
@@ -53,109 +54,128 @@ function UserManagement() {
     setCurrentPage(pageNumber);
   };
 
+  const filteredUsers = allUsers.filter((user) => {
+    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+    const query = searchQuery.toLowerCase();
+
+    return user.email.toLowerCase().includes(query) || fullName.includes(query);
+  });
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayedServices = allUsers.slice(startIndex, endIndex);
+  const displayedUsers = filteredUsers.slice(startIndex, endIndex);
 
   return (
     <div className="user-management-content">
       <div className="admin-navbar">
         <AdminNavigation />
       </div>
-      <div className="table-content">
-        <div className="table-widget">
-          <caption>
-            <h2>All Users</h2>
-            <span className="table-row-count">({allUsers.length} Users)</span>
-          </caption>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Full Name</th>
-                <th>Date Created</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayedServices.map((user, index) => (
-                <tr key={index}>
-                  <td>
-                    <span className={`serviceID`}>
-                      {user.role === 'Admin' ? 'A' : user.role === 'Staff' ? 'S' : 'C'}
-                      {user.userId < 10
-                        ? '00' + user.userId
-                        : user.userId < 100
-                        ? '0' + user.userId
-                        : user.userId}
-                    </span>
-                  </td>
+      <div>
+        <div className="Search">
+          <div className="Search">
+            <input
+              type="search"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="table-content">
+          <div className="table-widget">
+            <caption>
+              <h2>All Users</h2>
+              <span className="table-row-count">({allUsers.length} Users)</span>
+            </caption>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Full Name</th>
+                  <th>Date Created</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {displayedUsers.map((user, index) => (
+                  <tr key={index}>
+                    <td>
+                      <span className={`serviceID`}>
+                        {user.role === 'Admin' ? 'A' : user.role === 'Staff' ? 'S' : 'C'}
+                        {user.userId < 10
+                          ? '00' + user.userId
+                          : user.userId < 100
+                          ? '0' + user.userId
+                          : user.userId}
+                      </span>
+                    </td>
 
-                  <td>
-                    <span className="customer-name">{user.email}</span>
-                  </td>
+                    <td>
+                      <span className="customer-name">{user.email}</span>
+                    </td>
 
-                  <td>
-                    <span className="service-name">{user.phone}</span>
-                  </td>
+                    <td>
+                      <span className="service-name">{user.phone}</span>
+                    </td>
 
-                  <td>
-                    <span className="service-price">
-                      {user.firstName} {user.lastName}
-                    </span>
-                  </td>
+                    <td>
+                      <span className="service-price">
+                        {user.firstName} {user.lastName}
+                      </span>
+                    </td>
 
-                  <td>
-                    <span className="service-time">{formatDate(user.dateCreated)}</span>
-                  </td>
+                    <td>
+                      <span className="service-time">{formatDate(user.dateCreated)}</span>
+                    </td>
 
-                  <td>
-                    <span className="statuss">
-                      <span className={`status status--${user.status}`}>{user.status}</span>
-                    </span>
-                  </td>
-                  <td>
-                    <button
-                      className="admin-btn-action view btn"
-                      onClick={() => handleViewServiceClick(user)}
-                    >
-                      <FontAwesomeIcon icon={faEye} />
-                    </button>
-                    <button
-                      className="admin-btn-action edit btn"
-                      onClick={() => handleUpdateServiceClick(user)}
-                    >
-                      <FontAwesomeIcon icon={faPen} />
-                    </button>
+                    <td>
+                      <span className="statuss">
+                        <span className={`status status--${user.status}`}>{user.status}</span>
+                      </span>
+                    </td>
+                    <td>
+                      <button
+                        className="admin-btn-action view btn"
+                        onClick={() => handleViewServiceClick(user)}
+                      >
+                        <FontAwesomeIcon icon={faEye} />
+                      </button>
+                      <button
+                        className="admin-btn-action edit btn"
+                        onClick={() => handleUpdateServiceClick(user)}
+                      >
+                        <FontAwesomeIcon icon={faPen} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="10">
+                    <ul className="pagination">
+                      {Array.from(
+                        { length: Math.ceil(allUsers.length / itemsPerPage) },
+                        (_, index) => (
+                          <li key={index}>
+                            <button
+                              onClick={() => handlePageChange(index + 1)}
+                              className={currentPage === index + 1 ? 'Admin' : ''}
+                            >
+                              {index + 1}
+                            </button>
+                          </li>
+                        )
+                      )}
+                    </ul>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan="10">
-                  <ul className="pagination">
-                    {Array.from(
-                      { length: Math.ceil(allUsers.length / itemsPerPage) },
-                      (_, index) => (
-                        <li key={index}>
-                          <button
-                            onClick={() => handlePageChange(index + 1)}
-                            className={currentPage === index + 1 ? 'Admin' : ''}
-                          >
-                            {index + 1}
-                          </button>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div>
 
