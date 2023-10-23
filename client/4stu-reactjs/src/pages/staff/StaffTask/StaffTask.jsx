@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { Session } from '../../../App';
+import { Pagination } from 'antd';
 
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewTask from './ViewTask';
 
+import { Session } from '../../../App';
 import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
@@ -14,11 +15,10 @@ function StaffTask() {
   const session = useContext(Session);
   const user = session.user;
   const [allTasks, setAllTasks] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedTasks = allTasks.slice(startIndex, endIndex);
   const [isTaskDetailModalVisible, setTaskDetailModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -67,9 +67,21 @@ function StaffTask() {
     setTaskDetailModalVisible(true);
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    updateCurrentItems();
   };
+
+  const updateCurrentItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToDisplay = allTasks.slice(startIndex, endIndex);
+    setCurrentItems(itemsToDisplay);
+  };
+
+  useEffect(() => {
+    updateCurrentItems();
+  }, [currentPage]);
 
   return (
     <div className="StaffTaskPage">
@@ -82,7 +94,11 @@ function StaffTask() {
           <caption>
             <h2>
               <span>
-                {session.user.firstName} {session.user.lastName}
+                {`${session.user.firstName.charAt(0).toUpperCase()}${session.user.firstName
+                  .slice(1)
+                  .toLowerCase()} ${session.user.lastName
+                  .charAt(0)
+                  .toUpperCase()}${session.user.lastName.slice(1).toLowerCase()}`}
               </span>
               's Tasks
             </h2>
@@ -99,7 +115,7 @@ function StaffTask() {
               </tr>
             </thead>
             <tbody>
-              {displayedTasks.map((task, index) => (
+              {currentItems.map((task, index) => (
                 <tr key={index}>
                   <td>
                     <span className="service-name">{formatDate(task.dateShipping)}</span>
@@ -137,22 +153,15 @@ function StaffTask() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="10">
-                  <ul className="pagination">
-                    {Array.from(
-                      { length: Math.ceil(allTasks.length / itemsPerPage) },
-                      (_, index) => (
-                        <li key={index}>
-                          <button
-                            onClick={() => handlePageChange(index + 1)}
-                            className={currentPage === index + 1 ? 'Admin' : ''}
-                          >
-                            {index + 1}
-                          </button>
-                        </li>
-                      )
-                    )}
-                  </ul>
+                <td colSpan="6">
+                  <div className="pagination">
+                    <Pagination
+                      total={allTasks.length}
+                      current={currentPage}
+                      pageSize={itemsPerPage}
+                      onChange={handlePageChange}
+                    />
+                  </div>
                 </td>
               </tr>
             </tfoot>

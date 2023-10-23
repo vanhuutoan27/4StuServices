@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { Session } from '../../../App';
+import { Pagination } from 'antd';
 
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewOrder from './ViewOrder';
 
+import { Session } from '../../../App';
 import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
@@ -14,6 +15,8 @@ function StaffOrder() {
   const session = useContext(Session);
   const user = session.user;
   const [allOrders, setAllOrders] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
   const [completedOrders, setCompletedOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [staffEmail, setStaffEmail] = useState('');
@@ -55,9 +58,21 @@ function StaffOrder() {
     setOrderDetailModalVisible(true);
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    updateCurrentItems();
   };
+
+  const updateCurrentItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToDisplay = completedOrders.slice(startIndex, endIndex);
+    setCurrentItems(itemsToDisplay);
+  };
+
+  useEffect(() => {
+    updateCurrentItems();
+  }, [currentPage]);
 
   return (
     <div className="StaffOrderPage">
@@ -125,22 +140,15 @@ function StaffOrder() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="10">
-                  <ul className="pagination">
-                    {Array.from(
-                      { length: Math.ceil(completedOrders.length / itemsPerPage) },
-                      (_, index) => (
-                        <li key={index}>
-                          <button
-                            onClick={() => handlePageChange(index + 1)}
-                            className={currentPage === index + 1 ? 'Admin' : ''}
-                          >
-                            {index + 1}
-                          </button>
-                        </li>
-                      )
-                    )}
-                  </ul>
+                <td colSpan="6">
+                  <div className="pagination">
+                    <Pagination
+                      total={completedOrders.length}
+                      current={currentPage}
+                      pageSize={itemsPerPage}
+                      onChange={handlePageChange}
+                    />
+                  </div>
                 </td>
               </tr>
             </tfoot>

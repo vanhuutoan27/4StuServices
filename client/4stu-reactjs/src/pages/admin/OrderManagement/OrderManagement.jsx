@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faEye } from '@fortawesome/free-solid-svg-icons';
+import { Pagination } from 'antd';
 
 import AdminNavigation from '../../../components/AdminNavigation';
 import ViewOrder from './ViewOrder';
@@ -15,6 +16,8 @@ function OrderManagement() {
   const [updatingOrder, setUpdatingOrder] = useState(null);
   const [staffOrders, setStaffOrders] = useState([]);
   const [allStaffs, setAllStaffs] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -73,12 +76,22 @@ function OrderManagement() {
     setUpdatingOrder(order);
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    updateCurrentItems();
+  };
+
+  const updateCurrentItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToDisplay = filteredOrders.slice(startIndex, endIndex);
+    setCurrentItems(itemsToDisplay);
+    setTotalItems(filteredOrders.length);
   };
 
   const filteredOrders = updatedOrders.filter((order) => {
@@ -99,6 +112,10 @@ function OrderManagement() {
 
     return orderStatusOrder[a.status] - orderStatusOrder[b.status] || b.orderId - a.orderId;
   });
+
+  useEffect(() => {
+    updateCurrentItems();
+  }, [currentPage, searchQuery, filteredOrders, itemsPerPage]);
 
   return (
     <div className="order-management-content">
@@ -195,22 +212,15 @@ function OrderManagement() {
               </tbody>
               <tfoot>
                 <tr>
-                  <td colSpan="10">
-                    <ul className="pagination">
-                      {Array.from(
-                        { length: Math.ceil(allOrders.length / itemsPerPage) },
-                        (_, index) => (
-                          <li key={index}>
-                            <button
-                              onClick={() => handlePageChange(index + 1)}
-                              className={currentPage === index + 1 ? 'Admin' : ''}
-                            >
-                              {index + 1}
-                            </button>
-                          </li>
-                        )
-                      )}
-                    </ul>
+                  <td>
+                    <div className="pagination">
+                      <Pagination
+                        total={totalItems}
+                        current={currentPage}
+                        pageSize={itemsPerPage}
+                        onChange={handlePageChange}
+                      />
+                    </div>
                   </td>
                 </tr>
               </tfoot>
