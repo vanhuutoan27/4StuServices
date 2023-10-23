@@ -29,5 +29,7 @@ public partial class StaffManagement
 
     public double? AverageRating { get; set; }
 
+    public string? Tag { get; set; }
+
     public string? Status { get; set; }
 }

@@ -34,6 +34,9 @@ import Contact from './pages/common/Contact/Contact';
 import Detail from './pages/common/Detail/Detail';
 import Order from './pages/common/Order/Order';
 import Completion from './pages/common/Order/Completion';
+// import Error403 from './pages/common/Error/Error403';
+// import Error404 from './pages/common/Error/Error404';
+// import Error500 from './pages/common/Error/Error500';
 
 export const Session = createContext(null);
 
@@ -127,6 +130,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/order" element={<Order />} />
             <Route path="/order-completion" element={<Completion />} />
+            {/* <Route path="/403" element={<Error403 />} /> */}
+            {/* <Route path="/404" element={<Error404 />} /> */}
 
             {/* Redirect to login for non-admin or non-staff users */}
             {(!isAdmin || !isStaff) && <Route path="*" element={<Navigate to="/" />} />}

@@ -33,10 +33,10 @@ namespace _4stu_cs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserManagement>>> GetUserManagements()
         {
-          if (_context.UserManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.UserManagements == null)
+            {
+                return NotFound();
+            }
             return await _context.UserManagements.ToListAsync();
         }
 
@@ -75,10 +75,10 @@ namespace _4stu_cs.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserManagement>> GetUserManagement(int id)
         {
-          if (_context.UserManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.UserManagements == null)
+            {
+                return NotFound();
+            }
             var userManagement = await _context.UserManagements.FindAsync(id);
 
             if (userManagement == null)
