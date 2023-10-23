@@ -6,82 +6,82 @@ import { Pagination } from 'antd';
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewTask from './ViewTask';
 
-import { Session } from '../../../App';
+import { AuthContext } from '../../../App';
 import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
 
 function StaffTask() {
-  const session = useContext(Session);
+  const session = useContext(AuthContext);
   const user = session.user;
   const [allTasks, setAllTasks] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
-  const [totalItems, setTotalItems] = useState(0);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
-  const [isTaskDetailModalVisible, setTaskDetailModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
+  const fetchData = async () => {
+    try {
+      // Tải thông tin StaffOrderManagements
+      const response = await axios.get('/StaffOrderManagements');
+      const staffOrderManagements = response.data;
+
+      // Lọc công việc của người dùng hiện tại dựa trên email
+      const userTasks = staffOrderManagements.filter((staffOrder) => {
+        return staffOrder.staffId === user.user.userId;
+      });
+
+      const tasks = [];
+
+      // Tải thông tin đơn hàng và người dùng từ API
+      for (const task of userTasks) {
+        const { orderId, staffId, dateShipping } = task;
+
+        const [orderResponse, staffResponse] = await Promise.all([
+          axios.get(`/OrderManagements/${orderId}`),
+          axios.get(`/UserManagements/${staffId}`),
+        ]);
+
+        const orderInfo = orderResponse.data;
+        const staffInfo = staffResponse.data;
+
+        const combinedTask = {
+          orderInfo,
+          staffInfo,
+          dateShipping,
+        };
+
+        tasks.push(combinedTask);
+      }
+
+      setAllTasks(tasks);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get('/StaffOrderManagements')
-      .then((response) => {
-        const staffOrderManagements = response.data;
-
-        staffOrderManagements.forEach((staffOrder) => {
-          const orderId = staffOrder.orderId;
-          const userId = staffOrder.staffId;
-          const dateShipping = staffOrder.dateShipping;
-
-          axios
-            .get(`/UserManagements/${userId}`)
-            .then((staffResponse) => {
-              const staff = staffResponse.data;
-              const staffEmail = staff.email;
-
-              if (staffEmail === user.email) {
-                axios
-                  .get(`/OrderManagements/${orderId}`)
-                  .then((orderResponse) => {
-                    const order = orderResponse.data;
-
-                    const combinedInfo = {
-                      orderInfo: order,
-                      staffInfo: staff,
-                      dateShipping: dateShipping,
-                    };
-
-                    setAllTasks((prevTasks) => [...prevTasks, combinedInfo]);
-                  })
-                  .catch((error) => console.log(error));
-              }
-            })
-            .catch((error) => console.log(error));
-        });
-      })
-      .catch((error) => console.log(error));
-  }, [user.email]);
+    fetchData();
+  }, [user.user.email]);
 
   const handleViewTaskDetailClick = (task) => {
     setSelectedTask(task);
-    setTaskDetailModalVisible(true);
+  };
+
+  const handleTaskDetailModalClose = () => {
+    setSelectedTask(null);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    updateCurrentItems();
   };
 
-  const updateCurrentItems = () => {
+  useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const itemsToDisplay = allTasks.slice(startIndex, endIndex);
     setCurrentItems(itemsToDisplay);
-  };
-
-  useEffect(() => {
-    updateCurrentItems();
-  }, [currentPage]);
+  }, [currentPage, allTasks]);
 
   return (
     <div className="StaffTaskPage">
@@ -94,11 +94,11 @@ function StaffTask() {
           <caption>
             <h2>
               <span>
-                {`${session.user.firstName.charAt(0).toUpperCase()}${session.user.firstName
+                {`${user.user.firstName.charAt(0).toUpperCase()}${user.user.firstName
                   .slice(1)
-                  .toLowerCase()} ${session.user.lastName
-                  .charAt(0)
-                  .toUpperCase()}${session.user.lastName.slice(1).toLowerCase()}`}
+                  .toLowerCase()} ${user.user.lastName.charAt(0).toUpperCase()}${user.user.lastName
+                  .slice(1)
+                  .toLowerCase()}`}
               </span>
               's Tasks
             </h2>
@@ -120,24 +120,18 @@ function StaffTask() {
                   <td>
                     <span className="service-name">{formatDate(task.dateShipping)}</span>
                   </td>
-
                   <td>
                     <span className="service-name">{task.orderInfo.serviceName}</span>
                   </td>
-
                   <td>
                     <span className="service-name">{task.orderInfo.address}</span>
                   </td>
-
                   <td>
                     <span className="service-name">{task.orderInfo.phone}</span>
                   </td>
-
                   <td>
-                    <span className="statuss">
-                      <span className={`status status--${task.orderInfo.status}`}>
-                        {task.orderInfo.status}
-                      </span>
+                    <span className={`status status--${task.orderInfo.status}`}>
+                      {task.orderInfo.status}
                     </span>
                   </td>
                   <td>
@@ -169,9 +163,7 @@ function StaffTask() {
         </div>
       </div>
 
-      {isTaskDetailModalVisible && (
-        <ViewTask task={selectedTask} onClose={() => setTaskDetailModalVisible(false)} />
-      )}
+      {selectedTask && <ViewTask task={selectedTask} onClose={handleTaskDetailModalClose} />}
     </div>
   );
 }

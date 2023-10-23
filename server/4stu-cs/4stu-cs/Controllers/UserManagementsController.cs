@@ -58,17 +58,35 @@ namespace _4stu_cs.Controllers
             return null;
         }
 
+        public class UserWithRole
+        {
+            public UserManagement User { get; set; }
+            public string Role { get; set; }
+        }
+
         [Authorize]
         [HttpGet("Launch")]
-        public async Task<ActionResult<UserManagement>> Launch()
+        public async Task<ActionResult<UserWithRole>> Launch()
         {
             var extractedEmail = GetCurrentEmail();
 
             if (extractedEmail == null) return NotFound("Token hết hạn");
 
-            var result = await _context.UserManagements.FirstOrDefaultAsync(row => row.Email == extractedEmail);
+            var user = await _context.UserManagements.FirstOrDefaultAsync(row => row.Email == extractedEmail);
 
-            return Ok(result);
+            if (user == null) return NotFound("User not found");
+
+            // Get user role from the database
+            var userRole = user.Role;
+
+            // Create a new object containing user information and role
+            var userWithRole = new UserWithRole
+            {
+                User = user,
+                Role = userRole
+            };
+
+            return Ok(userWithRole);
         }
 
         // GET: api/UserManagements/5
@@ -166,7 +184,6 @@ namespace _4stu_cs.Controllers
             }
             var result = await _context.UserManagements.FirstOrDefaultAsync(row => row.Email == body.Email && row.Password == body.Password);
 
-
             if (result != null)
             {
                 return Ok(new LoginResponse()
@@ -179,7 +196,6 @@ namespace _4stu_cs.Controllers
             {
                 return NotFound("The user is not existed!");
             }
-
         }
 
         public class RegisterBody
@@ -230,7 +246,6 @@ namespace _4stu_cs.Controllers
 
             return CreatedAtAction("GetUserManagement", new { id = newUser.UserId }, newUser);
         }
-
 
         [HttpPost]
         public async Task<ActionResult<UserManagement>> PostUserManagement(UserManagement userManagement)

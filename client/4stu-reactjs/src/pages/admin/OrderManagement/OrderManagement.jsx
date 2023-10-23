@@ -66,8 +66,6 @@ function OrderManagement() {
     return { ...order, ...staffInfo };
   });
 
-  console.log('Updated Orders:', updatedOrders);
-
   const handleViewServiceClick = (order) => {
     setSelectedOrder(order);
   };
@@ -81,19 +79,6 @@ function OrderManagement() {
     setCurrentPage(1);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    updateCurrentItems();
-  };
-
-  const updateCurrentItems = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const itemsToDisplay = filteredOrders.slice(startIndex, endIndex);
-    setCurrentItems(itemsToDisplay);
-    setTotalItems(filteredOrders.length);
-  };
-
   const filteredOrders = updatedOrders.filter((order) => {
     const orderString = JSON.stringify(order).toLowerCase();
     const searchQueryLower = searchQuery.toLowerCase();
@@ -101,8 +86,6 @@ function OrderManagement() {
     return orderString.includes(searchQueryLower);
   });
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
   filteredOrders.sort((a, b) => {
     const orderStatusOrder = {
       Completed: 1,
@@ -113,9 +96,13 @@ function OrderManagement() {
     return orderStatusOrder[a.status] - orderStatusOrder[b.status] || b.orderId - a.orderId;
   });
 
-  useEffect(() => {
-    updateCurrentItems();
-  }, [currentPage, searchQuery, filteredOrders, itemsPerPage]);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedOrders = filteredOrders.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="order-management-content">
@@ -152,7 +139,7 @@ function OrderManagement() {
                 </tr>
               </thead>
               <tbody>
-                {filteredOrders.slice(startIndex, endIndex).map((order, index) => (
+                {displayedOrders.map((order, index) => (
                   <tr key={index}>
                     <td>
                       <span className={`serviceID`}>
@@ -210,21 +197,15 @@ function OrderManagement() {
                   </tr>
                 ))}
               </tbody>
-              <tfoot>
-                <tr>
-                  <td>
-                    <div className="pagination">
-                      <Pagination
-                        total={totalItems}
-                        current={currentPage}
-                        pageSize={itemsPerPage}
-                        onChange={handlePageChange}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tfoot>
             </table>
+            <div className="pagination">
+              <Pagination
+                total={filteredOrders.length}
+                current={currentPage}
+                pageSize={itemsPerPage}
+                onChange={handlePageChange}
+              />
+            </div>
           </div>
         </div>
       </div>

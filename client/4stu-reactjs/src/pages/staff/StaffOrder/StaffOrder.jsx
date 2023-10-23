@@ -6,13 +6,13 @@ import { Pagination } from 'antd';
 import StaffNavigation from '../../../components/StaffNavigation';
 import ViewOrder from './ViewOrder';
 
-import { Session } from '../../../App';
+import { AuthContext } from '../../../App';
 import axios from '../../../config/axios';
 import { formatDate } from '../../../utils/DateUtils';
 import '../../../components/Management.css';
 
 function StaffOrder() {
-  const session = useContext(Session);
+  const session = useContext(AuthContext);
   const user = session.user;
   const [allOrders, setAllOrders] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
@@ -46,8 +46,8 @@ function StaffOrder() {
       .then((response) => {
         const staffData = response.data;
         if (staffData.length > 0) {
-          setStaffEmail(staffData[0].email);
-          console.log('staffEmail:', staffData[0].email);
+          setStaffEmail(user.user.email);
+          console.log('staffEmail:', user.user.email);
         }
       })
       .catch((error) => console.log(error));
