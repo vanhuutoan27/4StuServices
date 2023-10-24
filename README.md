@@ -7,7 +7,7 @@
 * A web application that uses NodeJS environment
 * Database management system using MySQL and Firebase
 
-https://github.com/vanhuutoan27/4stu-swp-project/blob/master/screenshots/web.png
+https://github.com/vanhuutoan27/4stu-swp-project/master/screenshots/web.png
 
 ### 4Stu For Your Smile
 
