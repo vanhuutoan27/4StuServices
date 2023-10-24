@@ -8,7 +8,6 @@
 * Database management system using MySQL and Firebase
 
 ![Home page](https://github.com/vanhuutoan27/4stu-swp-project/blob/master/screenshots/web.png)
->>>>>>> de5b7fb9213346e8913e4c92014c0c75c41cfec3
 
 ### 4Stu For Your Smile
 
