@@ -1,5 +1,5 @@
 CREATE TABLE StaffManagement (
-  StaffID INT NOT NULL,
+  StaffID INT NOT NULL IDENTITY(1,1),
   dateCreated DATE DEFAULT GETDATE(),
   email VARCHAR(50) NOT NULL,
   password VARCHAR(50) NOT NULL,
@@ -11,14 +11,13 @@ CREATE TABLE StaffManagement (
   sex BIT,
   ratingCount INT DEFAULT 0,
   averageRating FLOAT DEFAULT 0,
-  Tag VARCHAR(50),
   Status VARCHAR(20) DEFAULT 'Active',
   PRIMARY KEY (StaffID)
 );
 
-INSERT INTO StaffManagement (StaffID, email, password, firstName, lastName, phone, dob, sex)
+INSERT INTO StaffManagement (email, password, firstName, lastName, phone, sex)
 VALUES
-(24, 'vhtoan27@gmail.com', '123456', 'Van', 'Huu Toan', '0792766979', '2003-01-01', 1),
-(25, 'phta020503@gmail', '123456', 'Pham', 'Hoang Thuy An', '0898132737', '2003-01-01', 1),
-(26, 'nlocnguyen9@gmail.com', '123456', 'Nguyen', 'Tan Loc', '0965706048', '2003-01-01', 1),
-(27, 'saophadao1472@gmail.com', '123456', 'Pham', 'Hoai Duy', '0967588443', '2003-01-01', 1);
+('vanhuutoan@gmail.com', '123456', 'Van', 'Huu Toan', '0792766979', 1),
+('phamhoaiduy@gmail.com', '123456', 'Pham', 'Hoai Duy', '0123456789', 1),
+('nguyentanloc@gmail.com', '123456', 'Nguyen', 'Tan Loc', '0123456789', 1),
+('phamhoangthuyan@gmail.com', '123456', 'Pham', 'Hoang Thuy An', '0123456789', 1);
