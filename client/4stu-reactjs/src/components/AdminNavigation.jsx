@@ -118,21 +118,6 @@ function AdminNavbar() {
             </div>
           </Link>
 
-          <Link to="/admin-analysis">
-            <div
-              className={`frame-1 ${
-                location.pathname === '/admin-analysis' ? 'frame-selected' : ''
-              }`}
-            >
-              <div className="frame-content">
-                <FontAwesomeIcon icon={faChartPie} className="custom-icon-nav" />
-                Analysis
-              </div>
-            </div>
-          </Link>
-
-          <div className="boundary" />
-
           <Link to="/admin-order-management">
             <div
               className={`frame-2 ${

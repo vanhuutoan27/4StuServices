@@ -1,11 +1,10 @@
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect, createContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 // ADMIN
 import AdminDashboard from './pages/admin/AdminDashboard/AdminDashboard';
-import AdminAnalysis from './pages/admin/AdminAnalysis/AdminAnalysis';
 import OrderManagement from './pages/admin/OrderManagement/OrderManagement';
 import StaffManagement from './pages/admin/StaffManagement/StaffManagement';
 import UserManagement from './pages/admin/UserManagement/UserManagement';
@@ -81,7 +80,6 @@ function App() {
               <>
                 {/* Admin Routes */}
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                <Route path="/admin-analysis" element={<AdminAnalysis />} />
                 <Route path="/admin-order-management" element={<OrderManagement />} />
                 <Route path="/admin-staff-management" element={<StaffManagement />} />
                 <Route path="/admin-user-management" element={<UserManagement />} />
