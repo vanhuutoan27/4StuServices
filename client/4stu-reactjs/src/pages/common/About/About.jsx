@@ -16,10 +16,10 @@ function About() {
     <div className="AboutPage">
       <Navigation />
       <Hero />
-      {/* <Features /> */}
-      {/* <Features2 /> */}
-      {/* <Statistics /> */}
-      {/* <Order /> */}
+      <Features />
+      <Features2 />
+      <Statistics />
+      <Order />
       <Footer />
     </div>
   );
