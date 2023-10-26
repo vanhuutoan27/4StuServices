@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import Cookies from 'js-cookie'; // Import thư viện js-cookie
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import Detail from '../../common/Detail/Detail';
 
