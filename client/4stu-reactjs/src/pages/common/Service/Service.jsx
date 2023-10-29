@@ -146,9 +146,12 @@ function Service() {
                 convenience and time-saving solutions to your student community through perfect
                 daily life services.
               </p>
-              <Button href="#order-now" variant="contained" className="btn">
-                Order Now
-              </Button>
+
+              <Link to="#order-now">
+                <Button variant="contained" className="btn">
+                  Order Now
+                </Button>
+              </Link>
             </div>
 
             <div className="main_image">
@@ -196,9 +199,11 @@ function Service() {
               </ol>
             </div>
           </div>
-          <Button href="#order-now" variant="contained" className="btn">
-            Order Now
-          </Button>
+          <Link to="#order-now">
+            <Button variant="contained" className="btn">
+              Order Now
+            </Button>
+          </Link>
         </div>
       </div>
 

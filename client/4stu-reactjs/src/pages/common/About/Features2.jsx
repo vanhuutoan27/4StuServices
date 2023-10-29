@@ -40,7 +40,13 @@ function Features2() {
         padding: '80px 16%',
       }}
     >
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <SimpleGrid
+        columns={{ base: 1, md: 3 }}
+        spacing={10}
+        style={{
+          marginLeft: '6%',
+        }}
+      >
         <Feature
           icon={<Icon as={FcAssistant} w={20} h={20} />}
           title={'Lifetime Support'}

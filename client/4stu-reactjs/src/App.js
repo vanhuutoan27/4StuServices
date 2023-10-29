@@ -62,10 +62,14 @@ function App() {
           console.error(error);
         })
         .finally(() => {
-          setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 500);
         });
     } else {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     }
   }, [accessToken]);
 

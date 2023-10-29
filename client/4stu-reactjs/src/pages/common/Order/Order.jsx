@@ -432,9 +432,9 @@ function Order() {
           <div className="price-content">
             <div className="discount-section">
               <Form.Control type="text" placeholder="Discount Code" />
-              <a href="#!" className="btn">
+              <Link to="#!" className="btn">
                 Apply
-              </a>
+              </Link>
             </div>
 
             <div className="sub-total">
