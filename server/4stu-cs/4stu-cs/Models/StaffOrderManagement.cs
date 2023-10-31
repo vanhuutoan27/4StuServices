@@ -7,8 +7,6 @@ public partial class StaffOrderManagement
 {
     public int TaskId { get; set; }
 
-    public string? TaskTitle { get; set; }
-
     public int? OrderId { get; set; }
 
     public int? StaffId { get; set; }

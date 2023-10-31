@@ -5,6 +5,7 @@
 .OrderPage > .content {
   display: flex;
   gap: 30px;
+  padding: 40px 0;
 }
 
 .OrderPage > .header.fixed-header {
@@ -329,4 +330,8 @@
   &:active {
     background-color: #fff;
   }
+}
+
+.total-discounted {
+  color: var(--primary-color-1);
 }

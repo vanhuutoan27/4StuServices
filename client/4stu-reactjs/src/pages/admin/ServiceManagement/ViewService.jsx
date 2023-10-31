@@ -7,7 +7,7 @@ import { formatPriceWithDot } from '../../../utils/PriceUtils';
 
 function ViewService({ selectedService, onClose }) {
   return (
-    <Modal show={!!selectedService} onHide={onClose} size="lg">
+    <Modal show={!!selectedService} onHide={onClose} size="lg" style={{ margin: '52px' }}>
       <Modal.Header closeButton>
         <Modal.Title>View Service</Modal.Title>
       </Modal.Header>
@@ -15,15 +15,19 @@ function ViewService({ selectedService, onClose }) {
         {selectedService && (
           <Form>
             <Row>
-              <Col>
+              <Col sm={4}>
                 <Form.Group className="mb-3 service-image-container">
-                  {/* <div className="service-image-virtual"></div> */}
-                  <img src={selectedService.image} alt="Service Image" className="service-image" />
+                  <img
+                    src={selectedService.image}
+                    alt={selectedService.serviceName}
+                    className="service-image"
+                  />
                 </Form.Group>
               </Col>
-              <Col>
-                <Form.Group className="mb-3 form-id">
-                  <Form.Label>ID</Form.Label>
+
+              <Col sm={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">ID</Form.Label>
                   <Form.Control
                     type="text"
                     value={`S${
@@ -35,27 +39,8 @@ function ViewService({ selectedService, onClose }) {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3 form-name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" value={selectedService.serviceName} readOnly />
-                </Form.Group>
-
-                <Form.Group className="mb-3 form-desc">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    value={selectedService.serviceDesc}
-                    readOnly
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <Form.Group className="mb-2">
-                  <Form.Label>Price (VND)</Form.Label>
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">Price (VND)</Form.Label>
                   <Form.Control
                     type="text"
                     value={formatPriceWithDot(selectedService.price)}
@@ -64,25 +49,37 @@ function ViewService({ selectedService, onClose }) {
                 </Form.Group>
               </Col>
 
-              <Col>
-                <Form.Group className="mb-2">
-                  <Form.Label>Time (Mins)</Form.Label>
+              <Col sm={4}>
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">Name</Form.Label>
+                  <Form.Control type="text" value={selectedService.serviceName} readOnly />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">Time (Mins)</Form.Label>
                   <Form.Control type="text" value={selectedService.time} readOnly />
                 </Form.Group>
               </Col>
             </Row>
 
             <Row>
+              <Form.Group className="mb-3">
+                <Form.Label className="mb-2 ms-3">Description</Form.Label>
+                <Form.Control as="textarea" rows={3} value={selectedService.serviceDesc} readOnly />
+              </Form.Group>
+            </Row>
+
+            <Row>
               <Col>
-                <Form.Group className="mb-2">
-                  <Form.Label>Tag</Form.Label>
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">Tag</Form.Label>
                   <Form.Control type="text" value={selectedService.tag} readOnly />
                 </Form.Group>
               </Col>
 
               <Col>
-                <Form.Group className="mb-2">
-                  <Form.Label>Status</Form.Label>
+                <Form.Group className="mb-3">
+                  <Form.Label className="mb-2 ms-3">Status</Form.Label>
                   <Form.Control type="text" value={selectedService.status} readOnly />
                 </Form.Group>
               </Col>

@@ -1,0 +1,43 @@
+CREATE TABLE FeedbackManagement (
+  FeedbackID INT IDENTITY(1,1) NOT NULL,
+  OrderID INT NOT NULL,
+  ServiceID INT NOT NULL,
+  CustomerID INT NOT NULL,
+  Rating INT NOT NULL,
+  Comment VARCHAR(100) NOT NULL,
+  DateFeedback DATETIME DEFAULT GETDATE(),
+  PRIMARY KEY (FeedbackID)
+);
+
+INSERT INTO FeedbackManagement (OrderID, ServiceID, CustomerID, Rating, Comment, DateFeedback)
+VALUES
+	(1, 1, 14, 5, 'Great service!', '2023-05-15'),
+	(2, 5, 6, 4, 'Good experience', '2023-08-06'),
+	(3, 3, 34, 3, 'Average service', '2023-01-05'),
+	(4, 2, 38, 2, 'Could be better', '2023-10-01'),
+	(5, 4, 33, 1, 'Terrible experience', '2023-10-26'),
+	(6, 2, 18, 3, 'Satisfactory', '2023-02-15'),
+	(7, 1, 36, 4, 'Very good!', '2023-05-14'),
+	(8, 9, 10, 5, 'Excellent service', '2023-09-24'),
+	(9, 1, 3, 2, 'Not satisfied', '2023-05-26'),
+	(10, 1, 13, 3, 'Decent experience', '2023-01-17'),
+	(11, 5, 7, 1, 'Awful service', '2023-02-13'),
+	(12, 4, 9, 4, 'Highly recommended', '2023-02-11'),
+	(13, 1, 4, 5, 'Top-notch!', '2023-05-18'),
+	(14, 5, 32, 2, 'Needs improvement', '2023-06-15'),
+	(15, 9, 35, 3, 'Average quality', '2023-05-15'),
+	(16, 1, 19, 4, 'Impressive', '2023-07-05'),
+	(17, 1, 37, 1, 'Worst experience ever', '2023-04-26'),
+	(18, 12, 31, 5, 'Outstanding', '2023-07-25'),
+	(19, 4, 1, 3, 'Not bad', '2023-06-11'),
+	(20, 1, 8, 2, 'Could improve', '2023-05-27'),
+	(21, 11, 16, 4, 'Very pleased', '2023-08-14'),
+	(22, 3, 2, 5, 'Exceptional service', '2023-03-16'),
+	(23, 4, 5, 1, 'Terrible quality', '2023-03-24'),
+	(24, 2, 29, 2, 'Dissatisfied', '2023-05-30'),
+	(25, 9, 17, 3, 'Average experience', '2023-07-25'),
+	(26, 1, 30, 4, 'Impressed', '2023-04-16'),
+	(27, 15, 12, 5, 'Highly satisfied', '2023-05-23'),
+	(28, 1, 11, 1, 'Horrible service', '2023-05-20'),
+	(29, 3, 15, 2, 'Needs improvement', '2023-06-22'),
+	(30, 1, 20, 3, 'Fair experience', '2023-08-19');
