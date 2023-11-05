@@ -30,12 +30,12 @@ function Contact() {
   });
 
   const handleSubmit = (values, { resetForm }) => {
-    sendOrderConfirmationEmail(values);
+    sendContact(values);
     console.log('Form data:', values);
     resetForm();
   };
 
-  const sendOrderConfirmationEmail = (formData) => {
+  const sendContact = (formData) => {
     const emailData = {
       to: '4stu.contact@gmail.com',
       subject: '4Stu Contact',
@@ -82,7 +82,7 @@ function Contact() {
                     <span>
                       <FontAwesomeIcon icon={faPhone} className="custom-icon-contact" />
                     </span>
-                    <span>+840123456789</span>
+                    <span>0792766979</span>
                   </li>
                 </ul>
               </div>

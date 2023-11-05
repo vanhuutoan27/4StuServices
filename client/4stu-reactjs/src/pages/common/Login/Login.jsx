@@ -1,41 +1,96 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../App';
+import React, { useEffect, useState } from 'react';
 import { GoogleSignIn } from '../../../components/Google';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
-
+import { jwtDecode } from 'jwt-decode';
 import Button from '@mui/material/Button';
 
 import { sendEmail } from '../../../components/emailService';
 import axios from '../../../config/axios';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
-  const session = useContext(AuthContext);
-
+  // const session = useContext(AuthContext);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    const handleCredentialResponse = (response) => {
+      if (response.credential && typeof response.credential === 'string') {
+        console.log('Encoded JWT ID token: ' + response.credential);
+        const decoded = jwtDecode(response.credential);
+        setUser(decoded);
+        localStorage.setItem('jwtToken', response.credential);
+        localStorage.setItem('email', decoded.email); // Lưu email người dùng vào localStorage
+        console.log('Email:', decoded.email);
+        window.location.href = '/';
+        document.getElementById('buttonDiv').hidden = true;
+      } else {
+        console.error('Token không hợp lệ hoặc không tồn tại.');
+      }
+    };
+
+    const loadGoogleScript = () => {
+      // Check if the token exists in localStorage and remove them if found
+      if (localStorage.getItem('jwtToken')) {
+        localStorage.removeItem('jwtToken');
+      }
+
+      if (localStorage.getItem('AccessToken')) {
+        localStorage.removeItem('AccessToken');
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        google.accounts.id.initialize({
+          client_id: '519808391389-hfehje3s840t09nonkah43no65n0mq8r.apps.googleusercontent.com',
+          callback: handleCredentialResponse,
+        });
+        google.accounts.id.renderButton(document.getElementById('buttonDiv'), {
+          theme: 'outline',
+          size: 'large',
+        });
+        google.accounts.id.prompt();
+      };
+      document.head.appendChild(script);
+    };
+
+    if (window.google && window.google.accounts) {
+      loadGoogleScript();
+    } else {
+      setTimeout(() => {
+        if (window.google && window.google.accounts) {
+          loadGoogleScript();
+        } else {
+          console.error('Không thể tải Google Identity API.');
+        }
+      }, 1000);
+    }
+  }, []);
+
   const formik = useFormik({
-    //! Giá trị khởi tạo của form
     initialValues: {
       email: 'admin1@gmail.com',
       password: '123456',
     },
-
-    //! Xác định các phần Validation
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required('Email is required'),
       password: Yup.string()
         .min(6, 'Password must be at least 6 characters')
         .required('Password is required'),
     }),
-
-    //! Cái hàm sẽ xử lý nhấn Submit
     onSubmit: (values) => {
+      setIsLoading(true);
+
       axios
         .post('/UserManagements/Login', {
           email: values.email,
@@ -44,16 +99,20 @@ function Login() {
         .then((response) => {
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
-
           Cookies.set('accessToken', response.data.accessToken);
-
+          const userEmail = localStorage.getItem('email'); // Lấy email từ localStorage
           Swal.fire({
             icon: 'success',
             title: 'Login Successful!',
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {
-            window.location.href = '/';
+            if (userEmail) {
+              // Kiểm tra nếu có email trong localStorage, thì điều hướng đến trang tương ứng
+              if (userEmail) {
+                window.location.href = '/';
+              }
+            }
           });
         })
         .catch((error) => {
@@ -64,6 +123,9 @@ function Login() {
             title: 'Login failed!',
             text: 'Invalid email or password. Please try again.',
           });
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     },
   });
@@ -95,6 +157,8 @@ function Login() {
 
     //! Cái hàm sẽ xử lý nhấn Submit cho form đăng ký
     onSubmit: (values) => {
+      setIsLoading(true);
+
       axios
         .post('/UserManagements/Register', {
           firstName: values.firstName,
@@ -121,6 +185,9 @@ function Login() {
           });
 
           console.log(error);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     },
   });
@@ -181,8 +248,11 @@ function Login() {
         <div className="form-container login-container">
           <form action="#" onSubmit={formik.handleSubmit}>
             <h1>Login</h1>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="mb-2">
+              Email
+            </label>
             <input
+              className="mb-3"
               id="email"
               type="text"
               value={formik.values.email}
@@ -193,15 +263,30 @@ function Login() {
               <div className="error-msg">{formik.errors.email}</div>
             ) : null}
 
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="mb-2">
+              Password
+            </label>
+
             <input
+              className="mb-3"
               id="password"
               type={showPassword ? 'text' : 'password'}
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEye : faEyeSlash}
               onClick={() => setShowPassword(!showPassword)}
-              style={{ cursor: 'pointer' }}
+              style={{
+                position: 'absolute',
+                top: '240px',
+                right: '54px',
+                color: '#5a6473',
+                padding: '16px 12px',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
             />
             {formik.touched.password && formik.errors.password ? (
               <div className="error-msg">{formik.errors.password}</div>
@@ -216,7 +301,8 @@ function Login() {
             </Button>
             <hr />
             <span>Or Use Another Account</span>
-            <GoogleSignIn />
+            <div id="buttonDiv"></div>
+            {/* <GoogleSignIn /> */}
           </form>
         </div>
 
@@ -225,34 +311,65 @@ function Login() {
             <h1>Register</h1>
             <div className="fullname">
               <div className="firstname">
-                <label htmlFor="firstName">First Name</label>
-                <input id="firstName" type="text" {...formikRegister.getFieldProps('firstName')} />
+                <label htmlFor="firstName" className="mb-2">
+                  First Name
+                </label>
+                <input
+                  className="mb-3"
+                  id="firstName"
+                  type="text"
+                  {...formikRegister.getFieldProps('firstName')}
+                />
                 {formikRegister.touched.firstName && formikRegister.errors.firstName ? (
                   <div className="error-msg">{formikRegister.errors.firstName}</div>
                 ) : null}
               </div>
               <div className="lastname">
-                <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" type="text" {...formikRegister.getFieldProps('lastName')} />
+                <label htmlFor="lastName" className="mb-2">
+                  Last Name
+                </label>
+                <input
+                  className="mb-3"
+                  id="lastName"
+                  type="text"
+                  {...formikRegister.getFieldProps('lastName')}
+                />
                 {formikRegister.touched.lastName && formikRegister.errors.lastName ? (
                   <div className="error-msg">{formikRegister.errors.lastName}</div>
                 ) : null}
               </div>
             </div>
-            <label htmlFor="registerEmail">Email</label>
-            <input id="registerEmail" type="email" {...formikRegister.getFieldProps('email')} />
+            <label htmlFor="registerEmail" className="mb-2">
+              Email
+            </label>
+            <input
+              className="mb-3"
+              id="registerEmail"
+              type="email"
+              {...formikRegister.getFieldProps('email')}
+            />
             {formikRegister.touched.email && formikRegister.errors.email ? (
               <div className="error-msg">{formikRegister.errors.email}</div>
             ) : null}
-            <label htmlFor="registerPhone">Phone</label>
-            <input id="registerPhone" type="text" {...formikRegister.getFieldProps('phone')} />
+            <label htmlFor="registerPhone" className="mb-2">
+              Phone
+            </label>
+            <input
+              className="mb-3"
+              id="registerPhone"
+              type="text"
+              {...formikRegister.getFieldProps('phone')}
+            />
             {formikRegister.touched.phone && formikRegister.errors.phone ? (
               <div className="error-msg">{formikRegister.errors.phone}</div>
             ) : null}
             <div className="fullname">
               <div className="firstname">
-                <label htmlFor="registerPassword">Password</label>
+                <label htmlFor="registerPassword" className="mb-2">
+                  Password
+                </label>
                 <input
+                  className="mb-3"
                   id="registerPassword"
                   type="password"
                   {...formikRegister.getFieldProps('password')}
@@ -262,8 +379,11 @@ function Login() {
                 ) : null}
               </div>
               <div className="lastname">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword" className="mb-2">
+                  Confirm Password
+                </label>
                 <input
+                  className="mb-3"
                   id="confirmPassword"
                   type="password"
                   {...formikRegister.getFieldProps('confirmPassword')}
