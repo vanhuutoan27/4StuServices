@@ -25,10 +25,10 @@ namespace _4stu_cs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FeedbackManagement>>> GetFeedbackManagements()
         {
-          if (_context.FeedbackManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.FeedbackManagements == null)
+            {
+                return NotFound();
+            }
             return await _context.FeedbackManagements.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace _4stu_cs.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FeedbackManagement>> GetFeedbackManagement(int id)
         {
-          if (_context.FeedbackManagements == null)
-          {
-              return NotFound();
-          }
+            if (_context.FeedbackManagements == null)
+            {
+                return NotFound();
+            }
             var feedbackManagement = await _context.FeedbackManagements.FindAsync(id);
 
             if (feedbackManagement == null)
@@ -86,10 +86,10 @@ namespace _4stu_cs.Controllers
         [HttpPost]
         public async Task<ActionResult<FeedbackManagement>> PostFeedbackManagement(FeedbackManagement feedbackManagement)
         {
-          if (_context.FeedbackManagements == null)
-          {
-              return Problem("Entity set '_4stuDbContext.FeedbackManagements'  is null.");
-          }
+            if (_context.FeedbackManagements == null)
+            {
+                return Problem("Entity set '_4stuDbContext.FeedbackManagements'  is null.");
+            }
             _context.FeedbackManagements.Add(feedbackManagement);
             await _context.SaveChangesAsync();
 

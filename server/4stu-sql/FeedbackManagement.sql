@@ -18,6 +18,7 @@ VALUES
 	(5, 4, 33, 1, 'Terrible experience', '2023-10-26'),
 	(6, 2, 18, 3, 'Satisfactory', '2023-02-15'),
 	(7, 1, 36, 4, 'Very good!', '2023-05-14'),
+
 	(8, 9, 10, 5, 'Excellent service', '2023-09-24'),
 	(9, 1, 3, 2, 'Not satisfied', '2023-05-26'),
 	(10, 1, 13, 3, 'Decent experience', '2023-01-17'),
@@ -28,6 +29,7 @@ VALUES
 	(15, 9, 35, 3, 'Average quality', '2023-05-15'),
 	(16, 1, 19, 4, 'Impressive', '2023-07-05'),
 	(17, 1, 37, 1, 'Worst experience ever', '2023-04-26'),
+
 	(18, 12, 31, 5, 'Outstanding', '2023-07-25'),
 	(19, 4, 1, 3, 'Not bad', '2023-06-11'),
 	(20, 1, 8, 2, 'Could improve', '2023-05-27'),
@@ -38,6 +40,40 @@ VALUES
 	(25, 9, 17, 3, 'Average experience', '2023-07-25'),
 	(26, 1, 30, 4, 'Impressed', '2023-04-16'),
 	(27, 15, 12, 5, 'Highly satisfied', '2023-05-23'),
+
 	(28, 1, 11, 1, 'Horrible service', '2023-05-20'),
 	(29, 3, 15, 2, 'Needs improvement', '2023-06-22'),
-	(30, 1, 20, 3, 'Fair experience', '2023-08-19');
+	(30, 1, 20, 3, 'Fair experience', '2023-08-19'),
+	(31, 12, 31, 5, 'Outstanding service', '2023-07-31'),
+    (32, 5, 33, 3, 'Average experience', '2023-05-21'),
+    (33, 1, 38, 2, 'Needs improvement', '2023-10-16'),
+    (34, 3, 34, 3, 'Decent quality', '2023-01-09'),
+    (35, 4, 38, 1, 'Not satisfied', '2023-10-30'),
+    (36, 2, 18, 4, 'Good service', '2023-02-25'),
+    (37, 1, 36, 5, 'Highly recommended', '2023-05-27'),
+
+    (38, 9, 10, 3, 'Average service', '2023-09-30'),
+    (39, 1, 3, 2, 'Could be better', '2023-05-30'),
+    (40, 1, 13, 4, 'Impressive', '2023-01-29'),
+    (41, 5, 7, 5, 'Excellent experience', '2023-02-28'),
+    (42, 4, 9, 4, 'Satisfactory', '2023-02-26'),
+    (43, 1, 4, 5, 'Top-notch!', '2023-05-19'),
+    (44, 5, 32, 1, 'Terrible service', '2023-06-20'),
+    (45, 9, 35, 2, 'Dissatisfied', '2023-05-23'),
+    (46, 1, 19, 3, 'Fair quality', '2023-07-12'),
+    (47, 1, 37, 4, 'Very pleased', '2023-04-27'),
+
+    (48, 12, 31, 5, 'Exceptional service', '2023-07-28'),
+    (49, 4, 1, 3, 'Needs improvement', '2023-06-15'),
+    (50, 1, 8, 4, 'Impressed', '2023-06-29'),
+    (51, 11, 16, 1, 'Awful experience', '2023-08-30'),
+    (52, 3, 2, 2, 'Could improve', '2023-03-18'),
+    (53, 4, 5, 3, 'Average service', '2023-03-25'),
+    (54, 2, 29, 5, 'Outstanding quality', '2023-05-31'),
+    (55, 9, 17, 4, 'Good service', '2023-07-30'),
+    (56, 1, 30, 3, 'Fair experience', '2023-04-30'),
+    (57, 15, 12, 5, 'Highly satisfied', '2023-06-25'),
+
+    (58, 1, 11, 2, 'Dissatisfied', '2023-05-30'),
+    (59, 3, 15, 4, 'Impressive', '2023-06-27'),
+    (60, 1, 20, 5, 'Excellent service', '2023-08-25');

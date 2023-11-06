@@ -37,7 +37,7 @@ public partial class _4stuDbContext : DbContext
     {
         modelBuilder.Entity<FeedbackManagement>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDF694DDDE08");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDF6F55E1751");
 
             entity.ToTable("FeedbackManagement");
 
@@ -55,7 +55,7 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<OrderManagement>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFA8F0E589");
+            entity.HasKey(e => e.OrderId).HasName("PK__OrderMan__C3905BCFC7471820");
 
             entity.ToTable("OrderManagement");
 
@@ -229,7 +229,7 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<StaffOrderManagement>(entity =>
         {
-            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D116DDF7A3");
+            entity.HasKey(e => e.TaskId).HasName("PK__StaffOrd__7C6949D1EA7BC80F");
 
             entity.ToTable("StaffOrderManagement");
 
@@ -243,7 +243,7 @@ public partial class _4stuDbContext : DbContext
 
         modelBuilder.Entity<UserManagement>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__UserMana__1788CCAC2007FA77");
+            entity.HasKey(e => e.UserId).HasName("PK__UserMana__1788CCACA95A14E1");
 
             entity.ToTable("UserManagement");
 
