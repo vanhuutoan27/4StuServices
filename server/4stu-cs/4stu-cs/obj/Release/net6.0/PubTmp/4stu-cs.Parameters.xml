@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="4StuAPI" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="_4stu_cs.Models._4stuDbContext" description="" value="Data Source=4stu-csdbserver.database.windows.net,1433;Initial Catalog=4StuDB;User ID=vanhuutoan27;Password=27082003As" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\_4stu_cs\.Models\._4stuDbContext\.sql$" />
+  </parameter>
+</parameters>

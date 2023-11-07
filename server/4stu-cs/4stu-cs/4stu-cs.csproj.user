@@ -10,6 +10,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>_4stu_cs.Models._4stuDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\Properties\PublishProfiles\4stuservices - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\Properties\PublishProfiles\4StuAPI - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
