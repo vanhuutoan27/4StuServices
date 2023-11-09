@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
   <IisApp path="C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Release\net6.0\PubTmp\Out\" />
-  <dbfullsql path="C:\Users\Admin\Desktop\SWP391\4stu-swp-project\server\4stu-cs\4stu-cs\obj\Release\net6.0\PubTmp\EFSQLScripts\_4stu_cs.Models._4stuDbContext.sql" />
 </sitemanifest>

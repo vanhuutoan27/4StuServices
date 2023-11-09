@@ -26,13 +26,11 @@
       transition: 0.3s all ease-in-out;
 
       &:hover {
-        // Edit later
         background: var(--primary-color-3);
 
         .card-numbers,
         .card-name,
         .card-icon {
-          // Edit later
           color: var(--primary-color-0);
         }
       }

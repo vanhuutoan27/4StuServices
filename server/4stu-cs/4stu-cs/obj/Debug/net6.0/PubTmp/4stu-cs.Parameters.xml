@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="4StuServices" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Admin\\Desktop\\SWP391\\4stu-swp-project\\server\\4stu-cs\\4stu-cs\\obj\\Debug\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

@@ -24,7 +24,6 @@ function MyOrder() {
   const [staffOrders, setStaffOrders] = useState([]);
   const [allStaffs, setAllStaffs] = useState([]);
   const [orderRatings, setOrderRatings] = useState({});
-  const [orderComments, setOrderComments] = useState({});
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -59,15 +58,12 @@ function MyOrder() {
       .get('/FeedbackManagements')
       .then((response) => {
         const feedbackRatings = {};
-        const feedbackComments = {};
 
         response.data.forEach((feedback) => {
           feedbackRatings[feedback.orderId] = feedback.rating;
-          feedbackComments[feedback.orderId] = feedback.comment;
         });
 
         setOrderRatings(feedbackRatings);
-        setOrderComments(feedbackComments);
       })
       .catch((error) => console.log(error));
   }, [userInfo.userId]);

@@ -21,7 +21,6 @@ function Service() {
   const [selectedService, setSelectedService] = useState(null);
   const [selectedPackageService, setSelectedPackageService] = useState(null);
   const [isDetailModalVisible, setDetailModalVisible] = useState(false);
-  const [staffOrders, setStaffOrders] = useState([]);
   const [combinedData, setCombinedData] = useState([]);
 
   useEffect(() => {
@@ -100,7 +99,7 @@ function Service() {
 
     axios
       .get('/StaffOrderManagements')
-      .then((response) => setStaffOrders(response.data))
+      .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   }, []);
 
