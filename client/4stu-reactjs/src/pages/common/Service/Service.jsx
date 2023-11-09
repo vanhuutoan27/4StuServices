@@ -28,18 +28,6 @@ function Service() {
     localStorage.removeItem('selectedPackageService');
   }, []);
 
-  const handleOrderServiceClick = (service) => {
-    localStorage.setItem('selectedService', JSON.stringify(service));
-    setSelectedService(service);
-    window.scrollTo(0, 0);
-  };
-
-  const handleOrderPackageServiceClick = (packageService) => {
-    localStorage.setItem('selectedPackageService', JSON.stringify(packageService));
-    setSelectedPackageService(packageService);
-    window.scrollTo(0, 0);
-  };
-
   const handleViewServiceDetailClick = (service) => {
     setSelectedService(service);
     setSelectedPackageService(null);
@@ -52,6 +40,18 @@ function Service() {
     setSelectedPackageService(packageService);
     setDetailModalVisible(true);
     document.body.style.overflow = 'hidden';
+  };
+
+  const handleOrderServiceClick = (service) => {
+    localStorage.setItem('selectedService', JSON.stringify(service));
+    setSelectedService(service);
+    window.scrollTo(0, 0);
+  };
+
+  const handleOrderPackageServiceClick = (packageService) => {
+    localStorage.setItem('selectedPackageService', JSON.stringify(packageService));
+    setSelectedPackageService(packageService);
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import StaffNavigation from '../../../components/StaffNavigation';
+// import Footer from '../../'
 import '../../customer/Profile/Profile.css';
 import './StaffProfile.css';
 

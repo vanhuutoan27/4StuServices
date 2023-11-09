@@ -8,7 +8,7 @@ import { formatPriceWithDot } from '../../../utils/PriceUtils';
 import { formatDate } from '../../../utils/DateUtils';
 import Button from '@mui/material/Button';
 
-import Feedback from '../../common/Login/GooglePassword';
+import Feedback from '../../customer/MyOrder/Feedback';
 import Navigation from '../../../components/Navigation';
 import Footer from '../../../components/Footer';
 import './MyOrder.css';
@@ -154,6 +154,7 @@ function MyOrder() {
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={handleSearchChange}
+                  style={{ fontSize: '16px' }}
                 />
               </caption>
               <table>
