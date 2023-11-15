@@ -37,7 +37,6 @@ function Feedback({ isOpen, onClose, orderId, customerId, serviceId, updateFeedb
         });
 
         onClose();
-        window.href.reload();
       })
       .catch((error) => {
         console.error('Error sending feedback', error);
