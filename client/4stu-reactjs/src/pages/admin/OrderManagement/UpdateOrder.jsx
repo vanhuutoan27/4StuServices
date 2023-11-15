@@ -182,7 +182,6 @@ function UpdateOrder({ selectedOrder, onClose, onOrderUpdate }) {
                       name="phone"
                       value={updatedOrder.phone || ''}
                       onChange={handleInputChange}
-                      readOnly
                     />
                   </Form.Group>
                 </Col>

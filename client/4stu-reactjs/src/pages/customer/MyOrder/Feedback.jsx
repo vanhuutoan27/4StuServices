@@ -52,7 +52,7 @@ function Feedback({ isOpen, onClose, orderId, customerId, serviceId, updateFeedb
   };
 
   return (
-    <Modal show={isOpen} onHide={onClose} style={{ marginTop: '160px' }}>
+    <Modal show={isOpen} onHide={onClose} style={{ marginTop: '120px' }}>
       <Modal.Header closeButton>
         <Modal.Title>Feedback Order</Modal.Title>
       </Modal.Header>
